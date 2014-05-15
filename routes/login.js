@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
             console.log(err);
         }
         else {
-            client.execute("SELECT * FROM webhis.test ", [], function (err, results) {
+            client.execute("select name from test1", [], function (err, results) {
                 console.log("ttttttttttttttttttttttttt");
                 if (err) {
                     console.log("Error executing query:", err);

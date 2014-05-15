@@ -4,14 +4,13 @@ var oracle = require('oracle');
 conf = {
     "hostName": "localhost",
     "port": 1521,
-    "user": "SYSTEM",
+    "user": "NODEHIS",
     "password": "111111",
     "database": "xe"
 }
-var query = "SELECT * FROM test";
 
 var pool = genericPool.Pool({
-    name: 'webhis',
+    name: 'nodehis',
     log: true,
     max: 20,
     create: function(callback) {
