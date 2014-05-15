@@ -10,8 +10,31 @@ function checkAuth(req, res, next) {
     }
 }
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('login', { title: '测试' });
+router.get('/', function (req, res) {
+    var pool = require('../pool.js');
+    console.log(pool);
+    console.log("aaaaaaaaaaaaaaaaaas");
+    pool.acquire(function (err, client) {
+        if (err) {
+            // handle error - this is generally the err from your
+            // factory.create function
+            console.log(err);
+        }
+        else {
+            client.execute("SELECT * FROM webhis.test ", [], function (err, results) {
+                console.log("ttttttttttttttttttttttttt");
+                if (err) {
+                    console.log("Error executing query:", err);
+                    return;
+                }
+                console.log("ttttttttttttttttttttttttt");
+                pool.release(client);
+                console.log(results);
+                client.close(); // call only when query is finished executing
+            });
+        }
+    });
+    res.render('login', { title: '测试' });
 });
 
 router.post('/login', function (req, res) {
