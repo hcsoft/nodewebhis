@@ -11,17 +11,18 @@
  */
 angular.module(
     'myApp',
-    [ 'ui.router', 'myApp.filters', 'myApp.services', 'myApp.directives',
+    [ 'ngCookies', 'ui.router', 'myApp.filters', 'myApp.services', 'myApp.directives',
         'ui.bootstrap', 'ngGrid' ]).config(
-    function($stateProvider, $urlRouterProvider) {
+    function ($stateProvider, $urlRouterProvider,$httpProvider) {
+        //$httpProvider.interceptors.push('httpRequestInterceptor');
         $urlRouterProvider.otherwise("/login");
         $stateProvider.state('login', {
-            url : '/login',
-            templateUrl : 'tpl/login/login.html',
-            controller : 'LoginCtrl'
+            url: '/login',
+            templateUrl: 'tpl/login/login.html',
+            controller: 'LoginCtrl'
         }).state('main', {
-            url : '/main',
-            templateUrl : 'tpl/main/main.html',
-            controller : 'MainCtrl'
+            url: '/main',
+            templateUrl: 'tpl/main/main.html',
+            controller: 'MainCtrl'
         });
     });

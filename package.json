@@ -16,6 +16,7 @@
         "generic-pool": "~2.0.4",
         "oracle": "~0.3.6",
         "cookie": "~0.1.2",
-        "cookie-signature":"~1.0.3"
+        "cookie-signature":"~1.0.3",
+        "express-session":"~1.2.0"
     }
 }

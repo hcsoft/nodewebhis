@@ -24,4 +24,12 @@ angular.module('myApp.services', []).factory('loginService', function() {
 	// };
     // return mcache;
 	return $http.post('/cache.json');
-});
+}).factory('httpRequestInterceptor', function($q, dependency1, dependency2) {
+    return {
+        'response': function(response) {
+            // do something on success
+            console.log("aaaaaaaaaaaaaaaaaaaaa");
+            return response;
+        }
+    };
+})

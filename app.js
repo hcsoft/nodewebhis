@@ -4,9 +4,10 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/login');
-var users = require('./routes/users');
+var main = require('./routes/main');
 
 var app = express();
 
@@ -18,11 +19,44 @@ app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser('shhhh, very secret'));
+app.use(session({
+    cookie: {
+        path    : '/',
+        httpOnly: false,
+//        maxAge  : 24*60*60*1000
+        maxAge  : 100*1000
+        //expires: new Date(Date.now() + 10000)
+    },
+    key:'hcsoft',
+    secret: 'test'
+}));
+
+app.use(function(req, res, next){
+    if ('HEAD' == req.method ||'GET' == req.method|| 'OPTIONS' == req.method || "/logout"==req.url) return next();
+    if(req.session.user_id){
+        req.session._garbage = Date();
+        req.session.touch();
+    }
+    next();
+});
+
+
+app.use('/main',function(req, res, next){
+    console.log(req.session.user_id);
+    console.log(req.session);
+    if ("POST"==req.method && !req.session.user_id ) {
+        res.json({"islogin":false});
+    } else {
+        next();
+    }
+});
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/main', main);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

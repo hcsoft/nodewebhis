@@ -5,8 +5,9 @@
 		<div class='title'>系统登录</div>
 		<div class='content'>
 			<form style="padding:10px 20px 10px 40px;" >
-				<p>用户名: <input ng-model="data.j_username" type="text"></p>
-				<p>密&nbsp;&nbsp;码: <font color="red" ng-bind-html-unsafe='data.msg'></font><input ng-model="data.j_password" type="password" ></p>
+                <span ng-show="data.msg" style="color:red;text-align:center;display:block;width:100%;padding-bottom:5px;" ng-bind='data.msg'></span>
+				<p>用户名: <input ng-model="data.user_id" type="text"></p>
+				<p>密&nbsp;&nbsp;码: <input ng-model="data.password" type="password" ></p>
 				<div style="text-align:center;">
 					<button class='btn btn-primary' style='margin:0 10px;padding:5 10px;' ng-click='login()'>登录</button>
 					<button class='btn btn-warning' style='margin:0 10px;padding:5 10px;' ng-click='reset()'>取消</button>

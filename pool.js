@@ -1,3 +1,6 @@
+
+/*
+// oracle pool
 var genericPool = require('generic-pool');
 // This is the 'nearinfinity' driver: `npm install oracle`
 var oracle = require('oracle');
@@ -30,3 +33,15 @@ var pool = genericPool.Pool({
     }
 });
 module.exports = pool;
+    */
+
+// sqlserver pool
+var Pool = require("odbc").Pool
+    , pool = new Pool()
+    , cn = "DRIVER={SQL Server};Server=localhost,1433;Database=webhis;User Id=sa;Password=11111111;"
+    ;
+module.exports = {
+    'pool':pool,
+    'connectstr' :cn
+};
+
