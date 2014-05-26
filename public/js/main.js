@@ -14,7 +14,7 @@ angular.module(
     [ 'ngCookies', 'ui.router', 'myApp.filters', 'myApp.services', 'myApp.directives',
         'ui.bootstrap', 'ngGrid' ]).config(
     function ($stateProvider, $urlRouterProvider,$httpProvider) {
-        //$httpProvider.interceptors.push('httpRequestInterceptor');
+        $httpProvider.interceptors.push('httpRequestInterceptor');
         $urlRouterProvider.otherwise("/login");
         $stateProvider.state('login', {
             url: '/login',
