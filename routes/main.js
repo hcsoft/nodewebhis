@@ -18,11 +18,10 @@ router.post('/init', function (req, res) {
             if (err) {
                 return console.log(err);
             }
-            req.session.user_id = req.param("user_id");
             db.close(function(err){});
             //console.log(rows);
             if(rows && rows.length>0){
-                res.json({"success":true,rows:rows});
+                res.json({"success":true,data:rows});
             }else{
                 res.json({"success":false,"msg":'没有数据!'});
             }

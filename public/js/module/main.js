@@ -63,10 +63,10 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
         url: '/main/init'
     }).success(function (data, status, headers, config) {
         console.log(data);
-        if (data.success == false) {
-            $location.path('/login');
-            $location.replace();
-        }
+//        if (data.success == false) {
+//            $location.path('/login');
+//            $location.replace();
+//        }
     });
     $scope.menus = [
         {

@@ -38,6 +38,7 @@ router.post('/login', function (req, res) {
 
 
 router.post('/islogin', function (req, res) {
+    console.log("islogin",req.session.user_id,req.session)
     if (req.session.user_id) {
         res.json({"success": true});
     } else {

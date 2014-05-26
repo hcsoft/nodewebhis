@@ -22,35 +22,35 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser('shhhh, very secret'));
 app.use(session({
     cookie: {
-        path    : '/',
+        //path: "/",
         httpOnly: false,
 //        maxAge  : 24*60*60*1000
         maxAge  : 100*1000
         //expires: new Date(Date.now() + 10000)
     },
-    key:'hcsoft',
-    secret: 'test'
+    name:'hcsoft',
+    secret: 'hcsoft2013'
 }));
 
-app.use(function(req, res, next){
-    if ('HEAD' == req.method ||'GET' == req.method|| 'OPTIONS' == req.method || "/logout"==req.url) return next();
-    if(req.session.user_id){
-        req.session._garbage = Date();
-        req.session.touch();
-    }
-    next();
-});
-
-
-app.use('/main',function(req, res, next){
-    console.log(req.session.user_id);
-    console.log(req.session);
-    if ("POST"==req.method && !req.session.user_id ) {
-        res.json({"islogin":false});
-    } else {
-        next();
-    }
-});
+//app.use(function(req, res, next){
+//    if ('HEAD' == req.method ||'GET' == req.method|| 'OPTIONS' == req.method || "/logout"==req.url) return next();
+//    if(req.session.user_id){
+//        req.session._garbage = Date();
+//        req.session.touch();
+//    }
+//    next();
+//});
+//
+//
+//app.use('/main',function(req, res, next){
+//    console.log(req.session.user_id);
+//    console.log(req.session);
+//    if ("POST"==req.method && !req.session.user_id ) {
+//        res.json({"islogin":false});
+//    } else {
+//        next();
+//    }
+//});
 
 
 app.use(express.static(path.join(__dirname, 'public')));
