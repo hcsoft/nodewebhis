@@ -14,18 +14,24 @@ router.post('/init', function (req, res) {
             return res.json({"success":false,"msg":'系统故障!请与系统管理员联系!'});
         }
         //获取菜单
-        db.query("select * from menu_category  ", function (err, rows, moreResultSets) {
-            if (err) {
-                return console.log(err);
+        var rows = db.querySync("select * from menu_category where level=1 order by ordinal ")
+        if (err) {
+            return console.log(err);
+        }
+        if(rows && rows.length>0){
+            for(var i=0;i<rows.length;i++){
+                var submenu = db.querySync("select * from menu_category where parentid='"+rows[i].id+"' order by ordinal ");
+                for(var j=0;j<submenu.length;j++){
+                    var menu = db.querySync("select * from menu_module where category_id='"+submenu[j].id+"' order by ordinal ");
+                    submenu[j].child = menu;
+                }
+                rows[i].child = submenu;
             }
-            db.close(function(err){});
-            //console.log(rows);
-            if(rows && rows.length>0){
-                res.json({"success":true,data:rows});
-            }else{
-                res.json({"success":false,"msg":'没有数据!'});
-            }
-        });
+            res.json({"success":true,data:rows});
+        }else{
+            res.json({"success":false,"msg":'没有数据!'});
+        }
+        db.close(function(err){});
     });
 });
 

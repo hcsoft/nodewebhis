@@ -25,7 +25,6 @@ router.post('/login', function (req, res) {
                 return console.log(err);
             }
             req.session.user_id = req.param("user_id");
-            console.log("login...end ... ",req.session);
             db.close(function (err) {});
             if (rows && rows.length > 0) {
                 res.json({"success": true});
@@ -38,7 +37,6 @@ router.post('/login', function (req, res) {
 
 
 router.post('/islogin', function (req, res) {
-    console.log("islogin",req.session.user_id,req.session)
     if (req.session.user_id) {
         res.json({"success": true});
     } else {

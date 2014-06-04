@@ -10,25 +10,21 @@
         <p style="margin-left:10px;float: right; color: gray;font-size:9px; ">用户：{{username}}</p>
     </div>
     <div class='leftmenu'>
-        <div class="accordion-group ng-scope" ng-repeat="menu in menus" ng-style="menu.style">
-            <div class="accordion-heading">
-                <a class="accordion-toggle ng-binding" ng-click="isOpen = !isOpen"><img ng-src='{{menu.icon}}'
-                                                                                        style='margin:0 5px 4px 0'>{{menu.text}}</a>
-            </div>
-            <div class="accordion-body collapse" collapse="!isOpen" style="height: auto;">
-                <div class="accordion-inner">
-                    <div ng-repeat="child in menu.child" class="menuitem ng-scope">
-                        <div style='cursor: pointer;'>
-                            <a href='' ng-click="clickmenu(child.text,child.url,child.js)">
-                                <img ng-src="{{child.img}}">
-
-                                <div ng-bind="child.text"></div>
-                            </a>
-                        </div>
+        <accordion close-others="true">
+            <accordion-group ng-repeat="menu in menus" heading="menu.name" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                <accordion-heading>
+                <img ng-src='{{"img/menu/level1/"+menu.img}}'
+                     style='margin:0 5px 4px 0'/>{{menu.name}}</accordion-heading>
+                <div ng-repeat="child in menu.child" class="menuitem ng-scope">
+                    <div style='cursor: pointer;'>
+                        <a href='' ng-click="clickmenu(child.name,child.url,child.js)">
+                            <img ng-src="{{'img/menu/level2/'+child.img}}">
+                            <div ng-bind="child.name"></div>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </accordion-group>
+        </accordion>
     </div>
     <ul class="dropdown-menu">
         <li>

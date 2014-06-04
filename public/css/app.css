@@ -1,4 +1,16 @@
 /* app css stylesheet */
+a {
+    text-decoration: blink;
+}
+
+a:active {
+    text-decoration: blink
+}
+
+a:hover {
+    text-decoration: none;
+    color: darkmagenta;
+}
 
 .menu {
     list-style: none;
@@ -31,10 +43,11 @@
     padding: 0;
 }
 
-.accordion-heading {
-    height: 30px;
-    line-height: 30px;
-    padding-left: 20px;
+.leftmenu .accordion-heading {
+    height: 25px;
+    line-height: 25px;
+    padding-left: 10px;
+    background-color: #f1f6ff;
 }
 
 .borderradius {
@@ -123,10 +136,18 @@ html, body {
     bottom: 10px;
     padding: 2px;
     overflow-y: auto;
+
     background-color: #e0ecff;
 }
 
-.accordion-group {
+.leftmenu::-webkit-scrollbar {
+    width: 0 !important
+}
+.leftmenu .accordion-heading a{
+    font-size:10px;
+}
+
+.leftmenu .accordion-group {
     background-color: #ffffff;
     -moz-border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
@@ -134,9 +155,10 @@ html, body {
     border-width: 1px;
     border-style: solid;
     border-color: #95B8E7 !important;
+    overflow: hidden;
 }
 
-.accordion-inner {
+.leftmenu .accordion-inner {
     padding: 9px 15px;
     border-top: 1px solid #95B8E7 !important;
 }
@@ -184,7 +206,7 @@ html, body {
 }
 
 /*
-.accordion-heading{
+.leftmenu .accordion-heading{
 	background-color:#ffffff;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
@@ -193,7 +215,7 @@ html, body {
 	border-style: solid;
 	border-color: #95B8E7;
 }
-.accordion-inner{
+.leftmenu .accordion-inner{
 	background-color:#ffffff;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
@@ -229,7 +251,7 @@ html, body {
 }
 
 /*
-.accordion-group {
+.leftmenu .accordion-group {
 margin-bottom: 0 !important;
 border: 1px solid #95B8E7 !important;
 -webkit-border-radius: 0 !important;
@@ -484,7 +506,7 @@ a {
     overflow-y: hidden;
     min-height: 46px;
     height: 46px;
-    margin-right:45px;
+    margin-right: 45px;
 }
 
 .nav-tabs > li {
@@ -506,20 +528,22 @@ a {
     padding: 10px;
     z-index: 1000;
 }
-.mover i{
+
+.mover i {
     cursor: pointer;
-    color:#08c;
-    font-size:20px;
+    color: #08c;
+    font-size: 20px;
     font-weight: bold;
-    margin-top:3px;
+    margin-top: 3px;
 }
 
-.mover i:hover{
-    color:#05c;
-    font-size:25px;
-    margin-top:0px;
+.mover i:hover {
+    color: #05c;
+    font-size: 25px;
+    margin-top: 0px;
 }
-.tab-content,.selectable{
+
+.tab-content, .selectable {
     -webkit-touch-callout: inherit;
     -webkit-user-select: inherit;
     -khtml-user-select: inherit;
@@ -528,7 +552,7 @@ a {
     user-select: inherit;
 }
 
-.noneselect{
+.noneselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -537,11 +561,31 @@ a {
     user-select: none;
 }
 
-.selectable{
+.selectable {
     -webkit-touch-callout: inherit;
     -webkit-user-select: inherit;
     -khtml-user-select: inherit;
     -moz-user-select: inherit;
     -ms-user-select: inherit;
     user-select: inherit;
+}
+
+.leftmenu .accordion-toggle {
+    font-weight: bold;
+}
+.leftmenu .panel-default{
+    border-color: #95B8E7;
+}
+.leftmenu .panel-heading{
+    padding:5px;
+}
+
+.leftmenu .panel-title a{
+    padding:5px;
+    font-size: 10px;
+    color:#428bca;
+}
+
+.leftmenu .panel-group .panel+.panel {
+    margin-top: 2px;
 }

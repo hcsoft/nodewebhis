@@ -19,14 +19,13 @@ app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser('shhhh, very secret'));
+app.use(cookieParser('hcsoft'));
 app.use(session({
     cookie: {
         //path: "/",
         httpOnly: false,
 //        maxAge  : 24*60*60*1000
-        maxAge  : 10*1000
-        //expires: new Date(Date.now() + 10000)
+        maxAge  : 60*60*1000
     },
     name:'hcsoft',
     secret: 'hcsoft2013'
@@ -43,10 +42,7 @@ app.use(function(req, res, next){
 
 
 app.use('/main',function(req, res, next){
-    console.log(req.session.user_id);
-    console.log(req.session);
     if ("POST"==req.method && !req.session.user_id ) {
-//        res.json({"islogin":false});
         res.send(401);
     } else {
         next();
@@ -66,9 +62,6 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-/// error handlers
-
-// development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
@@ -80,7 +73,6 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
