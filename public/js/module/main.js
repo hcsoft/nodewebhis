@@ -65,18 +65,20 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
         $scope.menus =data.data;
     });
     $scope.panes = [];
-    $scope.clickmenu = function (name, url) {
+    $scope.clickmenu = function (menu) {
+        console.log(menu);
         for (var i = 0; i < $scope.panes.length; i++) {
             $scope.panes[i].active = false;
-            if (name == $scope.panes[i].title) {
+            if (menu.name == $scope.panes[i].title) {
                 $scope.panes[i].active = true;
                 return;
             }
         }
         $scope.panes[$scope.panes.length] = {
-            title: name,
+            title: menu.name,
             active: true,
-            url: url
+            url: menu.url,
+            data:menu
         };
     };
     $scope.closetab = function (index) {
