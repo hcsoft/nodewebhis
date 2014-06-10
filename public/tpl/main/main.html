@@ -39,19 +39,28 @@
         <div style="" class="mover noneselect">
             <i ng-click="scroll(150)" class="fa fa-angle-left"></i>&nbsp;
             <i ng-click="scroll(-150)" class="fa fa-angle-right"></i></div>
-        <tabset>
+        <tabset id="maintab">
             <tab heading="简介">管理系统</tab>
-            <tab ng-repeat="pane in panes" active="pane.active" select="active($index,1)">
-                <tab-heading>{{pane.title}} <a ng-show='pane.active' ng-click="closetab($index)" href=''><i
+            <tab ng-repeat=" (idx, pane) in panes" active="pane.active" select="active(idx,1)">
+                <tab-heading>{{pane.name}} <a ng-show='pane.active' ng-click="closetab(idx)" href=''><i
                         class="ext-icon-close"></i></a></tab-heading>
-
-                <div class="contentpane" style='width:100%;height:90%;background-image:url(img/menu/level2/{{pane.data.backgroundimg}});background-repeat: no-repeat;'>
-                    <a ng-click="clicksubmenu(child)" ng-repeat="item in pane.data.child" style="{{item.css}}"
-                       class="menuitem {{item.class}}">
-                        <img ng-src="{{'img/menu/level2/'+item.img}}">
-                        <div ng-bind="item.name"></div>
-                    </a>
-                </div>
+                <tabset id="subtab" >
+                    <tab class="firstnavtab" heading="导航" style="color:green">
+                        <div class="contentpane"
+                             style='width:100%;height:90%;background-image:url(img/menu/level2/{{pane.backgroundimg}});background-repeat: no-repeat;'>
+                            <a ng-click="clicksubmenu(idx,item)" ng-repeat="item in pane.child" style="{{item.css}}"
+                               class="menuitem {{item.class}}">
+                                <img ng-src="{{'img/menu/level2/'+item.img}}">
+                                <div ng-bind="item.name" ></div>
+                            </a>
+                        </div>
+                    </tab>
+                    <tab ng-repeat="module in pane.panes" active="module.active" >
+                        <tab-heading>{{module.name}} <a ng-show='module.active' ng-click="closemoduletab(idx,$index)" href=''><i
+                                class="ext-icon-close"></i></a></tab-heading>
+                        <div style="width:100%;height:100%" ng-include="module.html"></div>
+                    </tab>
+                </tabset>
             </tab>
         </tabset>
     </div>

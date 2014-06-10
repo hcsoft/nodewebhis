@@ -130,7 +130,6 @@ var UsersCtrl = function ($scope, $http, $location, $window, $filter, $modal) {
     });
     function selectPage(pageNo) {
         $scope.page.currentpage = pageNo;
-        ;
     }
 };
 

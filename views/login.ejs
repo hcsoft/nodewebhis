@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/ng-grid.css" />
-    <link rel="stylesheet" href="css/app.css"/>
     <link rel='stylesheet' href='css/style.css'/>
     <link rel='stylesheet' href='css/font-awesome.min.css'/>
     <script src="js/lib/jquery-1.11.1.min.js"></script>
@@ -33,5 +32,8 @@
 <script src="js/filters.js"></script>
 <script src="js/directives.js"></script>
 <script src="js/lib/jquery.scrollTo.min.js"></script>
+<% for(var i=0; i<js.length; i++) { %>
+<script src="<%= js[i].js %>"></script>
+<% } %>
 </body>
 </html>

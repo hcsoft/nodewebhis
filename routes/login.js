@@ -5,7 +5,16 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res) {
     var cache = require("../cache.js");
-    res.render('login', { title: '公共卫生服务平台' });
+    //查询模块库，加载所有的js
+    var pool = require('../pool.js');
+    pool.pool.open(pool.connectstr, function (err, db) {
+        if (err) {
+            return res.json({"success": false, "msg": '系统故障!请与系统管理员联系!'});
+        }
+        var js = db.querySync("select js from menu_module where js is not null ");
+        console.log(js);
+        res.render('login', { title: '公共卫生服务平台', js: js });
+    });
 });
 
 router.post('/test', function (req, res) {

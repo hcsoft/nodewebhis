@@ -69,29 +69,36 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
         console.log(menu);
         for (var i = 0; i < $scope.panes.length; i++) {
             $scope.panes[i].active = false;
-            if (menu.name == $scope.panes[i].title) {
+            if (menu.name == $scope.panes[i].name) {
                 $scope.panes[i].active = true;
                 return;
             }
         }
-        $scope.panes[$scope.panes.length] = {
-            title: menu.name,
-            active: true,
-            url: menu.url,
-            data:menu
-        };
+        menu.active = true;
+        menu.panes = [];
+        $scope.panes[$scope.panes.length] = menu;
+    };
+    $scope.clicksubmenu = function (parentindex,menu) {
+        console.log(menu);
+        console.log(parentindex);
+        var subpane = $scope.panes[parentindex];
+        for (var i = 0; i < subpane.panes.length; i++) {
+            subpane.panes[i].active = false;
+            if (menu.name == subpane.panes[i].name) {
+                $scope.panes[parentindex].panes[i].active = true;
+                return;
+            }
+        }
+        menu.active = true;
+        $scope.panes[parentindex].panes[$scope.panes[parentindex].panes.length] = menu;
+
     };
     $scope.closetab = function (index) {
-
+        console.log(index);
         $scope.panes.splice(index, 1);
-        /*
-         for (var i = 0; i < $scope.panes.length; i++) {
-         if (text == $scope.panes[i].title) {
-         $scope.panes.splice(i, 1);
-         $scope.$digest();
-         return;
-         }
-         }*/
+    };
+    $scope.closemoduletab = function (parentindex,index) {
+        $scope.panes[parentindex].panes.splice(index, 1);
     };
     /*
      // 增加tab双击事件

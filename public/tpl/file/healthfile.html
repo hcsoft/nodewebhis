@@ -1,0 +1,19 @@
+<div ng-controller="HealthFileCtrl" style="width:100%;height:100%;position: relative">
+    <script type="text/ng-template" id="tree_item_renderer.html">
+        <div ng-init="left=data.left;">
+            <span style="display: inline-block;width:{{data.left}}px"></span><i class="treeline" ng-click="treeclick(data)"></i><span
+                ng-click="treeliclick(data)">{{data.name}}</span>
+        </div>
+        <ul ng-show="!data.hide">
+            <li ng-repeat="data in data.nodes" ng-init="data.left=left+18" ng-class="getclass(data)"
+                ng-include="'tree_item_renderer.html'"></li>
+        </ul>
+    </script>
+    <div style="" class="lefttree">
+        <span style="text-align: center;background-color: lightblue;display: block;height:30px;line-height: 30px;">行政区划</span>
+        <ul class="treeul">
+            <li ng-repeat="data in tree" ng-class="getclass(data)"
+                ng-include="'tree_item_renderer.html'"></li>
+        </ul>
+    </div>
+</div>
