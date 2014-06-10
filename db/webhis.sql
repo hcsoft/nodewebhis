@@ -11,7 +11,7 @@ Target Server Type    : SQL Server
 Target Server Version : 105000
 File Encoding         : 65001
 
-Date: 2014-06-09 18:13:04
+Date: 2014-06-10 18:02:49
 */
 
 
@@ -4368,7 +4368,7 @@ CREATE TABLE [dbo].[file_base] (
 [fileno] varchar(36) NOT NULL ,
 [name] varchar(50) NOT NULL ,
 [builddate] datetime NULL ,
-[buildpersion] varchar(30) NULL ,
+[buildopt] varchar(30) NULL ,
 [manageorgid] int NULL ,
 [lastmodifydate] datetime NULL ,
 [modifyperson] varchar(30) NULL ,
@@ -4562,14 +4562,15 @@ CREATE TABLE [dbo].[menu_module] (
 [id] varchar(32) NOT NULL ,
 [name] varchar(100) NOT NULL ,
 [category_id] varchar(32) NOT NULL ,
-[url] varchar(100) NOT NULL ,
+[html] varchar(100) NOT NULL ,
 [ordinal] int NOT NULL ,
 [IsNavigate] bit NOT NULL DEFAULT ((0)) ,
 [InputPage] nvarchar(40) NULL ,
 [Type] int NULL DEFAULT ((-1)) ,
 [img] varchar(50) NULL ,
 [css] varchar(255) NULL ,
-[class] varchar(255) NULL 
+[class] varchar(255) NULL ,
+[js] varchar(255) NULL 
 )
 
 
@@ -4578,247 +4579,247 @@ GO
 -- ----------------------------
 -- Records of menu_module
 -- ----------------------------
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a80a72c013a80e889840004', N'孕产妇档案查询', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/healthfile_already_build.js', N'1', N'0', null, null, N'female_manage_01.gif', N'left:60px;top:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a80a72c013a80e889840004', N'孕产妇档案查询', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/healthfile_already_build.js', N'1', N'0', null, null, N'female_manage_01.gif', N'left:60px;top:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a80a72c013a80e8efd20005', N'孕产妇档案', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/woman_birth_build.js', N'1', N'0', null, N'-1', N'female_business_01.gif', N'left:335px;top:60px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a80a72c013a80e8efd20005', N'孕产妇档案', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/woman_birth_build.js', N'1', N'0', null, N'-1', N'female_business_01.gif', N'left:335px;top:60px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a80a72c013a80e9b0880006', N'终止妊娠', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/healthfile_finish_gestation.js', N'4', N'0', null, null, N'female_manage_04.gif', N'left:200px;top:330px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a80a72c013a80e9b0880006', N'终止妊娠', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/healthfile_finish_gestation.js', N'4', N'0', null, null, N'female_manage_04.gif', N'left:200px;top:330px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a80a72c013a80ea28300007', N'特殊情况记录', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/healthfile_pregnancy_record.js', N'5', N'0', null, null, N'female_manage_05.gif', N'left:500px;top:330px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a80a72c013a80ea28300007', N'特殊情况记录', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/healthfile_pregnancy_record.js', N'5', N'0', null, null, N'female_manage_05.gif', N'left:500px;top:330px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a80a72c013a80f03c060009', N'高危儿童档案查询', N'402881a32a9e622d012a9e702d8f0001', N'/js/app/childHighRisk.js', N'2', N'0', null, N'-1', N'complex_02.gif', N'left:200px;top:20px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a80a72c013a80f03c060009', N'高危儿童档案查询', N'402881a32a9e622d012a9e702d8f0001', N'/js/app/childHighRisk.js', N'2', N'0', null, N'-1', N'complex_02.gif', N'left:200px;top:20px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a80a72c013a80f35304000b', N'儿童档案查询', N'402881e43a7ec325013a7ecf8d98000a', N'/js/app/childfile.js', N'1', N'0', null, N'-1', N'child_manage_01.gif', N'left:20px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a80a72c013a80f35304000b', N'儿童档案查询', N'402881e43a7ec325013a7ecf8d98000a', N'/js/app/childfile.js', N'1', N'0', null, N'-1', N'child_manage_01.gif', N'left:20px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a827e22013a82814dc70001', N'2型糖尿病患者档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/t2dm_file.js', N'5', N'0', null, null, N'mxb_02.gif', N'left:340px;top:350px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a827e22013a82814dc70001', N'2型糖尿病患者档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/t2dm_file.js', N'5', N'0', null, null, N'mxb_02.gif', N'left:340px;top:350px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a827e22013a8281c0650002', N'高血压患者档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/hyp_file.js', N'6', N'0', null, null, N'mxb_01.gif', N'left:70px;top:310px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a827e22013a8281c0650002', N'高血压患者档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/hyp_file.js', N'6', N'0', null, null, N'mxb_01.gif', N'left:70px;top:310px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473a827e22013a8285a8680003', N'重性精神病患者档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/furious_file.js', N'7', N'0', null, null, N'mxb_03.gif', N'left:630px;top:310px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473a827e22013a8285a8680003', N'重性精神病患者档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/furious_file.js', N'7', N'0', null, null, N'mxb_03.gif', N'left:630px;top:310px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881473ac0f6ab013ac1b2c9310009', N'短信发布', N'402881473ac0f6ab013ac1b109a00008', N'/js/app/sms/MsgSender.js', N'1', N'0', null, N'-1', N'20.png', N'left:20px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881473ac0f6ab013ac1b2c9310009', N'短信发布', N'402881473ac0f6ab013ac1b109a00008', N'/js/app/sms/MsgSender.js', N'1', N'0', null, N'-1', N'20.png', N'left:20px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881823655ac97013655b0530e0001', N'出生医学证明查询', N'402881a32a9e622d012a9e702d8f0001', N'/js/app/birthCertifiQuery.js', N'1', N'0', null, null, N'complex_01.gif', N'left:20px;top:20px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881823655ac97013655b0530e0001', N'出生医学证明查询', N'402881a32a9e622d012a9e702d8f0001', N'/js/app/birthCertifiQuery.js', N'1', N'0', null, null, N'complex_01.gif', N'left:20px;top:20px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881823655ac97013655b0530e0011', N'出生医学证明查询', N'402881e43418c0c7013418d6c6830001', N'/js/app/birthCertifiQuery.js', N'2', N'0', null, null, N'child_birth_02.gif', N'left:190px;top:20px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881823655ac97013655b0530e0011', N'出生医学证明查询', N'402881e43418c0c7013418d6c6830001', N'/js/app/birthCertifiQuery.js', N'2', N'0', null, null, N'child_birth_02.gif', N'left:190px;top:20px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'40288182366e47bd01366e49bd1e0001', N'高危孕产妇信息', N'402881a32a9e622d012a9e702d8f0001', N'/js/app/womanHighRisk.js', N'4', N'0', null, null, N'complex_03.gif', N'left:560px;top:20px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'40288182366e47bd01366e49bd1e0001', N'高危孕产妇信息', N'402881a32a9e622d012a9e702d8f0001', N'/js/app/womanHighRisk.js', N'4', N'0', null, null, N'complex_03.gif', N'left:560px;top:20px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'40288182366e47bd01366e49bd1e0011', N'高危孕产妇信息', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/womanHighRisk.js', N'2', N'0', null, null, N'female_manage_02.gif', N'left:330px;top:40px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'40288182366e47bd01366e49bd1e0011', N'高危孕产妇信息', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/womanHighRisk.js', N'2', N'0', null, null, N'female_manage_02.gif', N'left:330px;top:40px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881823712ffa1013713070e320002', N'HIV和梅毒', N'402881a32a9e622d012a9e702d8f0001', N'/js/app/hivAndSyphilisStatistic.js', N'3', N'0', null, null, N'complex_04.gif', N'left:380px;top:20px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881823712ffa1013713070e320002', N'HIV和梅毒', N'402881a32a9e622d012a9e702d8f0001', N'/js/app/hivAndSyphilisStatistic.js', N'3', N'0', null, null, N'complex_04.gif', N'left:380px;top:20px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881853102a260013102a53e160002', N'一户式查询', N'402881853102a260013102a45bd50001', N'/js/app/queryHome.js', N'1', N'0', null, N'-1', N'personInfo_01.gif', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881853102a260013102a53e160002', N'一户式查询', N'402881853102a260013102a45bd50001', N'/js/app/queryHome.js', N'1', N'0', null, N'-1', N'personInfo_01.gif', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'4028818635ced3b90135ced576f20001', N'孕产妇档案管理', N'ff8081812a3b6573012a3b668c430001', N'/js/app/healthfile_already_build.js', N'3', N'0', null, null, N'health_03.gif', N'left:340px;top:40px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'4028818635ced3b90135ced576f20001', N'孕产妇档案管理', N'ff8081812a3b6573012a3b668c430001', N'/js/app/healthfile_already_build.js', N'3', N'0', null, null, N'health_03.gif', N'left:340px;top:40px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'4028818635ced3b90135ced5cd3f0002', N'分娩记录', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/childBirthRecord.js', N'3', N'0', null, null, N'female_manage_03.gif', N'left:630px;top:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'4028818635ced3b90135ced5cd3f0002', N'分娩记录', N'402881e43a7ec325013a7ecd48d40009', N'/js/app/childBirthRecord.js', N'3', N'0', null, null, N'female_manage_03.gif', N'left:630px;top:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'4028818636264330013626488ee40003', N'个人健康记录索引', N'40288186362643300136264785440002', N'/js/app/BusinessDataForPerson.js', N'1', N'0', null, null, N'personInfo_01.gif', N'left:20px;top:20px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'4028818636264330013626488ee40003', N'个人健康记录索引', N'40288186362643300136264785440002', N'/js/app/BusinessDataForPerson.js', N'1', N'0', null, null, N'personInfo_01.gif', N'left:20px;top:20px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'4028818636264330013626498ab90004', N'医疗机构汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryOrg.js', N'1', N'0', null, null, N'statistic_02.gif', N'left:330px;top:60px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'4028818636264330013626498ab90004', N'医疗机构汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryOrg.js', N'1', N'0', null, null, N'statistic_02.gif', N'left:330px;top:60px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881863626433001362649ce2b0005', N'操作人员汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryOptPerson.js', N'2', N'0', null, null, N'statistic_01.gif', N'left:120px;top:60px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881863626433001362649ce2b0005', N'操作人员汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryOptPerson.js', N'2', N'0', null, null, N'statistic_01.gif', N'left:120px;top:60px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'40288186362643300136264a1dd10006', N'按年汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryByYear.js', N'3', N'0', null, null, N'statistic_04.gif', N'left:120px;top:260px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'40288186362643300136264a1dd10006', N'按年汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryByYear.js', N'3', N'0', null, null, N'statistic_04.gif', N'left:120px;top:260px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'40288186362643300136264a6c010007', N'按月汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryByMonth.js', N'4', N'0', null, null, N'statistic_05.gif', N'left:330px;top:260px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'40288186362643300136264a6c010007', N'按月汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryByMonth.js', N'4', N'0', null, null, N'statistic_05.gif', N'left:330px;top:260px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'40288186362643300136264ab6580008', N'按日汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryByDay.js', N'5', N'0', null, null, N'statistic_06.gif', N'left:530px;top:260px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'40288186362643300136264ab6580008', N'按日汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryByDay.js', N'5', N'0', null, null, N'statistic_06.gif', N'left:530px;top:260px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'40288186362643300136264afc0c0009', N'高级查询汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryStatistic01.js', N'99', N'0', null, null, N'statistic_03.gif', N'left:530px;top:60px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'40288186362643300136264afc0c0009', N'高级查询汇总统计', N'402881863626433001362646ed690001', N'/js/app/summaryStatistic01.js', N'99', N'0', null, null, N'statistic_03.gif', N'left:530px;top:60px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881863a879508013a87a65a81000', N'儿童建册', N'402881a32a9e622d012a9e7189d30002', N'/js/app/child_healthfile_enble.js', N'0', N'0', null, N'-1', N'child_business_01.gif', N'left:335px;top:60px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881863a879508013a87a65a81000', N'儿童建册', N'402881a32a9e622d012a9e7189d30002', N'/js/app/child_healthfile_enble.js', N'0', N'0', null, N'-1', N'child_business_01.gif', N'left:335px;top:60px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9ea53c91000d', N'健康体检记录', N'402881e43a7ec325013a7ec8bbe90006', N'/js/app/medicalexam.js', N'2', N'0', N'/medicalExam.html', N'-1', N'exam_01.gif', N'left:20px;top:20px', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9ea53c91000d', N'健康体检记录', N'402881e43a7ec325013a7ec8bbe90006', N'/js/app/medicalexam.js', N'2', N'0', N'/medicalExam.html', N'-1', N'exam_01.gif', N'left:20px;top:20px', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9eaacb4c000e', N'接诊记录', N'402881e43a7ec325013a7ec96f610007', N'/js/app/reception.js', N'1', N'0', null, N'-1', N'clinics_01.gif', N'left:20px;top:20px', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9eaacb4c000e', N'接诊记录', N'402881e43a7ec325013a7ec96f610007', N'/js/app/reception.js', N'1', N'0', null, N'-1', N'clinics_01.gif', N'left:20px;top:20px', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9eab8749000f', N'会诊记录', N'402881e43a7ec325013a7ec96f610007', N'/js/app/consultation.js', N'2', N'0', null, N'-1', N'clinics_02.gif', N'left:170px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9eab8749000f', N'会诊记录', N'402881e43a7ec325013a7ec96f610007', N'/js/app/consultation.js', N'2', N'0', null, N'-1', N'clinics_02.gif', N'left:170px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9eac7c760010', N'双向转诊记录', N'402881e43a7ec325013a7ec96f610007', N'/js/app/cureswitch.js', N'3', N'0', null, N'-1', N'clinics_03.gif', N'left:320px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9eac7c760010', N'双向转诊记录', N'402881e43a7ec325013a7ec96f610007', N'/js/app/cureswitch.js', N'3', N'0', null, N'-1', N'clinics_03.gif', N'left:320px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9ead1a9b0011', N'双向转诊回转记录', N'402881e43a7ec325013a7ec96f610007', N'/js/app/cureback.js', N'4', N'0', null, N'-1', N'clinics_04.gif', N'left:470px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9ead1a9b0011', N'双向转诊回转记录', N'402881e43a7ec325013a7ec96f610007', N'/js/app/cureback.js', N'4', N'0', null, N'-1', N'clinics_04.gif', N'left:470px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9eaed1050012', N'健康教育活动记录', N'402881e43a7ec325013a7ec8bbe90006', N'/js/app/healtheducat.js', N'0', N'0', null, N'-1', N'exam_03.gif', N'left:320px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9eaed1050012', N'健康教育活动记录', N'402881e43a7ec325013a7ec8bbe90006', N'/js/app/healtheducat.js', N'0', N'0', null, N'-1', N'exam_03.gif', N'left:320px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9eb046400013', N'新生儿家庭访视记录', N'402881a32a9e622d012a9e7189d30002', N'/js/app/babyvisit.js', N'1', N'0', N'/babyvisit.html', N'0', N'child_business_02.gif', N'left:40px;top:265px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9eb046400013', N'新生儿家庭访视记录', N'402881a32a9e622d012a9e7189d30002', N'/js/app/babyvisit.js', N'1', N'0', N'/babyvisit.html', N'0', N'child_business_02.gif', N'left:40px;top:265px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9eb1ab5e0014', N'1岁以内儿童体检记录', N'402881a32a9e622d012a9e7189d30002', N'/js/app/childexam1.js', N'2', N'0', N'/childexam1.html', N'0', N'child_business_03.gif', N'left:230px;top:265px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9eb1ab5e0014', N'1岁以内儿童体检记录', N'402881a32a9e622d012a9e7189d30002', N'/js/app/childexam1.js', N'2', N'0', N'/childexam1.html', N'0', N'child_business_03.gif', N'left:230px;top:265px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9eb2be930015', N'1至2岁儿童体检记录', N'402881a32a9e622d012a9e7189d30002', N'/js/app/childexam2.js', N'3', N'0', N'/childexam2.html', N'0', N'child_business_04.gif', N'left:415px;top:265px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9eb2be930015', N'1至2岁儿童体检记录', N'402881a32a9e622d012a9e7189d30002', N'/js/app/childexam2.js', N'3', N'0', N'/childexam2.html', N'0', N'child_business_04.gif', N'left:415px;top:265px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32a9e622d012a9ecdae240017', N'儿童健康档案管理', N'ff8081812a3b6573012a3b668c430001', N'/js/app/childfile.js', N'2', N'0', null, null, N'health_02.gif', N'left:70px;top:90px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32a9e622d012a9ecdae240017', N'儿童健康档案管理', N'ff8081812a3b6573012a3b668c430001', N'/js/app/childfile.js', N'2', N'0', null, null, N'health_02.gif', N'left:70px;top:90px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa19c361d0001', N'第一次产前随访记录', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/firstvisit.js', N'0', N'0', N'/firstvisit.html', N'1', N'female_business_02.gif', N'left:40px;top:265px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa19c361d0001', N'第一次产前随访记录', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/firstvisit.js', N'0', N'0', N'/firstvisit.html', N'1', N'female_business_02.gif', N'left:40px;top:265px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa19d3be40002', N'第2至5次产前随访记录', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/VisitBeforeBorn.js', N'1', N'0', N'/VisitBeforeBorn.html', N'1', N'female_business_03.gif', N'left:230px;top:265px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa19d3be40002', N'第2至5次产前随访记录', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/VisitBeforeBorn.js', N'1', N'0', N'/VisitBeforeBorn.html', N'1', N'female_business_03.gif', N'left:230px;top:265px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa19df0400003', N'产后访视记录', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/VisitAfterBorn.js', N'2', N'0', N'/visitAfterBorn.html', N'1', N'female_business_04.gif', N'left:415px;top:265px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa19df0400003', N'产后访视记录', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/VisitAfterBorn.js', N'2', N'0', N'/visitAfterBorn.html', N'1', N'female_business_04.gif', N'left:415px;top:265px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa19f486e0004', N'产后42天健康检查记录', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/VisitAfterBorn42.js', N'3', N'0', N'/visitAfterBorn42.html', N'1', N'female_business_05.gif', N'left:610px;top:265px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa19f486e0004', N'产后42天健康检查记录', N'402881a32a9e622d012a9e7427cf0003', N'/js/app/VisitAfterBorn42.js', N'3', N'0', N'/visitAfterBorn42.html', N'1', N'female_business_05.gif', N'left:610px;top:265px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1a0dfd60006', N'预防接种卡', N'402881a32a9e622d012a9e77e5b10007', N'/js/app/vaccineImmune.js', N'1', N'0', null, null, N'child_ill_01.gif', N'left:20px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1a0dfd60006', N'预防接种卡', N'402881a32a9e622d012a9e77e5b10007', N'/js/app/vaccineImmune.js', N'1', N'0', null, null, N'child_ill_01.gif', N'left:20px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1c822ed0007', N'传染病报告卡', N'402881e43a7ec325013a7ed20a3d000c', N'/js/app/InfectionReport.js', N'0', N'0', null, N'-1', N'crb_01.gif', N'left:20px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1c822ed0007', N'传染病报告卡', N'402881e43a7ec325013a7ed20a3d000c', N'/js/app/InfectionReport.js', N'0', N'0', null, N'-1', N'crb_01.gif', N'left:20px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1c9b2660008', N'高血压患者档案', N'402881e43a7ec325013a7ed15824000b', N'/js/app/hyp_file.js', N'1', N'0', null, N'-1', N'mxb_01.gif', N'left:40px;top:30px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1c9b2660008', N'高血压患者档案', N'402881e43a7ec325013a7ed15824000b', N'/js/app/hyp_file.js', N'1', N'0', null, N'-1', N'mxb_01.gif', N'left:40px;top:30px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1ce60950009', N'高血压患者随访', N'402881e43a7ec325013a7ed15824000b', N'/js/app/hyp_visit.js', N'0', N'0', N'/hyp_visit.html', N'-1', N'mxb_04.gif', N'left:40px;top:230px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1ce60950009', N'高血压患者随访', N'402881e43a7ec325013a7ed15824000b', N'/js/app/hyp_visit.js', N'0', N'0', N'/hyp_visit.html', N'-1', N'mxb_04.gif', N'left:40px;top:230px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1d94b81000a', N'2型糖尿病患者档案', N'402881e43a7ec325013a7ed15824000b', N'/js/app/t2dm_file.js', N'2', N'0', null, N'-1', N'mxb_02.gif', N'left:210px;top:30px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1d94b81000a', N'2型糖尿病患者档案', N'402881e43a7ec325013a7ed15824000b', N'/js/app/t2dm_file.js', N'2', N'0', null, N'-1', N'mxb_02.gif', N'left:210px;top:30px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1db4712000b', N'2型糖尿病患者随访', N'402881e43a7ec325013a7ed15824000b', N'/js/app/t2dm_visit.js', N'1', N'0', N'/t2dm_visit.html', N'-1', N'mxb_05.gif', N'left:210px;top:230px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1db4712000b', N'2型糖尿病患者随访', N'402881e43a7ec325013a7ed15824000b', N'/js/app/t2dm_visit.js', N'1', N'0', N'/t2dm_visit.html', N'-1', N'mxb_05.gif', N'left:210px;top:230px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1e2a3d6000c', N'重性精神疾病患者档案', N'402881473ac0f6ab013ac17466d60006', N'/js/app/furious_file.js', N'3', N'0', null, N'-1', N'mxb_03.gif', N'left:20px;top:20px;width:190px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1e2a3d6000c', N'重性精神疾病患者档案', N'402881473ac0f6ab013ac17466d60006', N'/js/app/furious_file.js', N'3', N'0', null, N'-1', N'mxb_03.gif', N'left:20px;top:20px;width:190px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1e46d6b000d', N'重性精神疾病个人信息补充', N'402881473ac0f6ab013ac17466d60006', N'/js/app/furious_info.js', N'7', N'0', null, N'-1', N'mxb_07.gif', N'left:20px;top:170px;width:190px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1e46d6b000d', N'重性精神疾病个人信息补充', N'402881473ac0f6ab013ac17466d60006', N'/js/app/furious_info.js', N'7', N'0', null, N'-1', N'mxb_07.gif', N'left:20px;top:170px;width:190px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa197cd012aa1e52a23000e', N'重性精神疾病患者随访', N'402881473ac0f6ab013ac17466d60006', N'/js/app/furious_visit.js', N'2', N'0', N'/furious_visit.html', N'-1', N'mxb_06.gif', N'left:240px;top:20px;width:190px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa197cd012aa1e52a23000e', N'重性精神疾病患者随访', N'402881473ac0f6ab013ac17466d60006', N'/js/app/furious_visit.js', N'2', N'0', N'/furious_visit.html', N'-1', N'mxb_06.gif', N'left:240px;top:20px;width:190px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881a32aa9289e012aa93c71bf0001', N'行政区域维护', N'c_sys_admin', N'/js/app/district.js', N'30', N'0', null, N'-1', N'2.gif', N'left:235px;top:335px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881a32aa9289e012aa93c71bf0001', N'行政区域维护', N'c_sys_admin', N'/js/app/district.js', N'30', N'0', null, N'-1', N'2.gif', N'left:235px;top:335px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e3322d2ee901322d3131a10002', N'老年人档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/oldMan_file.js', N'4', N'0', null, null, N'health_04.gif', N'left:630px;top:80px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e3322d2ee901322d3131a10002', N'老年人档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/oldMan_file.js', N'4', N'0', null, null, N'health_04.gif', N'left:630px;top:80px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e3322d2ee901322d42ff300003', N'老年人健康体检', N'402881e43a7ec325013a7ec8bbe90006', N'/js/app/oldMan_exam.js', N'2', N'0', null, N'-1', N'exam_02.gif', N'left:170px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e3322d2ee901322d42ff300003', N'老年人健康体检', N'402881e43a7ec325013a7ec8bbe90006', N'/js/app/oldMan_exam.js', N'2', N'0', null, N'-1', N'exam_02.gif', N'left:170px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e3323326ea0132337c1d810001', N'3~6岁儿童体检记录', N'402881a32a9e622d012a9e7189d30002', N'/js/app/childexam36.js', N'6', N'0', N'/childexam3_6.html', N'0', N'child_business_05.gif', N'left:610px;top:265px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e3323326ea0132337c1d810001', N'3~6岁儿童体检记录', N'402881a32a9e622d012a9e7189d30002', N'/js/app/childexam36.js', N'6', N'0', N'/childexam3_6.html', N'0', N'child_business_05.gif', N'left:610px;top:265px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e433fc71ae0133fc74c0480003', N'乡镇汇总统计', N'ff8081812af0b66f012af0b74b160001', N'/statisticByTownship.html', N'30', N'0', null, N'-1', N'statistic_twonship publicSettingMod', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e433fc71ae0133fc74c0480003', N'乡镇汇总统计', N'ff8081812af0b66f012af0b74b160001', N'/statisticByTownship.html', N'30', N'0', null, N'-1', N'statistic_twonship publicSettingMod', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e433fc8fba0133fc9301660006', N'高危汇总统计', N'ff8081812af0b66f012af0b74b160001', N'/statisticByHighRisk.html', N'31', N'0', null, N'-1', N'statistic_highrisk publicSettingMod', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e433fc8fba0133fc9301660006', N'高危汇总统计', N'ff8081812af0b66f012af0b74b160001', N'/statisticByHighRisk.html', N'31', N'0', null, N'-1', N'statistic_highrisk publicSettingMod', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e43418c0c7013418d74c1e0002', N'出生医学证明初始化', N'c_sys_admin', N'/birthCertificate.html', N'1', N'0', null, N'-1', N'45.gif', N'left:423px;top:335px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e43418c0c7013418d74c1e0002', N'出生医学证明初始化', N'c_sys_admin', N'/birthCertificate.html', N'1', N'0', null, N'-1', N'45.gif', N'left:423px;top:335px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e43418c0c7013418d7a2e80003', N'出生医学证明分配', N'c_sys_admin', N'/distributeCertificate.html', N'2', N'0', null, N'-1', N'60.gif', N'left:615px;top:335px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e43418c0c7013418d7a2e80003', N'出生医学证明分配', N'c_sys_admin', N'/distributeCertificate.html', N'2', N'0', null, N'-1', N'60.gif', N'left:615px;top:335px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e43418c0c7013418d7fb490004', N'出生医学证明使用', N'402881e43418c0c7013418d6c6830001', N'/js/app/useCertificate.js', N'3', N'0', null, null, N'child_birth_01.gif', N'left:20px;top:20px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e43418c0c7013418d7fb490004', N'出生医学证明使用', N'402881e43418c0c7013418d6c6830001', N'/js/app/useCertificate.js', N'3', N'0', null, null, N'child_birth_01.gif', N'left:20px;top:20px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'402881e4348ddad601348ddc65f30001', N'条形码初始化', N'402881e43418c0c7013418d6c6830001', N'/barCodeInit.html', N'4', N'0', null, N'-1', N'barcode_init publicSettingMod', N'left:360px;top:20px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'402881e4348ddad601348ddc65f30001', N'条形码初始化', N'402881e43418c0c7013418d6c6830001', N'/barCodeInit.html', N'4', N'0', null, N'-1', N'barcode_init publicSettingMod', N'left:360px;top:20px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'5c250f83333a85f001333a895c640001', N'各卫生院汇总统计', N'ff8081812af0b66f012af0b74b160001', N'/statisticByHospital.html', N'11', N'0', null, N'-1', N'statistic_hospital publicSettingMod', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'5c250f83333a85f001333a895c640001', N'各卫生院汇总统计', N'ff8081812af0b66f012af0b74b160001', N'/statisticByHospital.html', N'11', N'0', null, N'-1', N'statistic_hospital publicSettingMod', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'5c250f83333fae8b01333fb44e090001', N'日统计报表', N'ff8081812af0b66f012af0b74b160001', N'/statisticByDay.html', N'20', N'0', null, N'-1', N'statistic_day_report publicSettingMod', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'5c250f83333fae8b01333fb44e090001', N'日统计报表', N'ff8081812af0b66f012af0b74b160001', N'/statisticByDay.html', N'20', N'0', null, N'-1', N'statistic_day_report publicSettingMod', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'5c250f83333fae8b01333fb4baad0002', N'月报表统计（表一）', N'ff8081812af0b66f012af0b74b160001', N'/statisticByMonth01.html', N'13', N'0', null, N'-1', N'statistic_month_report_01 publicSettingMod', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'5c250f83333fae8b01333fb4baad0002', N'月报表统计（表一）', N'ff8081812af0b66f012af0b74b160001', N'/statisticByMonth01.html', N'13', N'0', null, N'-1', N'statistic_month_report_01 publicSettingMod', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'5c250f83333fae8b01333fb515310003', N'月报表统计（表二）', N'ff8081812af0b66f012af0b74b160001', N'/statisticByMonth02.html', N'14', N'0', null, N'-1', N'statistic_month_report_02 publicSettingMod', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'5c250f83333fae8b01333fb515310003', N'月报表统计（表二）', N'ff8081812af0b66f012af0b74b160001', N'/statisticByMonth02.html', N'14', N'0', null, N'-1', N'statistic_month_report_02 publicSettingMod', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'5c250f83333fae8b01333fb570de0004', N'月报表统计（表三）', N'ff8081812af0b66f012af0b74b160001', N'/statisticByMonth03.html', N'15', N'0', null, N'-1', N'statistic_month_report_03 publicSettingMod', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'5c250f83333fae8b01333fb570de0004', N'月报表统计（表三）', N'ff8081812af0b66f012af0b74b160001', N'/statisticByMonth03.html', N'15', N'0', null, N'-1', N'statistic_month_report_03 publicSettingMod', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'8a8116823895ba8c013895c17bb80009', N'高危儿童档案', N'402881e43a7ec325013a7ecf8d98000a', N'/js/app/childHighRisk.js', N'2', N'0', null, null, N'child_manage_02.gif', N'left:170px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'8a8116823895ba8c013895c17bb80009', N'高危儿童档案', N'402881e43a7ec325013a7ecf8d98000a', N'/js/app/childHighRisk.js', N'2', N'0', null, null, N'child_manage_02.gif', N'left:170px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'8a81168239cf9ff50139cfa21c9b0001', N'档案提交申请查询', N'402881e43a7ec325013a7ecaab610008', N'/js/app/healthfileTransferQry.js', N'1', N'0', null, null, N'transfer_02.gif', N'left:150px;top:300px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'8a81168239cf9ff50139cfa21c9b0001', N'档案提交申请查询', N'402881e43a7ec325013a7ecaab610008', N'/js/app/healthfileTransferQry.js', N'1', N'0', null, null, N'transfer_02.gif', N'left:150px;top:300px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'8a81168239cf9ff50139cfa2913f0002', N'档案转移审核及查询', N'402881e43a7ec325013a7ecaab610008', N'/js/app/healthfileTransfer.js', N'2', N'0', null, null, N'transfer_01.gif', N'left:325px;top:30px;width:160px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'8a81168239cf9ff50139cfa2913f0002', N'档案转移审核及查询', N'402881e43a7ec325013a7ecaab610008', N'/js/app/healthfileTransfer.js', N'2', N'0', null, null, N'transfer_01.gif', N'left:325px;top:30px;width:160px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'8a81168239cf9ff50139cfa2f1be0003', N'档案注销查询', N'402881e43a7ec325013a7ecaab610008', N'/js/app/healthfileLoginoff.js', N'3', N'0', null, null, N'transfer_03.gif', N'left:500px;top:300px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'8a81168239cf9ff50139cfa2f1be0003', N'档案注销查询', N'402881e43a7ec325013a7ecaab610008', N'/js/app/healthfileLoginoff.js', N'3', N'0', null, null, N'transfer_03.gif', N'left:500px;top:300px;width:140px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'cache', N'缓存管理', N'c_sys_admin', N'/js/app/cache/cache.js', N'100', N'0', null, N'-1', N'cache.png', N'left:1025px;top:335px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'cache', N'缓存管理', N'c_sys_admin', N'/js/app/cache/cache.js', N'100', N'0', null, N'-1', N'cache.png', N'left:1025px;top:335px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'ff8081812a6a002b012a6a00e2cb0002', N'居民健康档案', N'ff8081812a3b6573012a3b668c430001', N'/js/app/resident.js', N'0', N'0', null, N'-1', N'health_01.gif', N'left:340px;top:190px;width:140px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'ff8081812a6a002b012a6a00e2cb0002', N'居民健康档案', N'ff8081812a3b6573012a3b668c430001', N'tpl/file/healthfile.html', N'0', N'0', null, N'-1', N'health_01.gif', N'left:340px;top:190px;width:140px;', null, N'tpl/file/healthfile.js')
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'ff8081812a83d873012a83dd758e0001', N'组织机构维护', N'c_sys_admin', N'/js/app/org.js', N'100', N'0', null, N'-1', N'1.gif', N'left:45px;top:335px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'ff8081812a83d873012a83dd758e0001', N'组织机构维护', N'c_sys_admin', N'/js/app/org.js', N'100', N'0', null, N'-1', N'1.gif', N'left:45px;top:335px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'ff8081812aef9554012af09b6b130001', N'疫苗免疫程序', N'402881a32a9e622d012a9e77e5b10007', N'/info.html', N'2', N'0', null, N'-1', N'child_ill_02.gif', N'left:170px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'ff8081812aef9554012af09b6b130001', N'疫苗免疫程序', N'402881a32a9e622d012a9e77e5b10007', N'/info.html', N'2', N'0', null, N'-1', N'child_ill_02.gif', N'left:170px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'ff8081812b2de099012b2de3445d0001', N'乡镇汇总按建档人统计', N'ff8081812af0b66f012af0b74b160001', N'/js/app/report03.js', N'30', N'0', null, N'-1', N'statistic_man publicSettingMod', null, null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'ff8081812b2de099012b2de3445d0001', N'乡镇汇总按建档人统计', N'ff8081812af0b66f012af0b74b160001', N'/js/app/report03.js', N'30', N'0', null, N'-1', N'statistic_man publicSettingMod', null, null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'importmodifyfile', N'导入修改档案', N'402881e43a7ec325013a7ec8bbe90006', N'easyui/templates/query/query.html?exportid=11', N'5', N'0', null, N'-1', N'exam_05.gif', N'left:620px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'importmodifyfile', N'导入修改档案', N'402881e43a7ec325013a7ec8bbe90006', N'easyui/templates/query/query.html?exportid=11', N'5', N'0', null, N'-1', N'exam_05.gif', N'left:620px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'm_mod', N'模块管理', N'c_sys_admin', N'/js/app/mod.js', N'1', N'0', null, N'-1', N'4.gif', N'left:135px;top:40px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'm_mod', N'模块管理', N'c_sys_admin', N'/js/app/mod.js', N'1', N'0', null, N'-1', N'4.gif', N'left:135px;top:40px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'm_mod_cat_mgr', N'模块目录管理', N'c_sys_admin', N'/js/app/modCat.js', N'2', N'0', null, N'-1', N'8.gif', N'left:535px;top:40px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'm_mod_cat_mgr', N'模块目录管理', N'c_sys_admin', N'/js/app/modCat.js', N'2', N'0', null, N'-1', N'8.gif', N'left:535px;top:40px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'm_role', N'角色管理', N'c_sys_admin', N'/js/app/role.js', N'3', N'0', null, N'-1', N'42.gif', N'left:135px;top:180px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'm_role', N'角色管理', N'c_sys_admin', N'/js/app/role.js', N'3', N'0', null, N'-1', N'42.gif', N'left:135px;top:180px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'm_user_mgr', N'用户管理', N'c_sys_admin', N'/js/app/userMgr.js', N'4', N'0', null, N'-1', N'43.gif', N'left:535px;top:180px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'm_user_mgr', N'用户管理', N'c_sys_admin', N'/js/app/userMgr.js', N'4', N'0', null, N'-1', N'43.gif', N'left:535px;top:180px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'marry_check', N'婚前检查', N'marrycheck', N'easyui/templates/marry_check/marry_check.html', N'0', N'0', null, N'-1', N'5.png', N'left:20px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'marry_check', N'婚前检查', N'marrycheck', N'easyui/templates/marry_check/marry_check.html', N'0', N'0', null, N'-1', N'5.png', N'left:20px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'repeatfile', N'重复档案管理', N'402881e43a7ec325013a7ec8bbe90006', N'/js/app/repeatFiles.js', N'0', N'0', null, N'-1', N'exam_04.gif', N'left:470px;top:20px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'repeatfile', N'重复档案管理', N'402881e43a7ec325013a7ec8bbe90006', N'/js/app/repeatFiles.js', N'0', N'0', null, N'-1', N'exam_04.gif', N'left:470px;top:20px;', null, null)
 GO
 GO
-INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [url], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class]) VALUES (N'Score', N'考试打分', N'c_sys_admin', N'/js/app/score/score.js', N'100', N'0', null, N'-1', N'score.png', N'left:825px;top:335px;', null)
+INSERT INTO [dbo].[menu_module] ([id], [name], [category_id], [html], [ordinal], [IsNavigate], [InputPage], [Type], [img], [css], [class], [js]) VALUES (N'Score', N'考试打分', N'c_sys_admin', N'/js/app/score/score.js', N'100', N'0', null, N'-1', N'score.png', N'left:825px;top:335px;', null, null)
 GO
 GO
 
