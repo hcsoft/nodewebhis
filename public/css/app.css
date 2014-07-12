@@ -665,55 +665,6 @@ div.contentpane > a.menuitem > img {
     color: #fff;
     background: deepskyblue;
 }
-ul.treeul{
-    padding:5px;
-    list-style: none;
-    display: block;
-}
-ul.treeul ul {
-    list-style: none;
-    padding-left: 0px;
-    display: block;
-}
-
-.treeul li {
-    display: block;
-    list-style: none;
-    cursor: pointer;
-}
-
-.treeul li.selected>div {
-    background-color: #d9e8fb !important;
-}
-.treeul li>div:hover {
-    background-color: #dcdcdc;
-}
-
-
-.treeul li.open > div > i {
-    background-image: url(../img/folder-open.gif);
-}
-
-.treeul li.leaf > div > i {
-    background-image: url(../img/leaf.gif);
-}
-
-.treeul li > div > i {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-image: url(../img/folder.gif);
-}
-
-.treeul li span {
-    display: inline-block;
-}
-
-.treeul li > div {
-    height: 20px;
-    display: block;
-    white-space: nowrap;
-}
 
 .lefttree {
     position: absolute;
@@ -726,4 +677,8 @@ ul.treeul ul {
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px;
+}
+
+.lefttree treecontroll{
+    padding:5px 0 0 0 ;
 }

@@ -79,19 +79,20 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
         $scope.panes[$scope.panes.length] = menu;
     };
     $scope.clicksubmenu = function (parentindex,menu) {
-        console.log(menu);
-        console.log(parentindex);
-        var subpane = $scope.panes[parentindex];
-        for (var i = 0; i < subpane.panes.length; i++) {
-            subpane.panes[i].active = false;
-            if (menu.name == subpane.panes[i].name) {
-                $scope.panes[parentindex].panes[i].active = true;
-                return;
+        $script([menu.js], function () {
+            var subpane = $scope.panes[parentindex];
+            for (var i = 0; i < subpane.panes.length; i++) {
+                subpane.panes[i].active = false;
+                if (menu.name == subpane.panes[i].name) {
+                    $scope.panes[parentindex].panes[i].active = true;
+                    $scope.$digest();
+                    return;
+                }
             }
-        }
-        menu.active = true;
-        $scope.panes[parentindex].panes[$scope.panes[parentindex].panes.length] = menu;
-
+            menu.active = true;
+            $scope.panes[parentindex].panes[$scope.panes[parentindex].panes.length] = menu;
+            $scope.$digest();
+        });
     };
     $scope.closetab = function (index) {
         console.log(index);

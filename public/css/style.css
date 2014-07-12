@@ -1,0 +1,13 @@
+treecontrol li .tree-label span{
+    display: inline;
+    white-space:nowrap;
+}
+treecontrol ul{
+    overflow: visible;
+}
+treecontrol>ul>li{
+    padding-left: 5px;
+}
+.lefttree treecontrol>ul{
+    padding-top:35px;
+}
