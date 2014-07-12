@@ -12,11 +12,11 @@
     <div class="lefttree">
         <span style="text-align: center;background-color: lightblue;display: block;height:30px;line-height: 30px;position: fixed;width:198px;">行政区划</span>
     <treecontrol class="tree-classic "
-                 tree-model="dataForTheTree"
+                 tree-model="$parent.district"
                  options="treeOptions"
                  on-selection="showSelected(node)"
                  selected-node="node1">
-        employee: {{node.name}} age {{node.age}}
+        {{node.data.name}}
     </treecontrol>
     </div>
 </div>

@@ -62,7 +62,9 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
         method: 'POST',
         url: '/main/init'
     }).success(function (data, status, headers, config) {
+        console.log(data);
         $scope.menus =data.data;
+        $scope.district = [data.district];
     });
     $scope.panes = [];
     $scope.clickmenu = function (menu) {

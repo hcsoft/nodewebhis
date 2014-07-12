@@ -40,7 +40,8 @@
                 controller: ['$scope', function( $scope ) {
 
                     function defaultIsLeaf(node) {
-                        return !node[$scope.options.nodeChildren] || node[$scope.options.nodeChildren].length === 0;
+                        //return !node[$scope.options.nodeChildren] || node[$scope.options.nodeChildren].length === 0;
+                        return node.data.isdetail;
                     }
 
                     function defaultEquality(a, b) {
@@ -150,7 +151,7 @@
                             '<i class="tree-branch-head" ng-class="iBranchClass()" ng-click="selectNodeHead(node)"></i>' +
                             '<i class="tree-leaf-head '+classIfDefined($scope.options.injectClasses.iLeaf, false)+'"></i>' +
                             '<div class="tree-label '+classIfDefined($scope.options.injectClasses.label, false)+'" ng-class="selectedClass()" ng-click="selectNodeLabel(node)" tree-transclude></div>' +
-                            '<treeitem ng-if="nodeExpanded()"></treeitem>' +
+                            '<treeitem ng-show="nodeExpanded()"></treeitem>' +
                             '</li>' +
                             '</ul>';
 
@@ -175,34 +176,34 @@
                             }
                         });
 
-                        scope.$watchCollection('expandedNodes', function(newValue) {
-                            var notFoundIds = 0;
-                            var newExpandedNodesMap = {};
-                            var $liElements = element.find('li');
-                            var existingScopes = [];
-                            // find all nodes visible on the tree and the scope $id of the scopes including them
-                            angular.forEach($liElements, function(liElement) {
-                                var $liElement = angular.element(liElement);
-                                var liScope = $liElement.scope();
-                                existingScopes.push(liScope);
-                            });
-                            // iterate over the newValue, the new expanded nodes, and for each find it in the existingNodesAndScopes
-                            // if found, add the mapping $id -> node into newExpandedNodesMap
-                            // if not found, add the mapping num -> node into newExpandedNodesMap
-                            angular.forEach(newValue, function(newExNode) {
-                                var found = false;
-                                for (var i=0; (i < existingScopes.length) && !found; i++) {
-                                    var existingScope = existingScopes[i];
-                                    if (scope.options.equality(newExNode, existingScope.node)) {
-                                        newExpandedNodesMap[existingScope.$id] = existingScope.node;
-                                        found = true;
-                                    }
-                                }
-                                if (!found)
-                                    newExpandedNodesMap[notFoundIds++] = newExNode;
-                            });
-                            scope.expandedNodesMap = newExpandedNodesMap;
-                        });
+//                        scope.$watchCollection('expandedNodes', function(newValue) {
+//                            var notFoundIds = 0;
+//                            var newExpandedNodesMap = {};
+//                            var $liElements = element.find('li');
+//                            var existingScopes = [];
+//                            // find all nodes visible on the tree and the scope $id of the scopes including them
+//                            angular.forEach($liElements, function(liElement) {
+//                                var $liElement = angular.element(liElement);
+//                                var liScope = $liElement.scope();
+//                                existingScopes.push(liScope);
+//                            });
+//                            // iterate over the newValue, the new expanded nodes, and for each find it in the existingNodesAndScopes
+//                            // if found, add the mapping $id -> node into newExpandedNodesMap
+//                            // if not found, add the mapping num -> node into newExpandedNodesMap
+//                            angular.forEach(newValue, function(newExNode) {
+//                                var found = false;
+//                                for (var i=0; (i < existingScopes.length) && !found; i++) {
+//                                    var existingScope = existingScopes[i];
+//                                    if (scope.options.equality(newExNode, existingScope.node)) {
+//                                        newExpandedNodesMap[existingScope.$id] = existingScope.node;
+//                                        found = true;
+//                                    }
+//                                }
+//                                if (!found)
+//                                    newExpandedNodesMap[notFoundIds++] = newExNode;
+//                            });
+//                            scope.expandedNodesMap = newExpandedNodesMap;
+//                        });
 
 //                        scope.$watch('expandedNodesMap', function(newValue) {
 //

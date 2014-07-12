@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-
-
+var pool = require('../pool.js');
+var cache = require("../cache.js");
 /* GET home page. */
 router.get('/', function (req, res) {
-    var cache = require("../cache.js");
     //查询模块库，加载所有的js
     var pool = require('../pool.js');
     pool.pool.open(pool.connectstr, function (err, db) {
@@ -24,7 +23,7 @@ router.post('/test', function (req, res) {
 
 
 router.post('/login', function (req, res) {
-    var pool = require('../pool.js');
+
     pool.pool.open(pool.connectstr, function (err, db) {
         if (err) {
             return res.json({"success": false, "msg": '系统故障!请与系统管理员联系!'});
@@ -36,6 +35,8 @@ router.post('/login', function (req, res) {
             req.session.user_id = req.param("user_id");
             db.close(function (err) {});
             if (rows && rows.length > 0) {
+
+                cache.adduser(rows[0]);
                 res.json({"success": true});
             } else {
                 res.json({"success": false, "msg": '用户名或密码错误!'});

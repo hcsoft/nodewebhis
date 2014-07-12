@@ -24,7 +24,7 @@ var cache = {
 
 };
 var db = require("odbc")();
-//处理code
+/* 处理code */
 db.openSync(pool.connectstr);
 cache.code = {};
 var rows = db.querySync("select * from cod_basecode order by type , ismain desc");
@@ -39,25 +39,48 @@ for (var i = 0; i < rows.length; i++) {
         cache.code[rows[i].Type]['map'][rows[i].Number] = rows[i].Name;
     }
 }
-//处理districtnumber
-//var cfg = require("./cfg.js");
-//cache.districtnumber = {}
-//rows = db.querySync("select * from cod_district where id like '?%' order by level, id", cfg.districtNumber);
-//var baselevel = 0;
-//var baselen = cfg.districtNumber.length;
-//for (var i = 0; i < rows.length; i++) {
-//    if (rows[i].ID.length == baselen) {
-//        cache.districtnumber[rows[i].ID] = {data: rows[i], child: {}};
-//    } else(rows[i].ID.length > baselen)
-//    {
-//        if (baselen == 2) {
-//            if (rows[i].ID.length == 4) {
-//                cache.districtnumber[rows[i].ID.substr(0, 2)][rows[i].ID.substr(2, 2)] = {data: rows[i], child: {}};
-//            } else if (rows[i].ID.length == 6) {
-//                cache.districtnumber[rows[i].ID.substr(0, 2)][rows[i].ID.substr(2, 2)][rows[i].ID.substr(4, 2)] = {data: rows[i], child: {}};
-//            }
-//        }
-//    }
-//}
+/* 处理配置 */
+rows = db.querySync("select * from cfg_base ");
+cache.cfg = {};
+for (var i = 0; i < rows.length; i++) {
+    cache.cfg[rows[i].code] = rows[i].value;
+}
+/* 处理districtnumber */
+
+var district = {child:{},data:{}};
+var lens = [4,6,9,12];
+function makeDistrict(obj , item){
+    var curobj = obj;
+    for(var i = 0 ;i<lens.length;i++){
+        if(!curobj.child[item.id.substr(0,lens[i])]){
+            curobj.child[item.id.substr(0,lens[i])] = {child:{},data:{}};
+        }
+        if(item.id.length == lens[i] ){
+            curobj.child[item.id].data = item;
+            return obj;
+        }
+        curobj = curobj.child[item.id.substr(0,lens[i])];
+    }
+};
+cache.getdistrict = function(id){
+    var curobj = cache.district;
+    for(var i = 0 ;i<lens.length;i++){
+        if(id.length == lens[i] ){
+            return  curobj.child[id];
+        }
+        curobj = curobj.child[id.substr(0,lens[i])];
+    }
+}
+rows = db.querySync("select * from cod_district where id like ?+'%' order by level, id", [cache.cfg.district]);
+for (var i = 0; i < rows.length; i++) {
+    district = makeDistrict(district,rows[i]);
+}
+cache.district = district;
+//console.log(cache.district.child['5301'].child['530122']);
 db.closeSync();
+/* 处理用户 */
+cache.users = {};
+cache.adduser = function(user){
+    cache.users[user.user_id] = user;
+}
 module.exports = cache;

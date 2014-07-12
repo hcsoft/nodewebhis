@@ -1,8 +1,9 @@
 var HealthFileCtrl = function ($scope, $http, $cookies, $location) {
     $scope.test = "测试";
     $scope.treeOptions = {
-        nodeChildren: "children",
-        dirSelectable: true,
+        nodeChildren: "child",
+        dirSelectable: true
+/*
         injectClasses: {
             ul: "a1",
             li: "a2",
@@ -13,7 +14,7 @@ var HealthFileCtrl = function ($scope, $http, $cookies, $location) {
             label: "a6",
             labelSelected: "a8"
         }
-    };
+  */  };
     $scope.dataForTheTree =
         [
             { "name" : "Joe", "age" : "21", "children" : [
