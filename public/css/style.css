@@ -17,3 +17,6 @@ treecontrol>ul>li{
     overflow:auto;
 }
 
+.lefttree>.title{
+    text-align: center;background-color: lightblue;display: block;height:30px;line-height: 30px;position: fixed;width:198px;
+}
