@@ -9,11 +9,14 @@
                 ng-include="'tree_item_renderer.html'"></li>
         </ul>
     </script>
-    <div style="" class="lefttree">
-        <span style="text-align: center;background-color: lightblue;display: block;height:30px;line-height: 30px;">行政区划</span>
-        <ul class="treeul">
-            <li ng-repeat="data in tree" ng-class="getclass(data)"
-                ng-include="'tree_item_renderer.html'"></li>
-        </ul>
+    <div class="lefttree">
+        <span style="text-align: center;background-color: lightblue;display: block;height:30px;line-height: 30px;position: fixed;width:198px;">行政区划</span>
+    <treecontrol class="tree-classic "
+                 tree-model="dataForTheTree"
+                 options="treeOptions"
+                 on-selection="showSelected(node)"
+                 selected-node="node1">
+        employee: {{node.name}} age {{node.age}}
+    </treecontrol>
     </div>
 </div>
