@@ -24,7 +24,7 @@ var cache = {
 
 };
 var db = require("odbc")();
-console.log("........................." + pool.connectstr);
+//处理code
 db.openSync(pool.connectstr);
 cache.code = {};
 var rows = db.querySync("select * from cod_basecode order by type , ismain desc");
@@ -39,5 +39,25 @@ for (var i = 0; i < rows.length; i++) {
         cache.code[rows[i].Type]['map'][rows[i].Number] = rows[i].Name;
     }
 }
+//处理districtnumber
+//var cfg = require("./cfg.js");
+//cache.districtnumber = {}
+//rows = db.querySync("select * from cod_district where id like '?%' order by level, id", cfg.districtNumber);
+//var baselevel = 0;
+//var baselen = cfg.districtNumber.length;
+//for (var i = 0; i < rows.length; i++) {
+//    if (rows[i].ID.length == baselen) {
+//        cache.districtnumber[rows[i].ID] = {data: rows[i], child: {}};
+//    } else(rows[i].ID.length > baselen)
+//    {
+//        if (baselen == 2) {
+//            if (rows[i].ID.length == 4) {
+//                cache.districtnumber[rows[i].ID.substr(0, 2)][rows[i].ID.substr(2, 2)] = {data: rows[i], child: {}};
+//            } else if (rows[i].ID.length == 6) {
+//                cache.districtnumber[rows[i].ID.substr(0, 2)][rows[i].ID.substr(2, 2)][rows[i].ID.substr(4, 2)] = {data: rows[i], child: {}};
+//            }
+//        }
+//    }
+//}
 db.closeSync();
 module.exports = cache;
