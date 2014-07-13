@@ -77,10 +77,25 @@ for (var i = 0; i < rows.length; i++) {
 }
 cache.district = district;
 //console.log(cache.district.child['5301'].child['530122']);
+/* 处理查询 */
+cache.querys = {};
+cache.getquery = function(queryname){
+    var tmpdb = require("odbc")();
+    /* 处理code */
+    tmpdb.openSync(pool.connectstr);
+    if(!cache.querys[queryname] || new Date().getTime() - cache.querys[queryname].makedate.getTime() > 86400000 ) {
+        rows = tmpdb.querySync("select * from query_sql where queryname=? ", [queryname]);
+        var querysql = rows[0];
+        var cols = tmpdb.querySync("select * from query_cfg where queryname=? order by ord ", [queryname]);
+        cache.querys[queryname] = {querysql: querysql, cols: cols, makedate: new Date()};
+    }
+    return cache.querys[queryname];
+}
 db.closeSync();
 /* 处理用户 */
 cache.users = {};
 cache.adduser = function(user){
     cache.users[user.user_id] = user;
 }
+
 module.exports = cache;

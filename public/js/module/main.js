@@ -1,5 +1,11 @@
 'use strict';
 var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
+    /*基本设置*/
+    $scope.select2Options = {
+        placeholder: "",
+        allowClear: true
+    };
+
     $http({
         method: 'POST',
         url: '/islogin'

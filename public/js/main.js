@@ -12,7 +12,7 @@
 angular.module(
     'myApp',
     [ 'ngCookies', 'ui.router', 'myApp.filters', 'myApp.services', 'myApp.directives',
-        'ui.bootstrap', 'ngGrid' ,'treeControl']).config(
+        'ui.bootstrap', 'ngGrid' ,'treeControl','ui.select2']).config(
     function ($stateProvider, $urlRouterProvider,$httpProvider) {
         $httpProvider.interceptors.push('httpRequestInterceptor');
         $urlRouterProvider.otherwise("/login");

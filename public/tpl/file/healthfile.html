@@ -1,7 +1,8 @@
 <div ng-controller="HealthFileCtrl" style="width:100%;height:100%;position: relative">
     <script type="text/ng-template" id="tree_item_renderer.html">
         <div ng-init="left=data.left;">
-            <span style="display: inline-block;width:{{data.left}}px"></span><i class="treeline" ng-click="treeclick(data)"></i><span
+            <span style="display: inline-block;width:{{data.left}}px"></span><i class="treeline"
+                                                                                ng-click="treeclick(data)"></i><span
                 ng-click="treeliclick(data)">{{data.name}}</span>
         </div>
         <ul ng-show="!data.hide">
@@ -11,12 +12,27 @@
     </script>
     <div class="lefttree">
         <span style="" class="title">行政区划</span>
-    <treecontrol class="tree-classic "
-                 tree-model="$parent.district"
-                 options="treeOptions"
-                 on-selection="showSelected(node)"
-                 selected-node="node1">
-        {{node.data.name}}
-    </treecontrol>
+        <treecontrol class="tree-classic "
+                     tree-model="$parent.district"
+                     options="treeOptions"
+                     on-selection="showSelected(node)"
+                     selected-node="node1">
+            {{node.data.name}}
+        </treecontrol>
+    </div>
+    <div class="rightContent selectable">
+        <span  class="title">
+            <select  ui-select2 ng-model="querytype"  style="width:100px;height: 30px;" class="form-control">
+                <option ng-repeat="option in querytypeoptions" value="{{option.value}}">{{option.text}}</option>
+            </select>
+            <input type="text" ng-model="queryvalue" class="form-control" style="width:150px;height: 30px;">
+            <button class="btn btn-sm btn-info" ng-click="singlequery()">查询</button> <button
+                class="btn btn-sm btn-info" ng-click="complexquery()">高级查询
+        </button></span>
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+        <pagination style="position: absolute;left:5px;bottom: 0px;" boundary-links="true"
+                    total-items="querydata.page.rowcount" ng-model="querydata.page.pagenum"
+                    num-pages="querydata.page.pagecount" items-per-page="querydata.page.pagesize" max-size="10"
+                    class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
     </div>
 </div>

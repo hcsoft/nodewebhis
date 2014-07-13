@@ -678,7 +678,24 @@ div.contentpane > a.menuitem > img {
     -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px;
 }
+.rightContent{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 205px;
+    right:0px;
+    overflow: auto;
+    border: 1px solid #95B8E7;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px;
+}
 
 .lefttree treecontroll{
     padding:5px 0 0 0 ;
+}
+
+.form-control {
+    display: inline-block;
+    vertical-align: middle;
 }
