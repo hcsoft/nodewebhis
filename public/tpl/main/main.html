@@ -7,9 +7,9 @@
             <a ng-click='logout()'>退出系统</a>
         </p>
 
-        <p style="margin-left:10px;float: right; color: gray;font-size:9px; "><span class="glyphicon glyphicon-user"></span>用户：{{user.user_name}}</p>
+        <p style="margin-right:10px;float: right; color: gray;font-size:9px; "><span class="glyphicon glyphicon-user"></span>用户：{{user}}</p>
 
-        <p style="margin-left:10px;float: right; color:#fa9987;font-size:9px;vertical-align: middle;cursor: pointer; "
+        <p style="margin-right:20px;float: right; color:#fa9987;font-size:9px;vertical-align: middle;cursor: pointer; "
            ng-click="switchTask()"><span class="glyphicon glyphicon-tasks"></span><span>任务</span></p>
     </div>
     <div class='leftmenu'>
@@ -71,64 +71,64 @@
     </div>
 </div>
 <div class="newdialog modal-dialog"
-     style="display: {{taskDisplay}};width:200px;height:90%;z-index:1000;top:30px;position: absolute;right:10px;bottom: 10px;">
+     style="display: {{taskDisplay}};width:250px;height:90%;z-index:1000;top:30px;position: absolute;right:10px;bottom: 10px;">
     <div class="modal-content">
         <div class="modal-header">本月待完成的任务</div>
         <div class="modal-body complexquery" style="max-height: 400px;overflow-y:auto;">
-            <table>
+            <table >
                 <tr>
                     <td style="text-align: right;">
                         首次产检：
                     </td>
-                    <td><a>20</a></td>
+                    <td><a style="color:green;">已完成</a></td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
                         2~5次产检：
                     </td>
-                    <td><a>15</a></td>
+                    <td><a style="color:red;">15</a></td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
                         产后访视：
                     </td>
-                    <td><a>30</a></td>
+                    <td><a style="color:green;">已完成</a></td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
                         产后42天访视：
                     </td>
-                    <td><a>28</a></td>
+                    <td><a style="color:red;">28</a></td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
                         新生儿家庭方式：
                     </td>
-                    <td><a>12</a></td>
+                    <td><a style="color:red;">12</a></td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
                         1岁以内儿童体检：
                     </td>
-                    <td><a>14</a></td>
+                    <td><a style="color:green;">已完成</a></td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
                         1~2岁儿童体检：
                     </td>
-                    <td><a>22</a></td>
+                    <td><a style="color:red;">22</a></td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
                         3~6岁儿童体检：
                     </td>
-                    <td><a>8</a></td>
+                    <td><a style="color:green;">已完成</a></td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
                         老年人健康体检：
                     </td>
-                    <td><a>13</a></td>
+                    <td><a style="color:red;">13</a></td>
                 </tr>
             </table>
 
