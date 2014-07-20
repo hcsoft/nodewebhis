@@ -1,4 +1,6 @@
 var pool = require('./pool.js');
+var empiretime = 86400000;
+empiretime = 0;
 var cache = {
     getcachemap: function (type, code) {
         if (cache[type] && cache[type][code] && cache[type][code]["map"]) {
@@ -35,8 +37,8 @@ for (var i = 0; i < rows.length; i++) {
     if (rows[i].IsMain == 1) {
         cache.code[rows[i].Type]['name'] = rows[i].Name;
     } else {
-        cache.code[rows[i].Type]['list'].push({"value": rows[i].Number, "text": rows[i].Name});
-        cache.code[rows[i].Type]['map'][rows[i].Number] = rows[i].Name;
+        cache.code[rows[i].Type]['list'].push({"value": rows[i].ID, "text": rows[i].Name});
+        cache.code[rows[i].Type]['map'][rows[i].ID] = rows[i].Name;
     }
 }
 /* 处理配置 */
@@ -83,11 +85,38 @@ cache.getquery = function(queryname){
     var tmpdb = require("odbc")();
     /* 处理code */
     tmpdb.openSync(pool.connectstr);
-    if(!cache.querys[queryname] || new Date().getTime() - cache.querys[queryname].makedate.getTime() > 86400000 ) {
+    if(!cache.querys[queryname] || new Date().getTime() - cache.querys[queryname].makedate.getTime() > empiretime ) {
         rows = tmpdb.querySync("select * from query_sql where queryname=? ", [queryname]);
         var querysql = rows[0];
         var cols = tmpdb.querySync("select * from query_cfg where queryname=? order by ord ", [queryname]);
-        cache.querys[queryname] = {querysql: querysql, cols: cols, makedate: new Date()};
+        var buttons = tmpdb.querySync("select * from query_buttons where queryname=? order by ord ", [queryname]);
+        var windowids = {};
+        for(var i = 0 ; i <buttons.length;i++){
+            if(!windowids[buttons[i].windowid]){
+                var window = tmpdb.querySync("select * from query_window where id=?  ", [buttons[i].windowid]);
+                var windowcfgs = tmpdb.querySync("select * from query_windowcfg where windowid=? order by row,[left] ", [buttons[i].windowid]);
+                buttons[i].window = window[0];
+                var rowcfg = [];
+                for(var j = 0 ; j <windowcfgs.length;j++){
+                    if(!rowcfg[windowcfgs[j].row-1]){
+                        rowcfg[windowcfgs[j].row-1] = {height:30,items:[]};
+                    }
+                    if(windowcfgs[j].listid && cache.code[windowcfgs[j].listid] && cache.code[windowcfgs[j].listid]['list']){
+                        windowcfgs[j].codelist = cache.code[windowcfgs[j].listid]['list'];
+                    }
+                    if( windowcfgs[j].height>rowcfg[windowcfgs[j].row-1].height){
+                        rowcfg[windowcfgs[j].row-1].height = windowcfgs[j].height;
+                    }
+                    rowcfg[windowcfgs[j].row-1].items.push( windowcfgs[j]);
+                }
+                buttons[i].window.rowcfg = rowcfg;
+                windowids[buttons[i].windowid] = window[0];
+            }else{
+                buttons[i].window =  windowids[buttons[i].windowid];
+            }
+        }
+
+        cache.querys[queryname] = {querysql: querysql, cols: cols, makedate: new Date(),buttons:buttons};
     }
     return cache.querys[queryname];
 }

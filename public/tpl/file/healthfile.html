@@ -1,15 +1,4 @@
 <div ng-controller="HealthFileCtrl" style="width:100%;height:100%;position: relative">
-    <script type="text/ng-template" id="tree_item_renderer.html">
-        <div ng-init="left=data.left;">
-            <span style="display: inline-block;width:{{data.left}}px"></span><i class="treeline"
-                                                                                ng-click="treeclick(data)"></i><span
-                ng-click="treeliclick(data)">{{data.name}}</span>
-        </div>
-        <ul ng-show="!data.hide">
-            <li ng-repeat="data in data.nodes" ng-init="data.left=left+18" ng-class="getclass(data)"
-                ng-include="'tree_item_renderer.html'"></li>
-        </ul>
-    </script>
     <div class="lefttree">
         <span style="" class="title">行政区划</span>
         <treecontrol class="tree-classic "
@@ -21,18 +10,65 @@
         </treecontrol>
     </div>
     <div class="rightContent selectable">
-        <span  class="title">
-            <select  ui-select2 ng-model="querytype"  style="width:100px;height: 30px;" class="form-control">
+        <span class="title">
+            <button class="btn btn-sm btn-info" ng-click="openwindow(btn)" style="margin-right:5px;"
+                    ng-repeat="btn in querycfg.buttons" ng-bind-html="btn.btn">{{btn.name}}
+            </button>
+            <select ui-select2 ng-model="querytype" style="width:150px;height: 30px;" class="form-control">
                 <option ng-repeat="option in querytypeoptions" value="{{option.value}}">{{option.text}}</option>
             </select>
             <input type="text" ng-model="queryvalue" class="form-control" style="width:150px;height: 30px;">
             <button class="btn btn-sm btn-info" ng-click="singlequery()">查询</button> <button
-                class="btn btn-sm btn-info" ng-click="complexquery()">高级查询
+                class="btn btn-sm btn-info" ng-click="complexWindow()">高级查询
         </button></span>
+
         <div class="gridStyle" ng-grid="gridOptions"></div>
         <pagination style="position: absolute;left:5px;bottom: 0px;" boundary-links="true"
                     total-items="querydata.page.rowcount" ng-model="querydata.page.pagenum"
                     num-pages="querydata.page.pagecount" items-per-page="querydata.page.pagesize" max-size="10"
-                    class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+                    class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                    last-text="&raquo;"></pagination>
+    </div>
+    <div class="newdialog modal-dialog"
+         style="display: {{complexWindowDisplay}};width:500px;height:300px;z-index:999;top:100px;">
+        <div class="modal-content">
+            <div class="modal-header">查询条件</div>
+            <div class="modal-body complexquery" style="max-height: 400px;overflow-y:auto;">
+                    <table>
+                        <tr ng-repeat-start="option in querycfg.cols" ng-if="option.coltype=='date'">
+                            <td style="text-align: right;color:#08c;">{{option.name}}起：</td>
+                            <td><input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd" maxlength="8"
+                                       ng-model="complexparams[option.code+'__begin']" is-open="opened[option.code+'__begin']"
+                                       datepicker-options="dateOptions"
+                                       ng-required="item.required" close-text="Close"/>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event,option.code+'__begin')"><i
+                                    class="glyphicon glyphicon-calendar"></i></button>
+                          </span></td>
+                        </tr>
+                        <tr ng-if="option.coltype=='date'">
+                            <td style="text-align: right;color:#08c;">{{option.name}}止：</td>
+                            <td><input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd" maxlength="8"
+                                       ng-model="complexparams[option.code+'__end']" is-open="opened[option.code+'__end']"
+                                       datepicker-options="dateOptions"
+                                       ng-required="item.required" close-text="关闭" today-text="今天"/>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event,option.code+'__end')"><i
+                                    class="glyphicon glyphicon-calendar"></i></button>
+                          </span></td>
+                        </tr>
+                        <tr ng-if="option.coltype =='string'" ng-repeat-end>
+                            <td  style="text-align: right;color:#08c;">{{option.name}}：</td>
+                            <td><input type="text" ng-model="complexparams[option.code]"></td>
+                        </tr>
+                    </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-info" ng-click="complexquery()">查询</button>
+                <button class="btn btn-sm btn-warning" ng-click="complexWindowDisplay='none'">关闭</button>
+            </div>
+        </div>
     </div>
 </div>
+
+

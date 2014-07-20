@@ -357,11 +357,11 @@ div {
     display: inline-block;
     padding: 0px 0px;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 20px;
     color: #333;
     text-align: center;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    /*text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);*/
     vertical-align: middle;
     cursor: pointer;
     background-color: #f5f5f5 !important;
@@ -371,7 +371,8 @@ div {
     background-image: -o-linear-gradient(top, #fff, #e6e6e6);
     background-image: linear-gradient(to bottom, #fff, #e6e6e6);
     background-repeat: repeat-x;
-    border: 1px solid #ccc !important;
+    border: 1px solid #ccc ;
+    border-right: 0px;
     border-color: #e6e6e6 #e6e6e6 #bfbfbf;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     border-bottom-color: #b3b3b3;
@@ -381,7 +382,9 @@ div {
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-
+.ngHeaderScroller > div:last-child.ngHeaderCell{
+    border-right: 1px solid #ccc ;
+}
 .ngTopPanel {
     background-color: #fff !important;
 }
@@ -409,19 +412,23 @@ div {
     background: url('../img/icons/panel_tools.png') no-repeat -16px 0px;
     border-width: 0 0 1px 0;
 }
-
+/*
 .modal {
     background-color: #E0ECFF !important;
     border-radius: 5px 5px 5px 5px !important;
     border: 1px solid #95B8E7 !important;
     padding: 5px !important;
-    /*width:800px !important;*/
+    width:800px !important;
 }
+*/
 
 a {
     cursor: pointer !important;
 }
-
+.modal-header {
+    color:#08c;
+}
+/*
 .modal-header {
     padding: 2px 5px !important;
 }
@@ -432,6 +439,10 @@ a {
     border-radius: 2px 2px 2px 2px !important;
 }
 
+.modal-div {
+    font-size: 12px !important;
+}
+*/
 .row-div:hover {
     background-color: gray;
 }
@@ -442,9 +453,6 @@ a {
     height: 20px !important;
 }
 
-.modal-div {
-    font-size: 12px !important;
-}
 
 .row-head {
     text-align: center;
@@ -662,8 +670,8 @@ div.contentpane > a.menuitem > img {
 }
 
 #subtab > ul > li:first-child a {
-    color: #fff;
-    background: deepskyblue;
+     color: #fff;
+   background: deepskyblue !important;
 }
 
 .lefttree {
@@ -698,4 +706,33 @@ div.contentpane > a.menuitem > img {
 .form-control {
     display: inline-block;
     vertical-align: middle;
+}
+.form-control.date{
+    width:100px;
+}
+.form-control.date+ul+ span{
+    display: inline-block;
+}
+.modal{
+    overflow-y: hidden;
+}
+
+input.form-control{
+    height:26px;
+}
+.radiobtn.btn{
+    background-color: rgba(0, 128, 0, 0.13);
+}
+.radiobtn.btn:active, .radiobtn.btn.active{
+    outline: 0;
+    background-image: none;
+    background-color: green;
+    color:#fff;
+}
+
+.newdialog.modal-dialog{
+    margin:0 auto;
+}
+.complexquery td{
+    padding:1px 0 ;
 }

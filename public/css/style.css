@@ -36,6 +36,24 @@ treecontrol>ul>li{
     width:100%;
 }
 
-.gridStyle {
+.ngCellText.left{
+    text-align: left;
+}
 
+.ngCellText.right{
+    text-align: right;
+}
+.ngCellText.center{
+    text-align: center;
+}
+
+
+#subtab .nav-tabs li.active a{
+    background-color: #eef2ff;
+    /*color: #fff;*/
+}
+
+
+.nav>li>a{
+    padding:8px 12px;
 }

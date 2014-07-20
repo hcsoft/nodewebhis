@@ -12,7 +12,7 @@ router.post('/init', function (req, res) {
     var queryname = req.param("queryname");
     var user = cache.users[req.session.user_id];
     var query = cache.getquery(queryname);
-    res.json({"success":true,cols:query.cols});
+    res.json({"success":true,cols:query.cols,buttons:query.buttons});
 });
 
 router.post('/query', function (req, res) {

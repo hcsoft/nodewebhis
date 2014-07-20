@@ -1,5 +1,5 @@
 'use strict';
-var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
+var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal) {
     /*基本设置*/
     $scope.select2Options = {
         placeholder: "",
@@ -13,6 +13,16 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
         if (data.success == false) {
             $location.path('/login');
             $location.replace();
+        }else{
+            //登录成功,获取菜单等相关信息
+            $http({
+                method: 'POST',
+                url: '/main/init'
+            }).success(function (data, status, headers, config) {
+                console.log(data);
+                $scope.menus =data.data;
+                $scope.district = [data.district];
+            });
         }
     });
     $scope.scroll = function(length){
@@ -30,7 +40,7 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
             active.parent().animate({'scrollLeft':scollleft+itempostion - parentwidht +active.width()+200 });
         }
         return false;
-    }
+    };
     $scope.logout = function(){
         $http({
             method: 'GET',
@@ -43,35 +53,6 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
             $location.replace();
         });
     };
-    $scope.test = function(){
-        $http({
-            method: 'POST',
-            url: '/main/init'
-        }).success(function (data, status, headers, config) {
-            console.log("success",data)
-        }).error(function (data, status, headers, config) {
-            console.log("error",data)
-        });
-    };
-    $scope.test1 = function(){
-        $http({
-            method: 'POST',
-            url: '/test'
-        }).success(function (data, status, headers, config) {
-            console.log("success",data)
-        }).error(function (data, status, headers, config) {
-            console.log("error",data)
-        });
-    };
-    //获取菜单等相关信息
-    $http({
-        method: 'POST',
-        url: '/main/init'
-    }).success(function (data, status, headers, config) {
-        console.log(data);
-        $scope.menus =data.data;
-        $scope.district = [data.district];
-    });
     $scope.panes = [];
     $scope.clickmenu = function (menu) {
         console.log(menu);
@@ -120,5 +101,97 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService) {
      $scope.closetab(e.currentTarget.innerText);
      }
      });*/
+
+    $scope.openTask = function(){
+        var modalInstance = $modal.open({
+//            templateUrl: 'myModalContent.html',
+            templateUrl:'/tpl/main/task.html',
+            controller: taskCtrl,
+            size: 'lg',
+            modal: false,
+            backdrop:'static',
+            resolve: {
+                curbtn: function () {
+                    return $scope.curbtn;
+                }
+            }
+        });
+        modalInstance.result.then(function (ret) {
+            $scope.windowret = ret;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+    $scope.taskDisplay = "none";
+    $scope.switchTask = function(){
+        console.log("switchTask");
+        if($scope.taskDisplay == "none"){
+            $scope.taskDisplay = "block";
+        }else{
+            $scope.taskDisplay = "none";
+        }
+
+    };
+//    $(".newdialog").draggable();
+
+};
+
+
+var taskCtrl = function ($scope, $modalInstance, curbtn) {
+    $scope.curbtn = curbtn;
+    $scope.ret = {
+
+    };
+    $scope.getTextStyle = function(item,window){
+        if(item && item.textstyle){
+            return item.textstyle +";display:inline-block;text-align:right;";
+        }else{
+            if(window.textwidth){
+                return "width:"+window.textwidth+"px;display:inline-block;text-align:right;";
+            }else{
+                return "width:100px;display:inline-block;text-align:right;";
+            }
+        }
+    };
+    $scope.initselect = function(item,obj){
+        var type = item.coltype;
+        if(type=='multilineradio' || type=='multiradio'){
+            if(!$scope.ret[item.code])
+                $scope.ret[item.code]={};
+            if(item.defaultval == ""+obj.value){
+                if(typeof $scope.ret[item.code][obj.value] === 'undefined')
+                    $scope.ret[item.code][obj.value] = true;
+            }
+        }else if(type=='lineradio' || type=='radio'){
+            if(!$scope.ret[item.code])
+                $scope.ret[item.code] = item.defaultval;
+        }
+    };
+    $scope.getWindowWidth = function(width){
+        if(width){
+            return width+"px";
+        }else{
+            return "100%";
+        }
+    }
+    $scope.ok = function () {
+        $modalInstance.close($scope.ret);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+
+    $scope.opened = {};
+    $scope.open = function($event,code) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.opened[code] = true;
+    };
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
 
 };

@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{curbtn.windowtitle}}</h3>
+</div>
+<div class="modal-body" style="max-height: {{curbtn.window.height}}px;overflow-y:auto;">
+    <div class="modal-content">
+        <div class="modal-header">本月待完成的任务</div>
+        <div class="modal-body complexquery" style="max-height: 400px;overflow-y:auto;">
+            <table>
+                <tbody><tr>
+                    <td style="text-align: right;">
+                        首次产检：
+                    </td>
+                    <td><a>20</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        2~5次产检：
+                    </td>
+                    <td><a>15</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        产后访视：
+                    </td>
+                    <td><a>30</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        产后42天访视：
+                    </td>
+                    <td><a>28</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        新生儿家庭方式：
+                    </td>
+                    <td><a>12</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        1岁以内儿童体检：
+                    </td>
+                    <td><a>14</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        1~2岁儿童体检：
+                    </td>
+                    <td><a>22</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        3~6岁儿童体检：
+                    </td>
+                    <td><a>8</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        老年人健康体检：
+                    </td>
+                    <td><a>13</a></td>
+                </tr>
+                </tbody></table>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-sm btn-warning" ng-click="taskDisplay='none'">关闭</button>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">保存</button>
+    <button class="btn btn-warning" ng-click="cancel()">关闭</button>
+</div>
