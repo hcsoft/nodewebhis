@@ -7,10 +7,10 @@
             <a ng-click='logout()'>退出系统</a>
         </p>
 
-        <p style="margin-left:10px;float: right; color: gray;font-size:9px; ">用户：{{username}}</p>
+        <p style="margin-left:10px;float: right; color: gray;font-size:9px; "><span class="glyphicon glyphicon-user"></span>用户：{{user.user_name}}</p>
 
-        <p style="margin-left:10px;float: right; color: orangered;font-size:9px;vertical-align: middle; "
-           ng-click="switchTask()"><span class="glyphicon glyphicon-tasks"></span>任务</p>
+        <p style="margin-left:10px;float: right; color:#fa9987;font-size:9px;vertical-align: middle;cursor: pointer; "
+           ng-click="switchTask()"><span class="glyphicon glyphicon-tasks"></span><span>任务</span></p>
     </div>
     <div class='leftmenu'>
         <accordion close-others="true">

@@ -14,6 +14,7 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal)
             $location.path('/login');
             $location.replace();
         }else{
+            $scope.user = data.user;
             //登录成功,获取菜单等相关信息
             $http({
                 method: 'POST',

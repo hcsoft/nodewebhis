@@ -17,7 +17,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/test', function (req, res) {
-    console.log("test",req.session);
+    console.log("test", req.session);
     res.json({"success": true});
 });
 
@@ -33,11 +33,11 @@ router.post('/login', function (req, res) {
                 return console.log(err);
             }
             req.session.user_id = req.param("user_id");
-            db.close(function (err) {});
+            db.close(function (err) {
+            });
             if (rows && rows.length > 0) {
-
                 cache.adduser(rows[0]);
-                res.json({"success": true});
+                res.json({"success": true, "user": rows[0]});
             } else {
                 res.json({"success": false, "msg": '用户名或密码错误!'});
             }
@@ -48,7 +48,7 @@ router.post('/login', function (req, res) {
 
 router.post('/islogin', function (req, res) {
     if (req.session.user_id) {
-        res.json({"success": true});
+        res.json({"success": true, "user": cache.users[req.session.user_id]});
     } else {
         res.json({"success": false});
     }
