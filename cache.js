@@ -94,7 +94,7 @@ cache.getquery = function(queryname){
         for(var i = 0 ; i <buttons.length;i++){
             if(!windowids[buttons[i].windowid]){
                 var window = tmpdb.querySync("select * from query_window where id=?  ", [buttons[i].windowid]);
-                var windowcfgs = tmpdb.querySync("select * from query_windowcfg where windowid=? order by row,[left] ", [buttons[i].windowid]);
+                var windowcfgs = tmpdb.querySync("select * from query_windowcfg where windowid=? order by row,ord ", [buttons[i].windowid]);
                 buttons[i].window = window[0];
                 var rowcfg = [];
                 for(var j = 0 ; j <windowcfgs.length;j++){
@@ -109,7 +109,33 @@ cache.getquery = function(queryname){
                     }
                     rowcfg[windowcfgs[j].row-1].items.push( windowcfgs[j]);
                 }
-                buttons[i].window.rowcfg = rowcfg;
+                for(var m =0 ; m<rowcfg.length;m++){
+                    if(rowcfg[m]){
+                        var deafaultcol = 1000/rowcfg[m].items.length;
+                        var count =0 ;
+                        var nocolnumarray = [];
+                        for(var n = 0 ; n<rowcfg[m].items.length;n++){
+                            if(!rowcfg[m].items[n].colnum || rowcfg[m].items[n].colnum<=0){
+                                nocolnumarray.push(n);
+                            }else{
+                                count +=rowcfg[m].items[n].colnum;
+                            }
+                        }
+                        var left = 1000 - count;
+                        for(var z = 0 ; z<nocolnumarray.length;z++){
+                            rowcfg[m].items[nocolnumarray[z]] =  floor(left/nocolnumarray.length);
+                            count +=floor(left/nocolnumarray.length);
+                        }
+                        rowcfg[m].items[rowcfg[m].items.length-1].colnum += 1000-count;
+                    }
+                }
+                var newrowcfg = []
+                for(var m =0 ; m<rowcfg.length;m++){
+                    if(rowcfg[m]){
+                        newrowcfg.push(rowcfg[m]);
+                    }
+                }
+                buttons[i].window.rowcfg = newrowcfg;
                 windowids[buttons[i].windowid] = window[0];
             }else{
                 buttons[i].window =  windowids[buttons[i].windowid];

@@ -1,23 +1,21 @@
 <div class="modal-header">
     <h3 class="modal-title">{{curbtn.windowtitle}}</h3>
 </div>
-<div class="modal-body" style="max-height: {{curbtn.window.height}}px;overflow-y:auto;">
-    <div ng-repeat="(i,cfg) in curbtn.window.rowcfg" style="width:100%;display: block;margin-bottom: 3px;">
-        <div style="margin:0 auto; width:{{getWindowWidth(curbtn.window.width)}};position: relative;display: block;min-height:{{cfg.height}}px;box-lines:multiple;">
-            <div  ng-repeat="(j,item) in cfg.items"
-                 style="{{item.position}};left:{{item.left}}px;display:inline-block;position:absolute;">
-                <div ng-if="item.coltype == 'static'" style="width:100%;margin-top:10px;border-bottom:1px dashed  #111;height:20px;overflow: visible;position: relative">
-                    <span style="margin:0 auto 0 auto;bottom:-10px;background-color:#fff;display:block;text-align:center;{{item.style}};position: relative;">{{item.name}}</span>
+<div class="modal-body" style="max-height: {{curbtn.window.height}}px;overflow-y:auto;border-collapse: collapse;">
+    <table class="examtable" >
+        <tr ng-repeat="(i,cfg) in curbtn.window.rowcfg">
+            <td  ng-repeat="(j,item) in cfg.items" colspan="{{item.colnum}}"  ng-class="{true: 'border', false: ''}[item.hasborder]">
+                <div ng-if="item.coltype == 'label'" style="{{item.style}}">
+                    {{item.name}}
                 </div>
-                <span ng-if="item.coltype != 'static'" style="vertical-align: top;{{getTextStyle(item,curbtn.window)}};">{{item.name+"："}}</span>
-                <input ng-if="item.coltype == 'text' || item.coltype == 'number'" type="{{item.coltype}}" ng-required="item.required" ng-model="ret[item.code]"
-                ng-style="item.inputstyle" ng-class="item.class"/>
+                <input  ng-style="item.style" ng-if="item.coltype == 'text' || item.coltype == 'number'" type="{{item.coltype}}" ng-required="item.required" ng-model="ret[item.code]"
+                       ng-style="item.inputstyle" ng-class="item.class"/>
                 <p ng-if="item.coltype == 'date'"  style="display: inline-block;">
-                    <input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd"  maxlength="8"
-                       ng-model="ret[item.code]" is-open="opened[item.code]" datepicker-options="dateOptions"
-                       ng-required="item.required" close-text="Close"/>
+                    <input  ng-style="item.style" type="text" class="form-control date" datepicker-popup="yyyy-MM-dd"  maxlength="8"
+                           ng-model="ret[item.code]" is-open="opened[item.code]" datepicker-options="dateOptions"
+                           ng-required="item.required" close-text="Close"/>
                     <span  class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event,item.code)"><i
+                    <button  ng-style="item.style" type="button" class="btn btn-default" ng-click="open($event,item.code)"><i
                             class="glyphicon glyphicon-calendar"></i></button>
                   </span>
                 </p>
@@ -37,9 +35,9 @@
                         <label style="{{item.style}}" class="btn radiobtn" ng-model="ret[item.code][obj.text]" btn-checkbox>{{$index+1}}、{{obj.text}}</label>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </td>
+        </tr>
+    </table>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" ng-click="ok()">保存</button>

@@ -57,3 +57,17 @@ treecontrol>ul>li{
 .nav>li>a{
     padding:8px 12px;
 }
+.examtable{
+    width:100%;
+    border-collapse: collapse;
+}
+
+.examtable tr{
+    width:100%;
+}
+.examtable td{
+    padding:2px 5px;
+}
+.examtable td.border{
+    border:solid 1px #333;
+}

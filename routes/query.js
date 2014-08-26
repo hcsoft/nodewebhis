@@ -6,7 +6,7 @@ var cache = require('../cache.js');
 router.get('/', function (req, res) {
     res.send('respond with a resource');
 });
-
+//  /query/init
 router.post('/init', function (req, res) {
     console.log("init..........")
     var queryname = req.param("queryname");
@@ -14,6 +14,7 @@ router.post('/init', function (req, res) {
     var query = cache.getquery(queryname);
     res.json({"success":true,cols:query.cols,buttons:query.buttons});
 });
+
 
 router.post('/query', function (req, res) {
     console.log("query..........")
@@ -62,6 +63,5 @@ router.post('/query', function (req, res) {
     res.json({"success":true,data:data,page:page});
     tmpdb.close(function(err){});
 });
-
 
 module.exports = router;
