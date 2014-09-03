@@ -1,0 +1,114 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{curbtn.windowtitle}}</h3>
+</div>
+
+<div class="modal-body" style="max-height: {{curbtn.window.height}}px;overflow-y:auto;border-collapse: collapse;">
+    <table class="examtable" >
+        <tr>
+            <td colspan="1000"  class="border">
+                居民健康档案封面
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                姓    名：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['name']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                现 住 址：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['address']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                户籍地址：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['residenceaddress']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                联系电话：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['tel']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                乡镇（街道）名称：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['townname']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                村（居）委会名称：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['villagename']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                建档单位：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['buildunit']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                建 档 人：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['buildperson']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                责任医生：
+            </td>
+            <td colspan="700">
+                <input  required="true" ng-model="ret['doctor']" style="width:70%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                建档日期:
+            </td>
+            <td colspan="700">
+                <input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd"  maxlength="8"
+                        ng-model="ret['builddate']" is-open="opened['builddate']" datepicker-options="dateOptions"
+                        ng-required="required" close-text="关闭"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1000">
+                个人基本信息表
+            </td>
+        </tr>
+        <tr>
+            <td colspan="300">
+                性别:
+            </td>
+            <td colspan="700">
+                <div  ng-repeat="(idx,obj) in $parent.codelist[111]"  class="btn-group" style="display: block;height:35px;">
+                    <label style="{{item.style}}" class="btn radiobtn" ng-init="initselect(item,obj)" ng-model="ret[item.code]" btn-radio="'{{obj.value}}'">{{$index+1}}、{{obj.text}}</label>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">保存</button>
+    <button class="btn btn-warning" ng-click="cancel()">关闭</button>
+</div>

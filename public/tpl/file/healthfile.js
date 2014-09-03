@@ -128,7 +128,7 @@ var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$t
         $scope.curbtn = btn;
         var modalInstance = $modal.open({
 //            templateUrl: 'myModalContent.html',
-            templateUrl:'/tpl/file/openwindow.html',
+            templateUrl:btn.tplurl,
             controller: ModalInstanceCtrl,
             size: btn.window.size,
             modal: false,
