@@ -1,7 +1,8 @@
-<span class="codelist" ng-repeat=" item in codelist">
-    <input type="radio" ng-model="modelval" id="{{codename|idcode}}__{{$index}}" name="{{codename|idcode}}" value="{{item.number}}">
-    <label style="" for="{{codename|idcode}}__{{$index}}"><span class="index">{{item.number}}</span>{{item.text}}</label>
+<span class="codelist" ng-init="modelval?modelval:{'data':null}" ng-repeat=" item in codelist">
+    <input type="radio" ng-model="modelval.data" id="{{codename|idcode}}__{{$index}}" name="{{codename}}" value="{{item.number}}">
+    <label for="{{codename|idcode}}__{{$index}}"><span class="index">{{item.number}}</span>{{item.text}}</label>
 </span>
+        <!--{{modelval|json}}-->
         <!--
 <div style="float:right;">
     <input ng-model="ret[codename]" type="text" style="width:15px;height:20px;text-align: center;">

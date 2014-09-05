@@ -3,353 +3,356 @@
 </div>
 
 <div class="modal-body" style="max-height: {{curbtn.window.height}}px;overflow-y:auto;border-collapse: collapse;">
-    <table class="examtable">
-        <tr>
-            <td colspan="1000" class="title center">
-                居民健康档案封面
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300" class="right">
-                <span class="pre">姓 名：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['name']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300"class=" right">
-               <span class="pre"> 现 住 址：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['address']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300"class=" right">
-                <span class="pre">户籍地址：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['residenceaddress']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300"class=" right">
-                <span class="pre">联系电话：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['tel']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300"class=" right">
-                <span class="pre">乡镇（街道）名称：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['townname']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300"class=" right">
-                <span class="pre">村（居）委会名称：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['villagename']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300"class=" right">
-                <span class="pre">建档单位：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['buildunit']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300"class=" right">
-                <span class="pre">建 档 人：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['buildperson']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300"class=" right">
-                <span class="pre">责任医生：</span>
-            </td>
-            <td colspan="700">
-                <input required="true" ng-model="ret['doctor']" style="width:70%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="300" class=" right">
-                <span class="pre">建档日期:</span>
-            </td>
-            <td colspan="700">
-                <input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd" maxlength="8"
-                       ng-model="ret['builddate']" is-open="opened['builddate']" datepicker-options="dateOptions"
-                       ng-required="required" close-text="关闭"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="1000" class="center title">
-                个人基本信息表
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">性  别</span>
-            </td>
-            <td colspan="450" app-radio codetype="111" default="0" ng-model="ret['sex']" class="border">
-            </td>
-            <td colspan="100" class="head border center">
-                <span class="pre">出生日期</span>
-            </td>
-            <td colspan="300" class="border">
-                <input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd" maxlength="8"
-                       ng-model="ret['birthday']" datepicker-options="dateOptions"
-                       ng-required="required" close-text="关闭"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">身份证号</span>
-            </td>
-            <td colspan="300" class="border">
-                <input type="text" ng-model="ret['idnumber']">
-            </td>
-            <td colspan="150" class="head border center">
-                <span class="pre">工作单位</span>
-            </td>
-            <td colspan="400" class="border">
-                <input type="text" ng-model="ret['workunit']">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">本人电话</span>
-            </td>
-            <td colspan="150" class="border">
-                <input type="text" ng-model="ret['tel']">
-            </td>
-            <td colspan="150" class="head border center">
-                <span class="pre">联系人姓名</span>
-            </td>
-            <td colspan="150" class="border">
-                <input type="text" ng-model="ret['linkman']">
-            </td>
-            <td colspan="150" class="head border center">
-                <span class="pre">联系人电话</span>
-            </td>
-            <td colspan="250" class="border">
-                <input type="text" ng-model="ret['linktel']">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">常住类型</span>
-            </td>
-            <td colspan="350" class="border" app-radio ng-model="ret['residetype']" codetype="7" default="1">
-            </td>
-            <td colspan="100" class="head border center">
-                <span class="pre">民    族</span>
-            </td>
-            <td colspan="400" class="border" app-radio ng-model="ret['nation']" codetype="57" default="1">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">血    型</span>
-            </td>
-            <td colspan="850" class="border" >
-                <sapn app-radio ng-model="ret['bloodtypeabo']" codetype="115"  default="5"></sapn>
-                <span class="head pre">/ RH阴性：</span>
-                <sapn app-radio ng-model="ret['bloodtyperh']" codetype="3"  default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">文化程度</span>
-            </td>
-            <td colspan="850" class="border" app-radio ng-model="ret['education']" codetype="99"  default="6">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">职    业</span>
-            </td>
-            <td colspan="850" class="border" app-radio ng-model="ret['occupation']" codetype="137"  default="8">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">婚姻状况</span>
-            </td>
-            <td colspan="850" class="border" app-radio ng-model="ret['maritalstatus']" codetype="37"  default="5">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">医疗费用<br>支付方式</span>
-            </td>
-            <td colspan="850" class="border">
-                <sapn app-radio ng-model="ret['paymentmode']" codetype="123"></sapn>
-                {{ret['paymentmode']}}
-                <input  ng-if="ret['paymentmode']=='8'" type="text" ng-model="ret['paymentmodeother']">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">药物过敏史</span>
-            </td>
-            <td colspan="850" class="border" ng-init="ret['allergiesHistory'] = {'2':true}">
-                <sapn app-checkbox ng-model="ret['allergiesHistory']" codetype="34"  ></sapn>
-                <input type="text" ng-model="ret['allergiesother']">
-                {{ret['allergiesHistory']|json}}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">暴露史</span>
-            </td>
-            <td colspan="850" class="border">
-                <sapn app-checkbox ng-model="ret.exposeHistory" codetype="192"  default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="30" rowspan="4" class="head border center">
-                <span class="pre">既往史</span>
-            </td>
-            <td colspan="120" class="head border center">
-                <span class="pre">疾病</span>
-            </td>
-            <td colspan="850" class="border">
-                <sapn app-checkbox ng-model="ret['diseaseHistory']" codetype="38"  default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="120" class="head border center">
-                <span class="pre">手术</span>
-            </td>
-            <td colspan="850" class="border">
-                <sapn app-radio ng-model="ret['opshistory']" codetype="81" default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="120" class="head border center">
-                <span class="pre">外伤</span>
-            </td>
-            <td colspan="850" class="border">
-                <sapn app-radio ng-model="ret['traumaHistory']" codetype="94" default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="120" class="head border center">
-                <span class="pre">输血</span>
-            </td>
-            <td colspan="850" class="border">
-                <sapn app-radio ng-model="ret['bloodTrans']" codetype="82" default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" rowspan="3" class="head border center">
-                <span class="pre">家族史</span>
-            </td>
-            <td colspan="200" class="head border center">
-                <span class="pre">父  亲</span>
-            </td>
-            <td colspan="225" class="border">
+<table class="examtable">
+<tr>
+    <td colspan="1000" class="title center">
+        居民健康档案封面
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class="right">
+        <span class="pre">姓 名：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['name']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre"> 现 住 址：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['address']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre">户籍地址：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['residenceaddress']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre">联系电话：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['tel']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre">乡镇（街道）名称：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['townname']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre">村（居）委会名称：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['villagename']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre">建档单位：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['buildunit']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre">建 档 人：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['buildperson']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre">责任医生：</span>
+    </td>
+    <td colspan="700">
+        <input required="true" ng-model="ret['doctor']" style="width:70%;"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="300" class=" right">
+        <span class="pre">建档日期:</span>
+    </td>
+    <td colspan="700">
+        <input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd" maxlength="8"
+               ng-model="ret['builddate']" is-open="opened['builddate']" datepicker-options="dateOptions"
+               ng-required="required" close-text="关闭"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="1000" class="center title">
+        个人基本信息表
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">性  别</span>
+    </td>
+    <td colspan="450"  class="border">
+        <span app-radio codetype="111" ng-model="ret['sex']"></span>
+    </td>
+    <td colspan="100" class="head border center">
+        <span class="pre">出生日期</span>
+    </td>
+    <td colspan="300" class="border">
+        <input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd" maxlength="8"
+               ng-model="ret['birthday']" datepicker-options="dateOptions"
+               ng-required="required" close-text="关闭"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">身份证号</span>
+    </td>
+    <td colspan="300" class="border">
+        <input type="text" ng-model="ret['idnumber']">
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">工作单位</span>
+    </td>
+    <td colspan="400" class="border">
+        <input type="text" ng-model="ret['workunit']">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">本人电话</span>
+    </td>
+    <td colspan="150" class="border">
+        <input type="text" ng-model="ret['tel']">
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">联系人姓名</span>
+    </td>
+    <td colspan="150" class="border">
+        <input type="text" ng-model="ret['linkman']">
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">联系人电话</span>
+    </td>
+    <td colspan="250" class="border">
+        <input type="text" ng-model="ret['linktel']">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">常住类型</span>
+    </td>
+    <td colspan="350" class="border" app-radio ng-model="ret['residetype']" codetype="7" default="1">
+    </td>
+    <td colspan="100" class="head border center">
+        <span class="pre">民    族</span>
+    </td>
+    <td colspan="400" class="border" app-radio ng-model="ret['nation']" codetype="57" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">血    型</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-radio ng-model="ret['bloodtypeabo']" codetype="115" default="5"></sapn>
+        <span class="head pre">/ RH阴性：</span>
+        <sapn app-radio ng-model="ret['bloodtyperh']" codetype="3" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">文化程度</span>
+    </td>
+    <td colspan="850" class="border" app-radio ng-model="ret['education']" codetype="99" default="6">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">职    业</span>
+    </td>
+    <td colspan="850" class="border" app-radio ng-model="ret['occupation']" codetype="137" default="8">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">婚姻状况</span>
+    </td>
+    <td colspan="850" class="border" app-radio ng-model="ret['maritalstatus']" codetype="37" default="5">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">医疗费用<br>支付方式</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-radio ng-model="ret['paymentmode']" codetype="123"></sapn>
+        {{ret['paymentmode'] |json}}
+        <input ng-if="ret['paymentmode']==8" type="text" ng-model="ret['paymentmodeother']">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">药物过敏史</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-checkbox ng-model="ret['allergiesHistory']" codetype="34" uncheckval="1" default="1"></sapn>
+        <input type="text" ng-model="ret['allergiesother']">
+        <!--{{ret['allergiesHistory']|json}}-->
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">暴露史</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-checkbox ng-model="ret.exposeHistory" codetype="192" uncheckval="1" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="30" rowspan="4" class="head border center">
+        <span class="pre">既往史</span>
+    </td>
+    <td colspan="120" class="head border center">
+        <span class="pre">疾病</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-checkbox ng-model="ret['diseaseHistory']" codetype="38" uncheckval="1" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="120" class="head border center">
+        <span class="pre">手术</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-radio ng-model="ret['opshistory']" codetype="81" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="120" class="head border center">
+        <span class="pre">外伤</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-radio ng-model="ret['traumaHistory']" codetype="94" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="120" class="head border center">
+        <span class="pre">输血</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-radio ng-model="ret['bloodTrans']" codetype="82" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" rowspan="3" class="head border center">
+        <span class="pre">家族史</span>
+    </td>
+    <td colspan="200" class="head border center">
+        <span class="pre">父  亲</span>
+    </td>
+    <td colspan="225" class="border">
 
-            </td>
-            <td colspan="200" class="head border center">
-                <span class="pre">母  亲</span>
-            </td>
-            <td colspan="225" class="border">
+    </td>
+    <td colspan="200" class="head border center">
+        <span class="pre">母  亲</span>
+    </td>
+    <td colspan="225" class="border">
 
-            </td>
-        </tr>
-        <tr>
-            <td colspan="200" class="head border center">
-                <span class="pre">兄弟姐妹</span>
-            </td>
-            <td colspan="225" class="border">
+    </td>
+</tr>
+<tr>
+    <td colspan="200" class="head border center">
+        <span class="pre">兄弟姐妹</span>
+    </td>
+    <td colspan="225" class="border">
 
-            </td>
-            <td colspan="200" class="head border center">
-                <span class="pre">子  女</span>
-            </td>
-            <td colspan="225" class="border">
+    </td>
+    <td colspan="200" class="head border center">
+        <span class="pre">子  女</span>
+    </td>
+    <td colspan="225" class="border">
 
-            </td>
-        </tr>
-        <tr>
-            <td colspan="850" class="border">
-                <sapn app-checkbox ng-model="ret['家族史']" codetype="148" default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150"  class="head border center">
-                <span class="pre">遗传病史</span>
-            </td>
-            <td colspan="850" class="border">
-                <sapn app-radio ng-model="ret['geneticHistory']" codetype="124"  default="1"></sapn>疾病名称：<input type="text" ng-if="ret['geneticHistory']=='2'" ng-model="ret['geneticHistoryOther']">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="150" class="head border center">
-                <span class="pre">残疾情况</span>
-            </td>
-            <td colspan="850" class="border">
-                <sapn app-checkbox ng-model="ret['disabilityStatus']" codetype="6"  default="1"></sapn><input type="text" ng-model="ret['disabilityStatusOther']">
-            </td>
+    </td>
+</tr>
+<tr>
+    <td colspan="850" class="border">
+        <sapn app-checkbox ng-model="ret['家族史']" codetype="148" uncheckval="1" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">遗传病史</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-radio ng-model="ret['geneticHistory']" codetype="124" default="1"></sapn>
+        疾病名称：<input type="text" ng-if="ret['geneticHistory']=='2'" ng-model="ret['geneticHistoryOther']">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">残疾情况</span>
+    </td>
+    <td colspan="850" class="border">
+        <sapn app-checkbox ng-model="ret['disabilityStatus']" codetype="6" uncheckval="1" default="1"></sapn>
+        <input type="text" ng-model="ret['disabilityStatusOther']">
+    </td>
 
-        </tr>
+</tr>
 
-        <tr>
-            <td colspan="150" rowspan="5" class="head border center">
-                <span class="pre">生活环境</span>
-            </td>
-            <td colspan="200" class="head border center">
-                <span class="pre">厨房排风设施</span>
-            </td>
-            <td colspan="650" class="border">
-                <sapn app-radio ng-model="ret['kitchen']" codetype="1245" default="1"></sapn>
-            </td>
-        </tr>
+<tr>
+    <td colspan="150" rowspan="5" class="head border center">
+        <span class="pre">生活环境</span>
+    </td>
+    <td colspan="200" class="head border center">
+        <span class="pre">厨房排风设施</span>
+    </td>
+    <td colspan="650" class="border">
+        <sapn app-radio ng-model="ret['kitchen']" codetype="1245" default="1"></sapn>
+    </td>
+</tr>
 
-        <tr>
-            <td colspan="200" class="head border center">
-                <span class="pre">燃料类型</span>
-            </td>
-            <td colspan="650" class="border">
-                <sapn app-radio ng-model="ret['bunkers']" codetype="1250" default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="200" class="head border center">
-                <span class="pre">饮水</span>
-            </td>
-            <td colspan="650" class="border">
-                <sapn app-radio ng-model="ret['drinkingWater']" codetype="1257" default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="200" class="head border center">
-                <span class="pre">厕所</span>
-            </td>
-            <td colspan="650" class="border">
-                <sapn app-radio ng-model="ret['toilet']" codetype="1264" default="1"></sapn>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="200" class="head border center">
-                <span class="pre">禽畜栏</span>
-            </td>
-            <td colspan="650" class="border">
-                <sapn app-radio ng-model="ret['poultry']" codetype="1270" default="1"></sapn>
-            </td>
-        </tr>
-    </table>
+<tr>
+    <td colspan="200" class="head border center">
+        <span class="pre">燃料类型</span>
+    </td>
+    <td colspan="650" class="border">
+        <sapn app-radio ng-model="ret['bunkers']" codetype="1250" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="200" class="head border center">
+        <span class="pre">饮水</span>
+    </td>
+    <td colspan="650" class="border">
+        <sapn app-radio ng-model="ret['drinkingWater']" codetype="1257" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="200" class="head border center">
+        <span class="pre">厕所</span>
+    </td>
+    <td colspan="650" class="border">
+        <sapn app-radio ng-model="ret['toilet']" codetype="1264" default="1"></sapn>
+    </td>
+</tr>
+<tr>
+    <td colspan="200" class="head border center">
+        <span class="pre">禽畜栏</span>
+    </td>
+    <td colspan="650" class="border">
+        <sapn app-radio ng-model="ret['poultry']" codetype="1270" default="1"></sapn>
+    </td>
+</tr>
+</table>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" ng-click="ok()">保存</button>
