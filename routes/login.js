@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pool = require('../pool.js');
-var cache = require("../cache.js");
+var cache = require("../cache.js")();
 /* GET home page. */
 router.get('/', function (req, res) {
     //查询模块库，加载所有的js

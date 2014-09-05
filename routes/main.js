@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pool = require('../pool.js');
-var cache = require('../cache.js');
+var cache = require('../cache.js')();
 /* GET users listing. */
 router.get('/', function (req, res) {
     res.send('respond with a resource');
@@ -30,8 +30,7 @@ router.post('/init', function (req, res) {
                 }
                 rows[i].child = submenu;
             }
-
-            res.json({"success":true,data:rows,district:cache.getdistrict(user.district_id)});
+            res.json({"success":true,data:rows,district:cache.getdistrict(user.district_id),codelist:cache.code});
         }else{
             res.json({"success":false,"msg":'没有数据!'});
         }

@@ -29,16 +29,17 @@ var db = require("odbc")();
 /* 处理code */
 db.openSync(pool.connectstr);
 cache.code = {};
-var rows = db.querySync("select * from cod_basecode order by type , ismain desc");
+var rows = db.querySync("select * from cod_basecode order by type , Number");
 for (var i = 0; i < rows.length; i++) {
     if (!cache.code[rows[i].Type]) {
         cache.code[rows[i].Type] = {'map': {}, 'list': []};
     }
     if (rows[i].IsMain == 1) {
-        cache.code[rows[i].Type]['name'] = rows[i].Name;
+        cache.code[rows[i].Type]['name'] = rows[i];
     } else {
-        cache.code[rows[i].Type]['list'].push({"value": rows[i].ID, "text": rows[i].Name});
-        cache.code[rows[i].Type]['map'][rows[i].ID] = rows[i].Name;
+        var code = {"value": rows[i].ID, "text": rows[i].Name,"number": rows[i].Number};
+        cache.code[rows[i].Type]['list'].push(code);
+        cache.code[rows[i].Type]['map'][rows[i].ID] = code;
     }
 }
 /* 处理配置 */
@@ -153,4 +154,6 @@ cache.adduser = function(user){
     cache.users[user.user_id] = user;
 }
 
-module.exports = cache;
+module.exports = function(){
+    return cache;
+}

@@ -1,0 +1,9 @@
+<span class="codelist" ng-repeat=" item in codelist">
+    <input type="radio" ng-model="ret[codename]" id="{{codename}}__{{$index}}" value="{{item.number}}">
+    <label style="" for="{{codename}}__{{$index}}"><span class="index">{{item.number}}</span>{{item.text}}</label>
+</span>
+        <!--
+<div style="float:right;">
+    <input ng-model="ret[codename]" type="text" style="width:15px;height:20px;text-align: center;">
+</div>
+        -->

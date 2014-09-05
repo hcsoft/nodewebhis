@@ -12,7 +12,7 @@
     <div class="rightContent selectable">
         <span class="title">
             <button class="btn btn-sm btn-info" ng-click="openwindow(btn)" style="margin-right:5px;"
-                    ng-repeat="btn in querycfg.buttons" ng-bind-html="btn.btn">{{btn.name}}
+                    ng-repeat="btn in querycfg.buttons" ng-bind-html="btn.btn">
             </button>
             <select ui-select2 ng-model="querytype" style="width:150px;height: 30px;" class="form-control">
                 <option ng-repeat="option in querytypeoptions" value="{{option.value}}">{{option.text}}</option>

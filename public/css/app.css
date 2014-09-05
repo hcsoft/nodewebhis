@@ -736,3 +736,167 @@ input.form-control{
 .complexquery td{
     padding:1px 0 ;
 }
+/* appcodelist css */
+span.codelist{
+    display: inline-block;
+    /*height:35px;*/
+    margin:0 5px 0 0;
+}
+span.codelist > input {
+    display: none;
+}
+span.codelist > input:checked + label {
+    color:#fff;
+    background-color: #56899c;
+}
+span.codelist > input:checked + label:before {
+    content: "√ ";
+    color:#ffffff;
+    display: 'inline-block';
+    width:20px;
+}
+
+span.codelist > input:checked + label >.index {
+    color:#ffffff;
+}
+span.codelist > label {
+    cursor:pointer;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin:0;
+}
+span.codelist > label:before {
+    content: "";
+    white-space: pre;
+}
+span.codelist > label:hover {
+    /*background-color: ;*/
+    text-decoration: line-through;
+    color:#56899c;
+}
+/* appcodelist css */
+
+/*button css*/
+.addbtn,.editbtn,.delbtn{
+    font-size:15px;
+    padding-right: 5px;
+}
+.addbtn{
+    color:greenyellow;
+}
+.editbtn{
+    color:#ffff00;
+}
+.delbtn{
+    color: #af0200;
+}
+/*button css*/
+
+/*tree css*/
+treecontrol li .tree-label span{
+    display: inline;
+    white-space:nowrap;
+}
+treecontrol ul{
+    overflow: visible;
+}
+treecontrol>ul>li{
+    padding-left: 5px;
+}
+.lefttree treecontrol {
+    position:absolute;
+    left:0px;
+    top:30px;
+    right:0px;
+    bottom:0px;
+    overflow:auto;
+}
+
+.lefttree > .title {
+    text-align: center;
+    background-color: lightblue;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    position: fixed;
+    width: 198px;
+}
+
+.rightContent > .title{
+    height: 35px;
+    line-height: 35px;
+    background-color: #e0ecff;
+    display: block;
+    padding-left: 5px;
+    width:100%;
+}
+
+.ngCellText.left{
+    text-align: left;
+}
+
+.ngCellText.right{
+    text-align: right;
+}
+.ngCellText.center{
+    text-align: center;
+}
+
+
+#subtab .nav-tabs li.active a{
+    background-color: #eef2ff;
+    /*color: #fff;*/
+}
+
+
+.nav>li>a{
+    padding:8px 12px;
+}
+.examtable{
+    width:100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    color: #626262;
+}
+
+.examtable tr{
+    width:100%;
+}
+
+.examtable .index{
+    /*font-weight: bold;*/
+    color:darkblue;
+}
+.examtable .head{
+    background-color: #B0E0E6;
+    color:#5f1f1a;
+}
+.examtable .title{
+    font-size:20px;
+    line-height: 40px;
+    height:40px;
+}
+
+.examtable input{
+    width:100px;
+}
+.examtable td{
+    padding:2px 5px;
+}
+.examtable td.border{
+    border:solid 1px #333;
+}
+/* window css */
+.pre{
+    white-space: pre-wrap;
+}
+.center{
+    text-align: center;
+}
+.left{
+    text-align: left;
+}
+.right{
+    text-align: right;
+}
+/* window css */

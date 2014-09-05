@@ -8,10 +8,10 @@ angular.module('myApp.services', []).factory('loginService', function() {
     loginService.setLogined = function(flag) {
         loginService.logined=flag;
     };
-	
     return loginService;
-}).factory('cache', function($http) {	
-	return $http.post('/cache.json');
+}).factory('cache', function() {
+    var cache = {};
+	return cache;
 }).factory('httpRequestInterceptor', function($q) {
     return {
         'response': function(response) {

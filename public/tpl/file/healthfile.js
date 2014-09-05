@@ -157,6 +157,15 @@ var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$t
         startingDay: 1
     };
 
+    $scope.ret = {};
+    $scope.$watch("ret", function (newvalue, oldvalue) {
+        console.log(newvalue, oldvalue);
+        $.each(newvalue, function (i, v) {
+            console.log(i, v);
+        });
+    });
+    $scope.teststr = '测试!!!';
+
 };
 
 var ModalInstanceCtrl = function ($scope, $modalInstance, curbtn) {

@@ -1,5 +1,5 @@
 'use strict';
-var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal) {
+var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal ,cache) {
     /*基本设置*/
     $scope.select2Options = {
         placeholder: "",
@@ -23,6 +23,10 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal)
                 console.log(data);
                 $scope.menus =data.data;
                 $scope.district = [data.district];
+                $scope.codelist = data.codelist;
+                cache.district = [data.district];
+                cache.codelist = data.codelist;
+                console.log(cache);
             });
         }
     });

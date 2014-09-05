@@ -12,10 +12,12 @@
 angular.module(
     'myApp',
     [ 'ngCookies', 'ui.router', 'myApp.filters', 'myApp.services', 'myApp.directives',
-        'ui.bootstrap', 'ngGrid' ,'treeControl','ui.select2']).config(
-    function ($stateProvider, $urlRouterProvider,$httpProvider) {
+        'ui.bootstrap', 'ngGrid' ,'treeControl','ui.select2','ngSanitize']).config(
+    function ($stateProvider, $urlRouterProvider,$httpProvider,$controllerProvider) {
+        $controllerProvider.allowGlobals();
         $httpProvider.interceptors.push('httpRequestInterceptor');
         $urlRouterProvider.otherwise("/login");
+
         $stateProvider.state('login', {
             url: '/login',
             templateUrl: 'tpl/login/login.html',
@@ -25,4 +27,5 @@ angular.module(
             templateUrl: 'tpl/main/main.html',
             controller: 'MainCtrl'
         });
+
     });
