@@ -100,7 +100,7 @@
             <td colspan="150" class="head border center">
                 <span class="pre">性  别</span>
             </td>
-            <td colspan="450" app-radio codetype="111" default="0" codename="sex" class="border">
+            <td colspan="450" app-radio codetype="111" default="0" ng-model="ret['sex']" class="border">
             </td>
             <td colspan="100" class="head border center">
                 <span class="pre">出生日期</span>
@@ -149,12 +149,12 @@
             <td colspan="150" class="head border center">
                 <span class="pre">常住类型</span>
             </td>
-            <td colspan="350" class="border" app-radio codename="residetype" codetype="7" default="1">
+            <td colspan="350" class="border" app-radio ng-model="ret['residetype']" codetype="7" default="1">
             </td>
             <td colspan="100" class="head border center">
                 <span class="pre">民    族</span>
             </td>
-            <td colspan="400" class="border" app-radio codename="nation" codetype="57" default="1">
+            <td colspan="400" class="border" app-radio ng-model="ret['nation']" codetype="57" default="1">
             </td>
         </tr>
         <tr>
@@ -162,30 +162,30 @@
                 <span class="pre">血    型</span>
             </td>
             <td colspan="850" class="border" >
-                <sapn app-radio codename="bloodtypeabo" codetype="115"  default="5"></sapn>
+                <sapn app-radio ng-model="ret['bloodtypeabo']" codetype="115"  default="5"></sapn>
                 <span class="head pre">/ RH阴性：</span>
-                <sapn app-radio codename="bloodtyperh" codetype="3"  default="1"></sapn>
+                <sapn app-radio ng-model="ret['bloodtyperh']" codetype="3"  default="1"></sapn>
             </td>
         </tr>
         <tr>
             <td colspan="150" class="head border center">
                 <span class="pre">文化程度</span>
             </td>
-            <td colspan="850" class="border" app-radio codename="education" codetype="99"  default="6">
+            <td colspan="850" class="border" app-radio ng-model="ret['education']" codetype="99"  default="6">
             </td>
         </tr>
         <tr>
             <td colspan="150" class="head border center">
                 <span class="pre">职    业</span>
             </td>
-            <td colspan="850" class="border" app-radio codename="occupation" codetype="137"  default="8">
+            <td colspan="850" class="border" app-radio ng-model="ret['occupation']" codetype="137"  default="8">
             </td>
         </tr>
         <tr>
             <td colspan="150" class="head border center">
                 <span class="pre">婚姻状况</span>
             </td>
-            <td colspan="850" class="border" app-radio codename="maritalstatus" codetype="37"  default="5">
+            <td colspan="850" class="border" app-radio ng-model="ret['maritalstatus']" codetype="37"  default="5">
             </td>
         </tr>
         <tr>
@@ -193,17 +193,19 @@
                 <span class="pre">医疗费用<br>支付方式</span>
             </td>
             <td colspan="850" class="border">
-                <sapn app-radio codename="paymentmode" codetype="123"></sapn>
-                <input type="text" ng-model="ret['paymentmodeother']">
+                <sapn app-radio ng-model="ret['paymentmode']" codetype="123"></sapn>
+                {{ret['paymentmode']}}
+                <input  ng-if="ret['paymentmode']=='8'" type="text" ng-model="ret['paymentmodeother']">
             </td>
         </tr>
         <tr>
             <td colspan="150" class="head border center">
                 <span class="pre">药物过敏史</span>
             </td>
-            <td colspan="850" class="border">
-                <sapn app-radio codename="allergiesHistory" codetype="34"  default="1"></sapn>
+            <td colspan="850" class="border" ng-init="ret['allergiesHistory'] = {'2':true}">
+                <sapn app-checkbox ng-model="ret['allergiesHistory']" codetype="34"  ></sapn>
                 <input type="text" ng-model="ret['allergiesother']">
+                {{ret['allergiesHistory']|json}}
             </td>
         </tr>
         <tr>
@@ -211,7 +213,7 @@
                 <span class="pre">暴露史</span>
             </td>
             <td colspan="850" class="border">
-                <sapn app-radio codename="exposeHistory" codetype="192"  default="1"></sapn>
+                <sapn app-checkbox ng-model="ret.exposeHistory" codetype="192"  default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -222,7 +224,7 @@
                 <span class="pre">疾病</span>
             </td>
             <td colspan="850" class="border">
-                <sapn app-radio codename="diseaseHistory" codetype="38"  default="1"></sapn>
+                <sapn app-checkbox ng-model="ret['diseaseHistory']" codetype="38"  default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -230,7 +232,7 @@
                 <span class="pre">手术</span>
             </td>
             <td colspan="850" class="border">
-                <sapn app-radio codename="opshistory" codetype="81" default="1"></sapn>
+                <sapn app-radio ng-model="ret['opshistory']" codetype="81" default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -238,7 +240,7 @@
                 <span class="pre">外伤</span>
             </td>
             <td colspan="850" class="border">
-                <sapn app-radio codename="traumaHistory" codetype="94" default="1"></sapn>
+                <sapn app-radio ng-model="ret['traumaHistory']" codetype="94" default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -246,7 +248,7 @@
                 <span class="pre">输血</span>
             </td>
             <td colspan="850" class="border">
-                <sapn app-radio codename="bloodTrans" codetype="82" default="1"></sapn>
+                <sapn app-radio ng-model="ret['bloodTrans']" codetype="82" default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -282,7 +284,7 @@
         </tr>
         <tr>
             <td colspan="850" class="border">
-                <sapn app-radio codename="家族史" codetype="148" default="1"></sapn>
+                <sapn app-checkbox ng-model="ret['家族史']" codetype="148" default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -290,16 +292,15 @@
                 <span class="pre">遗传病史</span>
             </td>
             <td colspan="850" class="border">
-                <sapn app-radio codename="geneticHistory" codetype="124"  default="1"></sapn>疾病名称：<input type="text" ng-model="ret['geneticHistoryOther']">
+                <sapn app-radio ng-model="ret['geneticHistory']" codetype="124"  default="1"></sapn>疾病名称：<input type="text" ng-if="ret['geneticHistory']=='2'" ng-model="ret['geneticHistoryOther']">
             </td>
-
         </tr>
         <tr>
             <td colspan="150" class="head border center">
                 <span class="pre">残疾情况</span>
             </td>
             <td colspan="850" class="border">
-                <sapn app-radio codename="disabilityStatus" codetype="6"  default="1"></sapn>疾病名称：<input type="text" ng-model="ret['disabilityStatusOther']">
+                <sapn app-checkbox ng-model="ret['disabilityStatus']" codetype="6"  default="1"></sapn><input type="text" ng-model="ret['disabilityStatusOther']">
             </td>
 
         </tr>
@@ -312,7 +313,7 @@
                 <span class="pre">厨房排风设施</span>
             </td>
             <td colspan="650" class="border">
-                <sapn app-radio codename="kitchen" codetype="1245" default="1"></sapn>
+                <sapn app-radio ng-model="ret['kitchen']" codetype="1245" default="1"></sapn>
             </td>
         </tr>
 
@@ -321,7 +322,7 @@
                 <span class="pre">燃料类型</span>
             </td>
             <td colspan="650" class="border">
-                <sapn app-radio codename="bunkers" codetype="1250" default="1"></sapn>
+                <sapn app-radio ng-model="ret['bunkers']" codetype="1250" default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -329,7 +330,7 @@
                 <span class="pre">饮水</span>
             </td>
             <td colspan="650" class="border">
-                <sapn app-radio codename="drinkingWater" codetype="1257" default="1"></sapn>
+                <sapn app-radio ng-model="ret['drinkingWater']" codetype="1257" default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -337,7 +338,7 @@
                 <span class="pre">厕所</span>
             </td>
             <td colspan="650" class="border">
-                <sapn app-radio codename="toilet" codetype="1264" default="1"></sapn>
+                <sapn app-radio ng-model="ret['toilet']" codetype="1264" default="1"></sapn>
             </td>
         </tr>
         <tr>
@@ -345,7 +346,7 @@
                 <span class="pre">禽畜栏</span>
             </td>
             <td colspan="650" class="border">
-                <sapn app-radio codename="poultry" codetype="1270" default="1"></sapn>
+                <sapn app-radio ng-model="ret['poultry']" codetype="1270" default="1"></sapn>
             </td>
         </tr>
     </table>

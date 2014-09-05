@@ -1,7 +1,9 @@
-<span class="codelist" ng-init="ret[codename]= ret[codename]?ret[codename]:{}" ng-repeat=" item in codelist">
-    <input type="checkbox" ng-model="ret[codename][item.number]" id="{{codename}}__{{$index}}">
-    <label style="" for="{{codename}}__{{$index}}"><i style="font-weight: bold">{{item.number}}</i>{{item.text}}</label>
+<span class="codelist" ng-init="modelval = modelval?modelval:{}" ng-repeat=" item in codelist">
+    <input type="checkbox" ng-model="modelval[item.number]" id="{{codename|idcode}}__{{$index}}">
+    <label style="" for="{{codename|idcode}}__{{$index}}"><i style="font-weight: bold">{{item.number}}</i>{{item.text}}</label>
 </span>
+
+        {{modelval|json}}
         <!--
 <div style="float:right;">
     <input ng-repeat="(idx,data) in ret[codename]" ng-if="data == true" value="{{idx}}" type="text"

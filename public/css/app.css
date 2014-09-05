@@ -782,13 +782,16 @@ span.codelist > label:hover {
     padding-right: 5px;
 }
 .addbtn{
-    color:greenyellow;
+    /*color:greenyellow;*/
+    color:#ffffff;
 }
 .editbtn{
-    color:#ffff00;
+    /*color:#ffff00;*/
+    color:#ffffff;
 }
 .delbtn{
-    color: #af0200;
+    /*color: #af0200;*/
+    color:#ffffff;
 }
 /*button css*/
 
@@ -869,7 +872,8 @@ treecontrol>ul>li{
 }
 .examtable .head{
     background-color: #B0E0E6;
-    color:#5f1f1a;
+    /*color:#5f1f1a;*/
+    /*background-color: #ECECEC;*/
 }
 .examtable .title{
     font-size:20px;
@@ -884,7 +888,7 @@ treecontrol>ul>li{
     padding:2px 5px;
 }
 .examtable td.border{
-    border:solid 1px #333;
+    border:solid 1px #626262;
 }
 /* window css */
 .pre{

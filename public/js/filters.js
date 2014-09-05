@@ -12,4 +12,8 @@ angular.module('myApp.filters', []).
     return function(text) {
       return $.parseJSON(text);
     }
-  });
+  }).filter('idcode', function() {
+        return function(text) {
+            return text.replace(/['\[\]\"]/g,"_");
+        }
+    });
