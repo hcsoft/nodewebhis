@@ -2,6 +2,13 @@
     <input type="radio" ng-model="$parent.modelval" id="{{codename|idcode}}__{{$index}}" name="{{codename|idcode}}" value="{{item.number}}">
     <label for="{{codename|idcode}}__{{$index}}"><span class="index">{{item.number}}</span>{{item.text}}</label>
 </span>
+
+<select ui-select2 ng-model="select2" data-placeholder="Pick a number">
+    <option value=""></option>
+    <option value="one">First</option>
+    <option value="two">Second</option>
+    <option value="three">Third</option>
+</select>
         <!--{{modelval|json}}-->
         <!--
 <div style="float:right;">

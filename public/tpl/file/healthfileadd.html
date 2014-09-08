@@ -14,7 +14,7 @@
         <span class="pre">姓 名：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['name']" style="width:70%;"/>
+        <input required="true" ng-model="ret['name']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -22,7 +22,7 @@
         <span class="pre"> 现 住 址：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['address']" style="width:70%;"/>
+        <input required="true" ng-model="ret['address']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -30,7 +30,7 @@
         <span class="pre">户籍地址：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['residenceaddress']" style="width:70%;"/>
+        <input required="true" ng-model="ret['residenceaddress']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -38,7 +38,7 @@
         <span class="pre">联系电话：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['tel']" style="width:70%;"/>
+        <input required="true" ng-model="ret['tel']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -46,7 +46,7 @@
         <span class="pre">乡镇（街道）名称：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['townname']" style="width:70%;"/>
+        <input required="true" ng-model="ret['townname']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -54,7 +54,7 @@
         <span class="pre">村（居）委会名称：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['villagename']" style="width:70%;"/>
+        <input required="true" ng-model="ret['villagename']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -62,7 +62,7 @@
         <span class="pre">建档单位：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['buildunit']" style="width:70%;"/>
+        <input required="true" ng-model="ret['buildunit']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -70,7 +70,7 @@
         <span class="pre">建 档 人：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['buildperson']" style="width:70%;"/>
+        <input required="true" ng-model="ret['buildperson']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -78,7 +78,7 @@
         <span class="pre">责任医生：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['doctor']" style="width:70%;"/>
+        <input required="true" ng-model="ret['doctor']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -86,9 +86,7 @@
         <span class="pre">建档日期:</span>
     </td>
     <td colspan="700">
-        <input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd" maxlength="8"
-               ng-model="ret['builddate']" is-open="opened['builddate']" datepicker-options="dateOptions"
-               ng-required="required" close-text="关闭"/>
+        <app-date ng-model="ret['builddate']"></app-date>
     </td>
 </tr>
 <tr>
@@ -101,15 +99,15 @@
         <span class="pre">性  别</span>
     </td>
     <td colspan="450"  class="border">
-        <span app-radio codetype="111" ng-model="ret['sex']"></span>
+
+        <app-radio codetype="111" ng-model="ret['sex']" default="0"/>
+        {{ret['sex']|json}}
     </td>
     <td colspan="100" class="head border center">
         <span class="pre">出生日期</span>
     </td>
     <td colspan="300" class="border">
-        <input type="text" class="form-control date" datepicker-popup="yyyy-MM-dd" maxlength="8"
-               ng-model="ret['birthday']" datepicker-options="dateOptions"
-               ng-required="required" close-text="关闭"/>
+        <app-date ng-model="ret['birthday']"></app-date>
     </td>
 </tr>
 <tr>
@@ -117,13 +115,13 @@
         <span class="pre">身份证号</span>
     </td>
     <td colspan="300" class="border">
-        <input type="text" ng-model="ret['idnumber']">
+        <input type="text" ng-model="ret['idnumber']" class="textinput" style="width:95%">
     </td>
     <td colspan="150" class="head border center">
         <span class="pre">工作单位</span>
     </td>
     <td colspan="400" class="border">
-        <input type="text" ng-model="ret['workunit']">
+        <input type="text" ng-model="ret['workunit']" class="textinput" style="width:95%">
     </td>
 </tr>
 <tr>
@@ -131,19 +129,19 @@
         <span class="pre">本人电话</span>
     </td>
     <td colspan="150" class="border">
-        <input type="text" ng-model="ret['tel']">
+        <input type="text" ng-model="ret['tel']" class="textinput"style="width:95%">
     </td>
     <td colspan="150" class="head border center">
         <span class="pre">联系人姓名</span>
     </td>
     <td colspan="150" class="border">
-        <input type="text" ng-model="ret['linkman']">
+        <input type="text" ng-model="ret['linkman']"class="textinput"style="width:95%">
     </td>
     <td colspan="150" class="head border center">
         <span class="pre">联系人电话</span>
     </td>
     <td colspan="250" class="border">
-        <input type="text" ng-model="ret['linktel']">
+        <input type="text" ng-model="ret['linktel']"class="textinput" style="width:95%">
     </td>
 </tr>
 <tr>
@@ -195,8 +193,7 @@
     </td>
     <td colspan="850" class="border">
         <sapn app-radio ng-model="ret['paymentmode']" codetype="123"></sapn>
-        {{ret['paymentmode'] |json}}
-        <input ng-if="ret['paymentmode']==8" type="text" ng-model="ret['paymentmodeother']">
+        <input ng-if="ret['paymentmode']==8" type="text" ng-model="ret['paymentmodeother']"  placeholder="其他医疗费用支付方式" style="width:70%">
     </td>
 </tr>
 <tr>
@@ -205,7 +202,7 @@
     </td>
     <td colspan="850" class="border">
         <sapn app-checkbox ng-model="ret['allergiesHistory']" codetype="34" uncheckval="1" default="1"></sapn>
-        <input type="text" ng-model="ret['allergiesother']">
+        <input  ng-if="ret['allergiesHistory']['5']==true" type="text" ng-model="ret['allergiesother']"  placeholder="其他药物过敏史" class="textinput" style="width:50%">
         <!--{{ret['allergiesHistory']|json}}-->
     </td>
 </tr>
@@ -260,13 +257,13 @@
         <span class="pre">父  亲</span>
     </td>
     <td colspan="225" class="border">
-
+        <app-dropcheckbox ng-model="ret['fatherHistory']" codetype="148" uncheckval="1" default="1"></app-dropcheckbox>
     </td>
     <td colspan="200" class="head border center">
         <span class="pre">母  亲</span>
     </td>
     <td colspan="225" class="border">
-
+        <app-dropcheckbox ng-model="ret['matherHistory']" codetype="148" uncheckval="1" default="1"></app-dropcheckbox>
     </td>
 </tr>
 <tr>
@@ -274,18 +271,18 @@
         <span class="pre">兄弟姐妹</span>
     </td>
     <td colspan="225" class="border">
-
+        <app-dropcheckbox ng-model="ret['brotherHistory']" codetype="148" uncheckval="1" default="1"></app-dropcheckbox>
     </td>
     <td colspan="200" class="head border center">
         <span class="pre">子  女</span>
     </td>
     <td colspan="225" class="border">
-
+        <app-dropcheckbox ng-model="ret['familyHistory']" codetype="148" uncheckval="1" default="1"></app-dropcheckbox>
     </td>
 </tr>
 <tr>
     <td colspan="850" class="border">
-        <sapn app-checkbox ng-model="ret['家族史']" codetype="148" uncheckval="1" default="1"></sapn>
+        <sapn app-listshow  codetype="148" ></sapn>
     </td>
 </tr>
 <tr>
@@ -294,7 +291,7 @@
     </td>
     <td colspan="850" class="border">
         <sapn app-radio ng-model="ret['geneticHistory']" codetype="124" default="1"></sapn>
-        疾病名称：<input type="text" ng-if="ret['geneticHistory']=='2'" ng-model="ret['geneticHistoryOther']">
+        <span  ng-if="ret['geneticHistory']=='2'">疾病名称：<input type="text" ng-model="ret['geneticHistoryOther']" placeholder="疾病名称" class="textinput"></span>
     </td>
 </tr>
 <tr>
@@ -303,7 +300,7 @@
     </td>
     <td colspan="850" class="border">
         <sapn app-checkbox ng-model="ret['disabilityStatus']" codetype="6" uncheckval="1" default="1"></sapn>
-        <input type="text" ng-model="ret['disabilityStatusOther']">
+        <input type="text"  ng-if="ret['disabilityStatus']['8']==true" ng-model="ret['disabilityStatusOther']"class="textinput">
     </td>
 
 </tr>

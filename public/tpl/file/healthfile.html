@@ -1,26 +1,33 @@
 <div ng-controller="HealthFileCtrl" style="width:100%;height:100%;position: relative">
     <div class="lefttree">
         <span style="" class="title">行政区划</span>
-        <treecontrol class="tree-classic "
-                     tree-model="$parent.district"
-                     options="treeOptions"
-                     on-selection="showSelected(node)"
-                     selected-node="node1">
-            {{node.data.name}}
-        </treecontrol>
+        <app-tree tree-model="$parent.district"
+                  selected-node="node1">
+
+        </app-tree>
     </div>
     <div class="rightContent selectable">
         <span class="title">
-            <button class="btn btn-sm btn-info" ng-click="openwindow(btn)" style="margin-right:5px;"
+            <button class="btn btn-sm btn-info" ng-click="dialog.openwindow(btn)" style="margin-right:5px;"
                     ng-repeat="btn in querycfg.buttons" ng-bind-html="btn.btn">
             </button>
             <select ui-select2 ng-model="querytype" style="width:150px;height: 30px;" class="form-control">
                 <option ng-repeat="option in querytypeoptions" value="{{option.value}}">{{option.text}}</option>
             </select>
             <input type="text" ng-model="queryvalue" class="form-control" style="width:150px;height: 30px;">
-            <button class="btn btn-sm btn-info" ng-click="singlequery()">查询</button> <button
-                class="btn btn-sm btn-info" ng-click="complexWindow()">高级查询
-        </button></span>
+
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-sm btn-info"  ng-click="singlequery()">查询</button>
+                <button type="button" class="btn btn-sm btn-info dropdown-toggle">
+                    <span class="caret"></span>
+                    <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="javascript:void(0)" ng-click="complexWindow()">高级查询</a></li>
+                </ul>
+            </div>
+
+        </span>
 
         <div class="gridStyle" ng-grid="gridOptions"></div>
         <pagination style="position: absolute;left:5px;bottom: 0px;" boundary-links="true"

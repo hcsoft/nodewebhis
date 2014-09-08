@@ -1,5 +1,5 @@
 <span class="codelist" ng-init="modelval = modelval?modelval:{}" ng-repeat=" item in codelist">
-    <input type="checkbox" ng-model="modelval[item.number]" id="{{codename|idcode}}__{{$index}}">
+    <input type="checkbox" ng-model="$parent.modelval[item.number]" id="{{codename|idcode}}__{{$index}}">
     <label style="" for="{{codename|idcode}}__{{$index}}"><span style="font-weight: bold">{{item.number}}</span>{{item.text}}</label>
 </span>
 

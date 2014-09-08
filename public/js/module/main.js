@@ -200,3 +200,51 @@ var taskCtrl = function ($scope, $modalInstance, curbtn) {
     };
 
 };
+
+
+var ModalInstanceCtrl = function ($scope, $modalInstance, curbtn) {
+    $scope.curbtn = curbtn;
+    $scope.ret = {
+
+    };
+    $scope.getTextStyle = function(item,window){
+        if(item && item.textstyle){
+            return item.textstyle +";display:inline-block;text-align:right;";
+        }else{
+            if(window.textwidth){
+                return "width:"+window.textwidth+"px;display:inline-block;text-align:right;";
+            }else{
+                return "width:100px;display:inline-block;text-align:right;";
+            }
+        }
+    };
+    $scope.initselect = function(item,obj){
+        var type = item.coltype;
+        if(type=='multilineradio' || type=='multiradio'){
+            if(!$scope.ret[item.code])
+                $scope.ret[item.code]={};
+            if(item.defaultval == ""+obj.value){
+                if(typeof $scope.ret[item.code][obj.value] === 'undefined')
+                    $scope.ret[item.code][obj.value] = true;
+            }
+        }else if(type=='lineradio' || type=='radio'){
+            if(!$scope.ret[item.code])
+                $scope.ret[item.code] = item.defaultval;
+        }
+    };
+    $scope.getWindowWidth = function(width){
+        if(width){
+            return width+"px";
+        }else{
+            return "100%";
+        }
+    }
+    $scope.ok = function () {
+        $modalInstance.close($scope.ret);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+
+};

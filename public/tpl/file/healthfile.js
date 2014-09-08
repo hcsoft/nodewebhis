@@ -1,4 +1,6 @@
-var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$timeout,$element) {
+var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$timeout,$element,dialog) {
+    console.log(dialog);
+    $scope.dialog = dialog;
     $scope.queryname = "居民健康档案";
     $scope.querytype = null;
     $scope.querytypeoptions = [];
@@ -31,10 +33,7 @@ var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$t
         $scope.querytype = lastcode;
         console.log(lastcode);
     });
-    $scope.clickbutton = function(btncfg){
-        alert(btncfg);
-    }
-
+    //列表配置
     $scope.colDef = [];
     $scope.gridOptions = {
         data: 'querydata.data',
@@ -52,6 +51,7 @@ var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$t
             $scope.querydata = data;
         });
     };
+    //查询
     $scope.issingle = true;
     $scope.singlequery = function () {
         $scope.issingle = true;
@@ -89,7 +89,7 @@ var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$t
         }
     }, true);
 
-
+    //行政区划树
     $scope.treeOptions = {
         nodeChildren: "child",
         dirSelectable: true  };
@@ -122,127 +122,6 @@ var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$t
         }
         return ret;
     };
-    //处理按钮
-    $scope.curbtn = {};
-    $scope.openwindow = function (btn) {
-        $scope.curbtn = btn;
-        var modalInstance = $modal.open({
-//            templateUrl: 'myModalContent.html',
-            templateUrl:btn.tplurl,
-            controller: ModalInstanceCtrl,
-            size: btn.window.size,
-            modal: false,
-            backdrop:'static',
-            resolve: {
-                curbtn: function () {
-                    return $scope.curbtn;
-                }
-            }
-        });
-        modalInstance.result.then(function (ret) {
-            $scope.windowret = ret;
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
-    $scope.opened = {};
-    $scope.open = function($event,code) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        $scope.opened[code] = true;
-    };
-
-    $scope.dateOptions = {
-        formatYear: 'yy',
-        startingDay: 1
-    };
-
-    $scope.ret = {};
-    $scope.$watch("ret", function (newvalue, oldvalue) {
-        console.log(newvalue, oldvalue);
-        $.each(newvalue, function (i, v) {
-            console.log(i, v);
-        });
-    });
-    $scope.teststr = '测试!!!';
 
 };
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, curbtn) {
-    $scope.curbtn = curbtn;
-    $scope.ret = {
-
-    };
-    $scope.getTextStyle = function(item,window){
-        if(item && item.textstyle){
-            return item.textstyle +";display:inline-block;text-align:right;";
-        }else{
-            if(window.textwidth){
-                return "width:"+window.textwidth+"px;display:inline-block;text-align:right;";
-            }else{
-                return "width:100px;display:inline-block;text-align:right;";
-            }
-        }
-    };
-    $scope.initselect = function(item,obj){
-        var type = item.coltype;
-        if(type=='multilineradio' || type=='multiradio'){
-            if(!$scope.ret[item.code])
-                $scope.ret[item.code]={};
-            if(item.defaultval == ""+obj.value){
-                if(typeof $scope.ret[item.code][obj.value] === 'undefined')
-                    $scope.ret[item.code][obj.value] = true;
-            }
-        }else if(type=='lineradio' || type=='radio'){
-            if(!$scope.ret[item.code])
-             $scope.ret[item.code] = item.defaultval;
-        }
-    };
-    $scope.getWindowWidth = function(width){
-        if(width){
-            return width+"px";
-        }else{
-            return "100%";
-        }
-    }
-    $scope.ok = function () {
-        $modalInstance.close($scope.ret);
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-//    $scope.today = function() {
-//        $scope.dt = new Date();
-//    };
-//    $scope.today();
-//
-//    $scope.clear = function () {
-//        $scope.dt = null;
-//    };
-//
-//    // Disable weekend selection
-//    $scope.disabled = function(date, mode) {
-//        return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-//    };
-//
-//    $scope.toggleMin = function() {
-//        $scope.minDate = $scope.minDate ? null : new Date();
-//    };
-//    $scope.toggleMin();
-    $scope.opened = {};
-    $scope.open = function($event,code) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        $scope.opened[code] = true;
-    };
-
-    $scope.dateOptions = {
-        formatYear: 'yy',
-        startingDay: 1
-    };
-
-//    $scope.initDate = new Date('2016-15-20');
-//    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-//    $scope.format = $scope.formats[0];
-};

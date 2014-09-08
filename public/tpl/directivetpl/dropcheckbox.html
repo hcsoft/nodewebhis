@@ -1,0 +1,15 @@
+<span class="dropdown" on-toggle="toggled(open)">
+    <a class="dropdown-toggle">
+        <span ng-repeat=" item in codelist" ng-if="$parent.modelval[item.number] == true">
+            <span style="font-weight: bold">{{item.number}}</span>{{item.text}}
+        </span>
+    </a>
+    <ul class="dropdown-menu" style="padding-left:10px;">
+        <li  ng-init="modelval = modelval?modelval:{}" ng-repeat=" item in codelist">
+            <span class="codelist">
+                <input type="checkbox" ng-model="$parent.modelval[item.number]" id="{{codename|idcode}}__{{$index}}">
+                <label style=""  for="{{codename|idcode}}__{{$index}}"><span style="font-weight: bold">{{item.number}}</span>{{item.text}}</label>
+            </span>
+        </li>
+      </ul>
+</span>
