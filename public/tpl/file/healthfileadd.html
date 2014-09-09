@@ -46,7 +46,7 @@
         <span class="pre">乡镇（街道）名称：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['townname']" class="textinput"/>
+        <app-orgselect ng-model="ret['townname']" level="4" selectable="isedit" disable="curbtn.btntype =='edit'"></app-orgselect>
     </td>
 </tr>
 <tr>
@@ -54,7 +54,7 @@
         <span class="pre">村（居）委会名称：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['villagename']" class="textinput"/>
+        <app-orgselect ng-model="ret['villagename']" level="5" parentid="ret['townname']" disable="curbtn.btntype =='edit'" loaddefault="ret" defaultname="file_base" cover="true"></app-orgselect>
     </td>
 </tr>
 <tr>

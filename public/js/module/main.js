@@ -20,13 +20,14 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal 
                 method: 'POST',
                 url: '/main/init'
             }).success(function (data, status, headers, config) {
-                console.log(data);
-                $scope.menus =data.data;
-                $scope.district = [data.district];
-                $scope.codelist = data.codelist;
-                cache.district = [data.district];
+//                console.log(data);
+                $scope.menus =data.menus;
+                $scope.district = data.district;
+//                $scope.codelist = data.codelist;
+                cache.data = data;
+                cache.district = data.district;
                 cache.codelist = data.codelist;
-                console.log(cache);
+//                console.log(cache);
             });
         }
     });
@@ -60,7 +61,7 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal 
     };
     $scope.panes = [];
     $scope.clickmenu = function (menu) {
-        console.log(menu);
+//        console.log(menu);
         for (var i = 0; i < $scope.panes.length; i++) {
             $scope.panes[i].active = false;
             if (menu.name == $scope.panes[i].name) {
@@ -89,7 +90,7 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal 
         });
     };
     $scope.closetab = function (index) {
-        console.log(index);
+//        console.log(index);
         $scope.panes.splice(index, 1);
     };
     $scope.closemoduletab = function (parentindex,index) {
@@ -129,7 +130,7 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal 
     };
     $scope.taskDisplay = "none";
     $scope.switchTask = function(){
-        console.log("switchTask");
+//        console.log("switchTask");
         if($scope.taskDisplay == "none"){
             $scope.taskDisplay = "block";
         }else{
@@ -204,6 +205,7 @@ var taskCtrl = function ($scope, $modalInstance, curbtn) {
 
 var ModalInstanceCtrl = function ($scope, $modalInstance, curbtn) {
     $scope.curbtn = curbtn;
+
     $scope.ret = {
 
     };

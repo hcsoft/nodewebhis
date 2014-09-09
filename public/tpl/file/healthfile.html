@@ -28,13 +28,7 @@
             </div>
 
         </span>
-
-        <div class="gridStyle" ng-grid="gridOptions"></div>
-        <pagination style="position: absolute;left:5px;bottom: 0px;" boundary-links="true"
-                    total-items="querydata.page.rowcount" ng-model="querydata.page.pagenum"
-                    num-pages="querydata.page.pagecount" items-per-page="querydata.page.pagesize" max-size="10"
-                    class="pagination-sm" previous-text="<" next-text=">" first-text="<<"
-                    last-text=">>"></pagination>
+        <app-grid querydata="querydata" queryname="queryname" querycfg="querycfg" querytypeoptions="querytypeoptions"></app-grid>
     </div>
     <div class="newdialog modal-dialog"
          style="display: {{complexWindowDisplay}};width:500px;height:300px;z-index:999;top:100px;">

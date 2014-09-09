@@ -9,7 +9,6 @@ var session = require('express-session');
 var routes = require('./routes/login');
 var main = require('./routes/main');
 var query = require('./routes/query');
-
 var app = express();
 
 // view engine setup
@@ -66,6 +65,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
+        console.error(err.stack);
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -76,12 +76,12 @@ if (app.get('env') === 'development') {
 
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
         error: {}
     });
 });
-
 
 module.exports = app;

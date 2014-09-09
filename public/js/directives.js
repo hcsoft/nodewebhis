@@ -32,7 +32,7 @@ angular.module('myApp.directives', []).
                 $scope.codelist = cache.codelist[$scope.codetype].list;
                 //处理默认值
                 if ($scope.default) {
-                    $scope.modelval =$scope.default;
+                    $scope.modelval = $scope.default;
                 }
             },
             templateUrl: 'tpl/directivetpl/radio.html'
@@ -100,14 +100,14 @@ angular.module('myApp.directives', []).
                 localModel: "=ngModel"
             },
             controller: function ($scope) {
-                $scope.dateOptions  = {
+                $scope.dateOptions = {
                     formatYear: 'yyyy',
                     startingDay: 1,
-                    'show-weeks':false,
-                    'format-day-title':'yyyy年MMMM'
+                    'show-weeks': false,
+                    'format-day-title': 'yyyy年MMMM'
                 };
-                $scope.opened =false;
-                $scope.open = function($event) {
+                $scope.opened = false;
+                $scope.open = function ($event) {
                     $event.preventDefault();
                     $event.stopPropagation();
 
@@ -176,10 +176,14 @@ angular.module('myApp.directives', []).
         return {
             require: 'ngModel',
             scope: {
-                treemodel:"=treeModel",
-                selected:"=selectedNode"
+                treemodel: "=treeModel",
+                selected: "=selectedNode"
             },
             controller: function ($scope, cache) {
+                $scope.treedata = [];
+                $.each($scope.treemodel, function (i, v) {
+                    $scope.treedata.push(v);
+                });
                 $scope.treeOptions = {
                     nodeChildren: "child",
                     dirSelectable: true  };
@@ -194,12 +198,12 @@ angular.module('myApp.directives', []).
                 };
                 $scope.treeclick = function (data, event) {
                     data.hide = !data.hide;
-                }
+                };
                 $scope.treeselected = null;
                 $scope.treeliclick = function (data) {
                     $scope.treeselected = data;
                     return false;
-                }
+                };
                 $scope.getclass = function (data) {
                     var ret = '';
                     if (data.isleaf) {
@@ -214,5 +218,172 @@ angular.module('myApp.directives', []).
                 };
             },
             templateUrl: 'tpl/directivetpl/tree.html'
+        };
+    }]).
+    directive('appOrgselect', [function () {
+        return {
+            scope: {
+                model: "=?ngModel",
+                level: "@?",
+                parentid: '=?',
+                lastselect: "=?",
+                disable: "=?"
+            },
+            controller: function ($scope, cache) {
+                $scope.options = [];
+
+                var rootid = '00000000000000';
+                $.each(cache.district, function (k, v) {
+                    rootid = k;
+                    return;
+                });
+                var lens = [12, 9, 6, 4];
+                for (var i = lens.length - 1; i > -1; i--) {
+                    if (lens[i] < rootid.length) {
+                        lens.pop();
+                    }
+                }
+                getopts({child: cache.district});
+                function getopts(src, space) {
+                    $.each(src.child, function (i, v) {
+                        if ($scope.level == v.data.level) {
+                            if ($scope.filter) {
+                                if (v.data.parentid == $scope.filter)
+                                    $scope.options.push(v);
+                            } else {
+                                $scope.options.push(v);
+                            }
+                            v.parent = getdistrict(v.data.parentid, {child: cache.district});
+                        } else {
+                            getopts(v);
+                        }
+                    });
+                }
+
+                function getdistrict(id, district) {
+                    $.each(district, function (key, val) {
+                        if (key != id) {
+                            if (id.substr(0, key.length) == key) {
+                                return  getdistrict(id, val);
+                            }
+                        } else {
+                            return  val.data;
+                        }
+                    });
+                }
+
+                $scope.$watch("parentid", function (newvalue, oldvalue) {
+                    $scope.filteredflag = false;
+                });
+                $scope.filterparent = function (value, index) {
+                    var ret = false;
+                    if (!$scope.parentid) {
+                        ret = true;
+                    } else {
+                        ret = value.data.parentid == $scope.parentid;
+                    }
+                    if (!$scope.filteredflag) {
+                        if ($scope.parentid) {
+                            if (value.data.parentid == $scope.parentid) {
+                                $scope.model = value.data.id;
+                                $scope.filteredflag = true;
+                            }
+                        } else {
+                            $scope.model = value.data.id;
+                            $scope.filteredflag = true;
+                        }
+                    }
+                    return ret;
+                };
+                $scope.isdisabled = function () {
+                    if ($scope.disable) {
+                        return "disable='disable'";
+                    } else {
+                        return "";
+                    }
+                }
+
+            },
+            templateUrl: 'tpl/directivetpl/orgselect.html'
+        };
+    }]).
+    directive('appGrid', [function () {
+        return {
+            scope: {
+                queryname: '=?',
+                querydata: '=?',
+                querycfg: '=?',
+                querytype: '=?',
+                querytypeoptions: '=?'
+            },
+            controller: function ($scope, cache, $http) {
+                $scope.querytype = null;
+                $scope.querytypeoptions = [];
+                //列表配置
+                $scope.colDef = [];
+                /* 获取配置 */
+                $http({
+                    method: 'POST',
+                    url: '/query/init',
+                    data: {queryname: $scope.queryname}
+                }).success(function (data, status, headers, config) {
+                    $scope.querycfg = data;
+                    var lastcode = null;
+                    var columnDefs = [
+                        {field: 'rownum', displayName: '序号', width: "40px", cellClass: "center"}
+                    ];
+                    for (var i = 0; i < $scope.querycfg.cols.length; i++) {
+                        var item = $scope.querycfg.cols[i];
+                        if (item.isquery) {
+                            $scope.querytypeoptions.push({value: item.code, text: item.name});
+                            lastcode = item.code;
+                        }
+                        if (item.display) {
+                            var cfg = eval("(" + item.cfg + ")");
+                            cfg.field = item.code;
+                            cfg.displayName = item.name;
+                            columnDefs.push(cfg);
+                        }
+                    }
+                    $scope.colDef = columnDefs;
+                    $scope.querytype = lastcode;
+                });
+
+                $scope.gridOptions = {
+                    data: 'querydata.data',
+                    columnDefs: "colDef"
+                };
+                $scope.querydata = {data: [], page: {pagenum: 1, pagesize: 15, rowcount: 0, pagecount: 0}}
+
+            },
+            templateUrl: 'tpl/directivetpl/grid.html'
+        };
+    }]).
+    directive('loaddefault', ['cache', '$filter', '$http', function (cache, $filter, $http) {
+        return {
+            link: function ($scope, element, attrs, modelctrl) {
+                $scope.$watch(attrs['ngModel'], function (newval, oldval) {
+                    if (newval) {
+                        $http({
+                            method: 'POST',
+                            url: '/main/getdefault',
+                            data: {district: newval, tablename: attrs['defaultname']}
+                        }).success(function (retdata, status, headers, config) {
+                            var data = retdata.data;
+                            $.each(data, function (key, val) {
+                                data[key] = eval(val);
+                            });
+                            var exestr = "$scope." + attrs['loaddefault'] + " = $.extend (data,$scope." + attrs['loaddefault'] + ")";
+                            eval(" console.log(data)");
+                            if (attrs['cover'] == 'true') {
+                                eval(" $.extend ($scope." + attrs['loaddefault'] + ",data)");
+                            } else {
+                                eval(" $.extend (data,$scope." + attrs['loaddefault'] + ")");
+                                eval("$scope." + attrs['loaddefault'] + " = data ");
+                            }
+                        });
+                    }
+                });
+            }
         };
     }]);

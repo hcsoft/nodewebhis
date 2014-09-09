@@ -8,7 +8,6 @@ router.get('/', function (req, res) {
 });
 //  /query/init
 router.post('/init', function (req, res) {
-    console.log("init..........")
     var queryname = req.param("queryname");
     var user = cache.users[req.session.user_id];
     var query = cache.getquery(queryname);
@@ -17,11 +16,8 @@ router.post('/init', function (req, res) {
 
 
 router.post('/query', function (req, res) {
-    console.log("query..........")
     var queryname = req.param("queryname");
     var params = eval(req.param("params"));
-    console.log(params);
-    console.log(params.fileno);
     var page = {
         pagesize : params.page && params.page.pagesize?params.page.pagesize:15,
         pagenum:params.page && params.page.pagenum?params.page.pagenum:1
@@ -45,7 +41,6 @@ router.post('/query', function (req, res) {
         }
     }
     var countsql = " select count(*) num from "+query.querysql.sql+" where "+where;
-    console.log(countsql);
     var ret = tmpdb.querySync(countsql,paramlist);
     page.rowcount = ret[0].num;
     page.rowcount = page.rowcount?page.rowcount:0;
@@ -58,7 +53,6 @@ router.post('/query', function (req, res) {
     }
     var sql = select + " from "+query.querysql.sql+" where "+where + " )tb WHERE   tb.rownum > "+page.pagesize*(page.pagenum-1)+" ORDER BY tb.rownum ASC  ";
     //获取查询配置
-    console.log(sql);
     var data = tmpdb.querySync(sql,paramlist);
     res.json({"success":true,data:data,page:page});
     tmpdb.close(function(err){});

@@ -3,41 +3,58 @@
 /* Services */
 
 
-angular.module('myApp.services', []).factory('loginService', function() {
+angular.module('myApp.services', []).factory('loginService', function () {
     var loginService = {};
-    loginService.setLogined = function(flag) {
-        loginService.logined=flag;
+    loginService.setLogined = function (flag) {
+        loginService.logined = flag;
     };
     return loginService;
-}).factory('cache', function() {
+}).factory('cache', function () {
     var cache = {};
-	return cache;
-}).factory('httpRequestInterceptor', function($q) {
+    //加载默认值
+    cache.loadDefault = function (disid, tablename) {
+        var ret = null;
+        if (cache.data && cache.data.defaults) {
+            $.each(cache.data.defaults, function (key, val) {
+                if (disid && disid.substr(0, key.length) == key) {
+                    ret = {};
+                    $.extend(ret,val[tablename]);
+                    return false;
+                }
+            })
+        }
+        return ret;
+    };
+    return cache;
+}).factory('httpRequestInterceptor', function ($q) {
     return {
-        'response': function(response) {
+        'response': function (response) {
             return response;
         },
-        'responseError': function(response) {
+        'responseError': function (response) {
             //TODO 这里增加统一的异常处理
             //TODO 登录失败的处理
             return response;
         }
     };
-}).factory('dialog', ['$modal',"$log",function($modal,$log) {
-    var dialog={
-        btn:null,
-        result : null,
-        openwindow : function (btn) {
+}).factory('dialog', ['$modal', "$log", function ($modal, $log) {
+    var dialog = {
+        btn: null,
+        result: null,
+        openwindow: function (btn, isedit) {
             this.btn = btn;
             var modalInstance = $modal.open({
-                templateUrl:btn.tplurl,
+                templateUrl: btn.tplurl,
                 controller: ModalInstanceCtrl,
                 size: btn.window.size,
                 modal: false,
-                backdrop:'static',
+                backdrop: 'static',
                 resolve: {
                     curbtn: function () {
                         return btn;
+                    },
+                    isedit: function () {
+                        return isedit;
                     }
                 }
             });
