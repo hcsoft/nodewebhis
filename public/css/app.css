@@ -748,12 +748,19 @@ span.codelist > input[type='radio'],span.codelist > input[type='checkbox'] {
 span.codelist > input:checked + label {
     color:#fff;
     background-color: #56899c;
+    /*background-color: transparent;*/
+    /*background-color: #eef2ff;*/
 }
 span.codelist > input:checked + label:before {
-    /*content: "√ ";*/
-    color:#ffffff;
-    display: 'inline-block';
-    width:20px;
+    content: "√ ";
+    display: inline;
+    position: absolute;
+    left: -8px;
+    font-weight: bold;
+    font-size: 25px;
+    color: #ff6167;
+    top: 4px;
+    font-family: "仿宋";
 }
 
 span.codelist > input:checked + label >.index {
@@ -764,6 +771,7 @@ span.codelist > label {
     font-weight: normal;
     letter-spacing: 2px;
     margin:0;
+    position: relative;
 }
 span.codelist > label:before {
     content: "";
