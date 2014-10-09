@@ -145,9 +145,9 @@ var MainCtrl = function ($scope, $http, $location,$cookies, loginService,$modal 
 
 var taskCtrl = function ($scope, $modalInstance, curbtn) {
     $scope.curbtn = curbtn;
-    $scope.ret = {
-
-    };
+//    $scope.ret = {
+//
+//    };
     $scope.getTextStyle = function(item,window){
         if(item && item.textstyle){
             return item.textstyle +";display:inline-block;text-align:right;";
@@ -203,7 +203,7 @@ var taskCtrl = function ($scope, $modalInstance, curbtn) {
 };
 
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, curbtn) {
+var ModalInstanceCtrl = function ($scope, $modalInstance,$window, curbtn) {
     $scope.curbtn = curbtn;
 
     $scope.ret = {
@@ -241,12 +241,18 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, curbtn) {
             return "100%";
         }
     }
-    $scope.ok = function () {
+    $scope.save = function () {
+        console.log($window.submitform)
+        console.log($("#submitform").$valid);
         $modalInstance.close($scope.ret);
     };
 
-    $scope.cancel = function () {
+    $scope.close = function () {
         $modalInstance.dismiss('cancel');
+    };
+
+    $scope.reset = function () {
+//        $modalInstance.dismiss('cancel');
     };
 
 };

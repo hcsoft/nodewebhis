@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pool = require('../pool.js');
 var cache = require('../cache.js')();
+var moment = require('moment');
 /* GET users listing. */
 router.get('/', function (req, res) {
     res.send('respond with a resource');
@@ -37,9 +38,16 @@ router.post('/query', function (req, res) {
             select = select + ","+item.col +" "+item.code;
         if(item.isquery && params[item.code]){
             where = where + " and "+ item.col +" =  ? ";
-            paramlist.push(params[item.code]);
+            if(util.isDate(params[item.code])){
+                paramlist.push(moment(params[item.code]).format("YYYY-MM-DD HH:mm:ss.SSS"));
+            }else{
+                paramlist.push(params[item.code]);
+            }
         }
     }
+    where = where + " and builddate =  ? ";
+    console.log(moment('2014-01-01T16:00:00.000Z').format("YYYY-MM-DD HH:mm:ss") );
+    paramlist.push(moment('2014-01-01T16:00:00.000Z').format("YYYY-MM-DD HH:mm:ss")  );
     var countsql = " select count(*) num from "+query.querysql.sql+" where "+where;
     var ret = tmpdb.querySync(countsql,paramlist);
     page.rowcount = ret[0].num;

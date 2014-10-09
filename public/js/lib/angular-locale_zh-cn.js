@@ -93,7 +93,7 @@ $provide.value("$locale", {
       }
     ]
   },
-  "id": "zh-cn",
+  "id": "zh-CN",
   "pluralCat": function (n) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -96,21 +96,23 @@ angular.module('myApp.directives', []).
     directive('appDate', [function () {
         return {
             scope: {
-                codename: '@ngModel',
-                localModel: "=ngModel"
+                localModel: "=ngModel",
+                placeholder:'@?',
+                required:'@?'
             },
             controller: function ($scope) {
                 $scope.dateOptions = {
                     formatYear: 'yyyy',
+
                     startingDay: 1,
-                    'show-weeks': false,
-                    'format-day-title': 'yyyy年MMMM'
+                    'showWeeks': false,
+                    'format-day-title': 'yyyy年MMMM',
+                    'max-mode':'day'
                 };
                 $scope.opened = false;
                 $scope.open = function ($event) {
                     $event.preventDefault();
                     $event.stopPropagation();
-
                     $scope.opened = true;
                 };
             },
@@ -359,9 +361,9 @@ angular.module('myApp.directives', []).
             templateUrl: 'tpl/directivetpl/grid.html'
         };
     }]).
-    directive('loaddefault', ['cache', '$filter', '$http', function (cache, $filter, $http) {
+    directive('loaddefault', ['cache', '$filter', '$http','$parse', function (cache, $filter, $http,$parse) {
         return {
-            link: function ($scope, element, attrs, modelctrl) {
+            link: function ($scope, element, attrs) {
                 $scope.$watch(attrs['ngModel'], function (newval, oldval) {
                     if (newval) {
                         $http({
@@ -375,15 +377,120 @@ angular.module('myApp.directives', []).
                             });
                             var exestr = "$scope." + attrs['loaddefault'] + " = $.extend (data,$scope." + attrs['loaddefault'] + ")";
                             eval(" console.log(data)");
+                            var defaultdata = $parse(attrs['loaddefault']);
+                            console.log(defaultdata);
                             if (attrs['cover'] == 'true') {
-                                eval(" $.extend ($scope." + attrs['loaddefault'] + ",data)");
+//                                $.extend (defaultdata,data);
+                                eval("$.extend ($scope." + attrs['loaddefault'] + ",data);");
                             } else {
-                                eval(" $.extend (data,$scope." + attrs['loaddefault'] + ")");
-                                eval("$scope." + attrs['loaddefault'] + " = data ");
+//                                $.extend (data,defaultdata);
+//                                defaultdata = data;
+                                eval("$.extend (data,$scope." + attrs['loaddefault'] + ");");
+                                eval("$scope." + attrs['loaddefault'] + " = data ;");
                             }
                         });
                     }
                 });
             }
+        };
+    }]).
+    directive('appDiseaselist', [function () {
+        return {
+            scope: {
+                style:"@?",
+                class:"@?",
+                modelval: "=ngModel",
+                codetype: '@?',
+                otherval:'@?',
+                exclude:'@?',
+                otherplaceholder:'@?',
+                placeholder:'@?',
+                addtext:"@?"
+            },
+            controller: function ($scope, cache) {
+                //处理列表值
+                $scope.codelist = cache.codelist[$scope.codetype].list;
+                if($scope.exclude){
+                    var idxs = $scope.exclude.split(",");
+                    for(var i = idxs.length-1 ; i >-1;i--){
+                        $scope.codelist.splice(i,1);
+                    }
+                }
+                $scope.add = function(){
+                    if(!$scope.modelval){
+                        $scope.modelval = [];
+                    }
+                    $scope.modelval.push({code:13});
+                };
+                $scope.addtlb = function(){
+                    if(!$scope.modelval){
+                        $scope.modelval = [];
+                    }
+                    $scope.modelval.push({code:3});
+                };
+                $scope.addhyp = function(){
+                    if(!$scope.modelval){
+                        $scope.modelval = [];
+                    }
+                    $scope.modelval.push({code:2});
+                };
+                $scope.del = function(idx){
+                    $scope.modelval.splice(idx,1);
+                };
+            },
+            link: function ($scope, element, attrs) {
+
+            },
+            templateUrl: 'tpl/directivetpl/diseaselist.html'
+        };
+    }]).
+    directive('appHislist', [function () {
+        return {
+            scope: {
+                style:"@?",
+                class:"@?",
+                modelval: "=ngModel",
+                codetype: '@?',
+                otherval:'@?',
+                exclude:'@?',
+                otherplaceholder:'@?',
+                placeholder:'@?',
+                addtext:"@?"
+            },
+            controller: function ($scope, cache) {
+                //处理列表值
+                $scope.codelist = cache.codelist[$scope.codetype].list;
+                if($scope.exclude){
+                    var idxs = $scope.exclude.split(",");
+                    for(var i = idxs.length-1 ; i >-1;i--){
+                        $scope.codelist.splice(i,1);
+                    }
+                }
+                $scope.add = function(){
+                    if(!$scope.modelval){
+                        $scope.modelval = [];
+                    }
+                    $scope.modelval.push({code:13});
+                };
+                $scope.addtlb = function(){
+                    if(!$scope.modelval){
+                        $scope.modelval = [];
+                    }
+                    $scope.modelval.push({code:3});
+                };
+                $scope.addhyp = function(){
+                    if(!$scope.modelval){
+                        $scope.modelval = [];
+                    }
+                    $scope.modelval.push({code:2});
+                };
+                $scope.del = function(idx){
+                    $scope.modelval.splice(idx,1);
+                };
+            },
+            link: function ($scope, element, attrs) {
+
+            },
+            templateUrl: 'tpl/directivetpl/hislist.html'
         };
     }]);

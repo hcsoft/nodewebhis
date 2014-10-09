@@ -1,0 +1,11 @@
+<span style="width:100%;{{style}}" class="{{class}}" ng-init="modelval = (modelval? modelval:[])">
+    <button class="btn btn-primary btn-sm" ng-click="add()">{{addtext}}</button>
+    <br>
+    <ul style="width:100%;list-style: none;line-height: 30px;">
+        <li ng-repeat=" row in modelval">
+            <input ng-model='row.name' style="height:25px;line-height: 25px;vertical-align: baseline;" ng-hide="row.code!= $parent.otherval" placeholder="{{placeholder}}">
+            <app-date ng-model="row.checkdate" placeholder="确诊日期"></app-date>
+            <button class="btn btn-primary btn-sm" ng-click="del($index)">删除</button>
+        </li>
+    </ul>
+</span>

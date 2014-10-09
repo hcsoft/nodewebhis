@@ -1,4 +1,4 @@
-var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$timeout,$element,dialog) {
+var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$timeout,$element,$locale,dialog) {
 //    console.log(dialog);
     $scope.dialog = dialog;
     $scope.queryname = '居民健康档案';
@@ -50,6 +50,5 @@ var HealthFileCtrl = function ($scope, $http, $cookies, $location,$modal,$log,$t
             }
         }
     }, true);
-
 };
 

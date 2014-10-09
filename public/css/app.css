@@ -920,7 +920,9 @@ treecontrol>ul>li{
 /* window css */
 
 /* 日历 css*/
-
+app-date{
+    display: inline-block;
+}
 app-date table{
      border-spacing: 0;
  }
@@ -928,3 +930,10 @@ app-date table td{
     padding: 0;
 }
 /* 日历 css*/
+.validform input.ng-invalid {
+    background-color: #FA787E;
+}
+
+/*.validform input.ng-valid {*/
+    /*background-color: #78FA89;*/
+/*}*/

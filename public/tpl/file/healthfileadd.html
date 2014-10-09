@@ -3,6 +3,11 @@
 </div>
 
 <div class="modal-body" style="max-height: {{curbtn.window.height}}px;overflow-y:auto;border-collapse: collapse;">
+<form name="validform" class="validform" novalidate>
+{{  ret['builddate']  }}
+{{Date.valueOf('2014-07-13T20:44:59.000Z')}}
+    {{  ret['builddate'] | type }}
+    {{  ret['builddate'] | date:'yyyy-MM-dd HH:mm:ss' }}
 <table class="examtable">
 <tr>
     <td colspan="1000" class="title center">
@@ -14,7 +19,7 @@
         <span class="pre">姓 名：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['name']" class="textinput"/>
+        <input required="true" title="姓名"  minlength="2" maxlength="6"  ng-model="ret.name"  class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -22,7 +27,7 @@
         <span class="pre"> 现 住 址：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['address']" class="textinput"/>
+        <input  ng-model="ret['address']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -30,7 +35,7 @@
         <span class="pre">户籍地址：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['residenceaddress']" class="textinput"/>
+        <input  ng-model="ret['residenceaddress']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -38,7 +43,7 @@
         <span class="pre">联系电话：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['tel']" class="textinput"/>
+        <input  ng-model="ret['tel']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -46,7 +51,8 @@
         <span class="pre">乡镇（街道）名称：</span>
     </td>
     <td colspan="700">
-        <app-orgselect ng-model="ret['townname']" level="4" selectable="isedit" disable="curbtn.btntype =='edit'"></app-orgselect>
+        <app-orgselect ng-model="ret['townname']" level="4" selectable="isedit"
+                       disable="curbtn.btntype =='edit'"></app-orgselect>
     </td>
 </tr>
 <tr>
@@ -54,7 +60,9 @@
         <span class="pre">村（居）委会名称：</span>
     </td>
     <td colspan="700">
-        <app-orgselect ng-model="ret['villagename']" level="5" parentid="ret['townname']" disable="curbtn.btntype =='edit'" loaddefault="ret" defaultname="file_base" cover="true"></app-orgselect>
+        <app-orgselect ng-model="ret['villagename']" level="5" parentid="ret['townname']"
+                       disable="curbtn.btntype =='edit'" loaddefault="ret" defaultname="file_base"
+                       cover="true"></app-orgselect>
     </td>
 </tr>
 <tr>
@@ -62,7 +70,7 @@
         <span class="pre">建档单位：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['buildunit']" class="textinput"/>
+        <input  ng-model="ret['buildunit']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -70,7 +78,7 @@
         <span class="pre">建 档 人：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['buildperson']" class="textinput"/>
+        <input  ng-model="ret['buildperson']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -78,7 +86,7 @@
         <span class="pre">责任医生：</span>
     </td>
     <td colspan="700">
-        <input required="true" ng-model="ret['doctor']" class="textinput"/>
+        <input  ng-model="ret['doctor']" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -86,7 +94,7 @@
         <span class="pre">建档日期:</span>
     </td>
     <td colspan="700">
-        <app-date ng-model="ret['builddate']"></app-date>
+        <app-date ng-model="ret['builddate']" required="false"></app-date>
     </td>
 </tr>
 <tr>
@@ -98,7 +106,7 @@
     <td colspan="150" class="head border center">
         <span class="pre">性  别</span>
     </td>
-    <td colspan="450"  class="border">
+    <td colspan="450" class="border">
 
         <app-radio codetype="111" ng-model="ret['sex']" default="0"/>
         {{ret['sex']|json}}
@@ -115,7 +123,7 @@
         <span class="pre">身份证号</span>
     </td>
     <td colspan="300" class="border">
-        <input type="text" ng-model="ret['idnumber']" class="textinput" style="width:95%">
+        <input type="text" ng-pattern="/^((\d{14})|(\d{17}))[\dxX]$/" maxlength="18" minlength="15" ng-model="ret['idnumber']" class="textinput" style="width:95%">
     </td>
     <td colspan="150" class="head border center">
         <span class="pre">工作单位</span>
@@ -129,19 +137,19 @@
         <span class="pre">本人电话</span>
     </td>
     <td colspan="150" class="border">
-        <input type="text" ng-model="ret['tel']" class="textinput"style="width:95%">
+        <input type="text" ng-model="ret['tel']" class="textinput" style="width:95%">
     </td>
     <td colspan="150" class="head border center">
         <span class="pre">联系人姓名</span>
     </td>
     <td colspan="150" class="border">
-        <input type="text" ng-model="ret['linkman']"class="textinput"style="width:95%">
+        <input type="text" ng-model="ret['linkman']" class="textinput" style="width:95%">
     </td>
     <td colspan="150" class="head border center">
         <span class="pre">联系人电话</span>
     </td>
     <td colspan="250" class="border">
-        <input type="text" ng-model="ret['linktel']"class="textinput" style="width:95%">
+        <input type="text" ng-model="ret['linktel']" class="textinput" style="width:95%">
     </td>
 </tr>
 <tr>
@@ -193,7 +201,8 @@
     </td>
     <td colspan="850" class="border">
         <sapn app-radio ng-model="ret['paymentmode']" codetype="123"></sapn>
-        <input ng-if="ret['paymentmode']==8" type="text" ng-model="ret['paymentmodeother']"  placeholder="其他医疗费用支付方式" style="width:70%">
+        <input ng-if="ret['paymentmode']==8" type="text" ng-model="ret['paymentmodeother']" placeholder="其他医疗费用支付方式"
+               style="width:70%">
     </td>
 </tr>
 <tr>
@@ -202,7 +211,8 @@
     </td>
     <td colspan="850" class="border">
         <sapn app-checkbox ng-model="ret['allergiesHistory']" codetype="34" uncheckval="1" default="1"></sapn>
-        <input  ng-if="ret['allergiesHistory']['5']==true" type="text" ng-model="ret['allergiesother']"  placeholder="其他药物过敏史" class="textinput" style="width:50%">
+        <input ng-if="ret['allergiesHistory']['5']==true" type="text" ng-model="ret['allergiesother']"
+               placeholder="其他药物过敏史" class="textinput" style="width:50%">
         <!--{{ret['allergiesHistory']|json}}-->
     </td>
 </tr>
@@ -222,7 +232,9 @@
         <span class="pre">疾病</span>
     </td>
     <td colspan="850" class="border">
-        <sapn app-checkbox ng-model="ret['diseaseHistory']" codetype="38" uncheckval="1" default="1"></sapn>
+        <!--<sapn app-checkbox ng-model="ret['diseaseHistory']" codetype="38" uncheckval="1" default="1"></sapn>-->
+        <app-diseaselist ng-model="ret['diseaseHistory']" otherval="13" codetype="38" exclude="0" placeholder="请选择疾病"
+                         otherplaceholder="其他疾病名称" addtext="增加疾病"/>
     </td>
 </tr>
 <tr>
@@ -230,7 +242,9 @@
         <span class="pre">手术</span>
     </td>
     <td colspan="850" class="border">
-        <sapn app-radio ng-model="ret['opshistory']" codetype="81" default="1"></sapn>
+        <!--<sapn app-radio ng-model="ret['opshistory']" codetype="81" default="1"></sapn>-->
+        <app-hislist ng-model="ret['opshistory']" otherval="13" codetype="81" exclude="0" placeholder="名称"
+                     addtext="增加手术"/>
     </td>
 </tr>
 <tr>
@@ -238,7 +252,9 @@
         <span class="pre">外伤</span>
     </td>
     <td colspan="850" class="border">
-        <sapn app-radio ng-model="ret['traumaHistory']" codetype="94" default="1"></sapn>
+        <!--<sapn app-radio ng-model="ret['traumaHistory']" codetype="94" default="1"></sapn>-->
+        <app-hislist ng-model="ret['traumaHistory']" otherval="13" codetype="94" exclude="0" placeholder="名称"
+                     addtext="增加外伤"/>
     </td>
 </tr>
 <tr>
@@ -246,7 +262,9 @@
         <span class="pre">输血</span>
     </td>
     <td colspan="850" class="border">
-        <sapn app-radio ng-model="ret['bloodTrans']" codetype="82" default="1"></sapn>
+        <!--<sapn app-radio ng-model="ret['bloodTrans']" codetype="82" default="1"></sapn>-->
+        <app-hislist ng-model="ret['bloodTrans']" otherval="13" codetype="94" exclude="0" placeholder="原因"
+                     addtext="增加输血"/>
     </td>
 </tr>
 <tr>
@@ -282,7 +300,7 @@
 </tr>
 <tr>
     <td colspan="850" class="border">
-        <sapn app-listshow  codetype="148" ></sapn>
+        <sapn app-listshow codetype="148"></sapn>
     </td>
 </tr>
 <tr>
@@ -291,7 +309,8 @@
     </td>
     <td colspan="850" class="border">
         <sapn app-radio ng-model="ret['geneticHistory']" codetype="124" default="1"></sapn>
-        <span  ng-if="ret['geneticHistory']=='2'">疾病名称：<input type="text" ng-model="ret['geneticHistoryOther']" placeholder="疾病名称" class="textinput"></span>
+        <span ng-if="ret['geneticHistory']=='2'">疾病名称：<input type="text" ng-model="ret['geneticHistoryOther']"
+                                                             placeholder="疾病名称" class="textinput"></span>
     </td>
 </tr>
 <tr>
@@ -300,7 +319,8 @@
     </td>
     <td colspan="850" class="border">
         <sapn app-checkbox ng-model="ret['disabilityStatus']" codetype="6" uncheckval="1" default="1"></sapn>
-        <input type="text"  ng-if="ret['disabilityStatus']['8']==true" ng-model="ret['disabilityStatusOther']"class="textinput">
+        <input type="text" ng-if="ret['disabilityStatus']['8']==true" ng-model="ret['disabilityStatusOther']"
+               class="textinput">
     </td>
 
 </tr>
@@ -350,8 +370,9 @@
     </td>
 </tr>
 </table>
+</form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">保存</button>
-    <button class="btn btn-warning" ng-click="cancel()">关闭</button>
+    <button class="btn btn-primary" ng-click="save()"  tooltip="{{validform.$error|errortip}}">保存</button>
+    <button class="btn btn-warning" ng-click="close()">关闭</button>
 </div>

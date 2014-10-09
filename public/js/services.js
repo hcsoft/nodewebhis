@@ -59,7 +59,7 @@ angular.module('myApp.services', []).factory('loginService', function () {
                 }
             });
             modalInstance.result.then(function (ret) {
-                this.result = ret;
+                dialog.result = ret;
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });

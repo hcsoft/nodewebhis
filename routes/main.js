@@ -10,7 +10,8 @@ router.get('/', function (req, res) {
 
 router.post('/init', function (req, res) {
     util.log("init..........")
-
+    var date = Date.valueOf('2014-10-14T16:00:00.000Z');
+    console.log(date);
     var user = cache.users[req.session.user_id];
     pool.pool.open(pool.connectstr, function (err, db) {
         if (err) return next(err);
