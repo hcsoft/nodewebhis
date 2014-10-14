@@ -37,11 +37,16 @@ module.exports = pool;
 
 // sqlserver pool
 var Pool = require("odbc").Pool
-    , pool = new Pool()
+    ,pool = new Pool()
     , cn = "DRIVER={SQL Server};Server=localhost,1433;Database=webhis;User Id=sa;Password=11111111;"
     ;
+
 module.exports = {
     'pool':pool,
-    'connectstr' :cn
+    'connectstr' :cn,
+    'open':function(callback){
+        var pool = new Pool();
+        pool.open(cn, callback);
+    }
 };
 

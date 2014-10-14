@@ -371,7 +371,7 @@ div {
     background-image: -o-linear-gradient(top, #fff, #e6e6e6);
     background-image: linear-gradient(to bottom, #fff, #e6e6e6);
     background-repeat: repeat-x;
-    border: 1px solid #ccc ;
+    border: 1px solid #ccc;
     border-right: 0px;
     border-color: #e6e6e6 #e6e6e6 #bfbfbf;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -382,9 +382,11 @@ div {
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-.ngHeaderScroller > div:last-child.ngHeaderCell{
-    border-right: 1px solid #ccc ;
+
+.ngHeaderScroller > div:last-child.ngHeaderCell {
+    border-right: 1px solid #ccc;
 }
+
 .ngTopPanel {
     background-color: #fff !important;
 }
@@ -412,6 +414,7 @@ div {
     background: url('../img/icons/panel_tools.png') no-repeat -16px 0px;
     border-width: 0 0 1px 0;
 }
+
 /*
 .modal {
     background-color: #E0ECFF !important;
@@ -425,9 +428,11 @@ div {
 a {
     cursor: pointer !important;
 }
+
 .modal-header {
-    color:#08c;
+    color: #08c;
 }
+
 /*
 .modal-header {
     padding: 2px 5px !important;
@@ -452,7 +457,6 @@ a {
     margin: 0px !important;
     height: 20px !important;
 }
-
 
 .row-head {
     text-align: center;
@@ -670,8 +674,8 @@ div.contentpane > a.menuitem > img {
 }
 
 #subtab > ul > li:first-child a {
-     color: #fff;
-   background: deepskyblue !important;
+    color: #fff;
+    background: deepskyblue !important;
 }
 
 .lefttree {
@@ -686,12 +690,13 @@ div.contentpane > a.menuitem > img {
     -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px;
 }
-.rightContent{
+
+.rightContent {
     position: absolute;
     top: 0px;
     bottom: 0px;
     left: 205px;
-    right:0px;
+    right: 0px;
     overflow: auto;
     border: 1px solid #95B8E7;
     -moz-border-radius: 3px 3px 3px 3px;
@@ -699,58 +704,68 @@ div.contentpane > a.menuitem > img {
     border-radius: 3px 3px 3px 3px;
 }
 
-.lefttree treecontroll{
-    padding:5px 0 0 0 ;
+.lefttree treecontroll {
+    padding: 5px 0 0 0;
 }
 
 .form-control {
     display: inline-block;
     vertical-align: middle;
 }
-.form-control.date{
-    width:100px;
+
+.form-control.date {
+    width: 100px;
 }
-.form-control.date+ul+ span{
+
+.form-control.date + ul + span {
     display: inline-block;
 }
-.modal{
+
+.modal {
     overflow-y: hidden;
 }
 
-input.form-control{
-    height:26px;
+input.form-control {
+    height: 26px;
 }
-.radiobtn.btn{
+
+.radiobtn.btn {
     background-color: rgba(0, 128, 0, 0.13);
 }
-.radiobtn.btn:active, .radiobtn.btn.active{
+
+.radiobtn.btn:active, .radiobtn.btn.active {
     outline: 0;
     background-image: none;
     background-color: green;
-    color:#fff;
+    color: #fff;
 }
 
-.newdialog.modal-dialog{
-    margin:0 auto;
+.newdialog.modal-dialog {
+    margin: 0 auto;
 }
-.complexquery td{
-    padding:1px 0 ;
+
+.complexquery td {
+    padding: 1px 0;
 }
+
 /* appcodelist css */
-span.codelist{
+span.codelist {
     display: inline-block;
     /*height:35px;*/
-    margin:0 5px 0 0;
+    margin: 0 5px 0 0;
 }
-span.codelist > input[type='radio'],span.codelist > input[type='checkbox'] {
+
+span.codelist > input[type='radio'], span.codelist > input[type='checkbox'] {
     display: none;
 }
+
 span.codelist > input:checked + label {
-    color:#fff;
+    color: #fff;
     background-color: #56899c;
     /*background-color: transparent;*/
     /*background-color: #eef2ff;*/
 }
+
 span.codelist > input:checked + label:before {
     content: "√ ";
     display: inline;
@@ -763,64 +778,75 @@ span.codelist > input:checked + label:before {
     font-family: "仿宋";
 }
 
-span.codelist > input:checked + label >.index {
-    color:#ffffff;
+span.codelist > input:checked + label > .index {
+    color: #ffffff;
 }
+
 span.codelist > label {
-    cursor:pointer;
+    cursor: pointer;
     font-weight: normal;
     letter-spacing: 2px;
-    margin:0;
+    margin: 0;
     position: relative;
 }
+
 span.codelist > label:before {
     content: "";
     white-space: pre;
 }
+
 span.codelist > label:hover {
     /*background-color: ;*/
     text-decoration: line-through;
-    color:#56899c;
+    color: #56899c;
 }
+
 /* appcodelist css */
 
 /*button css*/
-.addbtn,.editbtn,.delbtn{
-    font-size:15px;
+.addbtn, .editbtn, .delbtn {
+    font-size: 15px;
     padding-right: 5px;
 }
-.addbtn{
+
+.addbtn {
     /*color:greenyellow;*/
-    color:#ffffff;
+    color: #ffffff;
 }
-.editbtn{
+
+.editbtn {
     /*color:#ffff00;*/
-    color:#ffffff;
+    color: #ffffff;
 }
-.delbtn{
+
+.delbtn {
     /*color: #af0200;*/
-    color:#ffffff;
+    color: #ffffff;
 }
+
 /*button css*/
 
 /*tree css*/
-treecontrol li .tree-label span{
+treecontrol li .tree-label span {
     display: inline;
-    white-space:nowrap;
+    white-space: nowrap;
 }
-treecontrol ul{
+
+treecontrol ul {
     overflow: visible;
 }
-treecontrol>ul>li{
+
+treecontrol > ul > li {
     padding-left: 5px;
 }
+
 .lefttree treecontrol {
-    position:absolute;
-    left:0px;
-    top:30px;
-    right:0px;
-    bottom:0px;
-    overflow:auto;
+    position: absolute;
+    left: 0px;
+    top: 30px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
 }
 
 .lefttree > .title {
@@ -833,107 +859,139 @@ treecontrol>ul>li{
     width: 198px;
 }
 
-.rightContent > .title{
+.rightContent > .title {
     height: 35px;
     line-height: 35px;
     background-color: #e0ecff;
     display: block;
     padding-left: 5px;
-    width:100%;
+    width: 100%;
 }
 
-.ngCellText.left{
+.ngCellText.left {
     text-align: left;
 }
 
-.ngCellText.right{
+.ngCellText.right {
     text-align: right;
 }
-.ngCellText.center{
+
+.ngCellText.center {
     text-align: center;
 }
 
-
-#subtab .nav-tabs li.active a{
+#subtab .nav-tabs li.active a {
     background-color: #eef2ff;
     /*color: #fff;*/
 }
 
-
-.nav>li>a{
-    padding:8px 12px;
+.nav > li > a {
+    padding: 8px 12px;
 }
-.examtable{
-    width:100%;
+
+.examtable {
+    width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
     color: #626262;
-    line-height:27px;
+    line-height: 27px;
 }
 
-.examtable >tbody> tr{
-    width:100%;
-    height:31px;
+.examtable > tbody > tr {
+    width: 100%;
+    height: 31px;
 }
 
-.examtable .index{
+.examtable .index {
     /*font-weight: bold;*/
-    color:darkblue;
+    color: darkblue;
 }
-.examtable .head{
+
+.examtable .head {
     background-color: #B0E0E6;
     /*color:#5f1f1a;*/
     /*background-color: #ECECEC;*/
 }
-.examtable .title{
-    font-size:20px;
+
+.examtable .title {
+    font-size: 20px;
     line-height: 40px;
-    height:40px;
+    height: 40px;
 }
 
-.examtable input.textinput{
-    width:70%;
-    border:none;
-    border-bottom:solid 1px #000000;
+.examtable input.textinput {
+    width: 70%;
+    border: none;
+    border-bottom: solid 1px #000000;
     border-radius: 0;
 }
-.examtable  >tbody> tr > td{
-    padding:2px 5px;
+
+.examtable > tbody > tr > td {
+    padding: 2px 5px;
 
 }
-.examtable  >tbody > tr >td.border{
-    border:solid 1px #626262;
+
+.examtable > tbody > tr > td.border {
+    border: solid 1px #626262;
 }
+
 /* window css */
-.pre{
+.pre {
     white-space: pre-wrap;
 }
-.center{
+
+.center {
     text-align: center;
 }
-.left{
+
+.left {
     text-align: left;
 }
-.right{
+
+.right {
     text-align: right;
 }
+
 /* window css */
 
 /* 日历 css*/
-app-date{
+app-date {
     display: inline-block;
 }
-app-date table{
-     border-spacing: 0;
- }
-app-date table td{
+
+app-date table {
+    border-spacing: 0;
+}
+
+app-date table td {
     padding: 0;
 }
+
 /* 日历 css*/
 .validform input.ng-invalid {
-    background-color: #FA787E;
+    background-color: #FFE5E6;
 }
 
 /*.validform input.ng-valid {*/
-    /*background-color: #78FA89;*/
+/*background-color: #78FA89;*/
 /*}*/
+
+.modal-dialog.modal-lg .modal-body {
+    position: absolute;
+    top:65px;
+    bottom:73px;
+    overflow-y: auto;
+    border-collapse: collapse;
+}
+.modal-dialog.modal-lg .modal-footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right:0;
+}
+.modal-dialog.modal-lg .modal-content{
+    height: 90%;
+}
+.modal-dialog.modal-lg{
+    height:100%;
+}

@@ -179,7 +179,8 @@ var taskCtrl = function ($scope, $modalInstance, curbtn) {
         }else{
             return "100%";
         }
-    }
+    };
+
     $scope.ok = function () {
         $modalInstance.close($scope.ret);
     };
@@ -240,10 +241,11 @@ var ModalInstanceCtrl = function ($scope, $modalInstance,$window, curbtn) {
         }else{
             return "100%";
         }
-    }
-    $scope.save = function () {
+    };
+    $scope.dosave = function (name,param) {
         console.log($window.submitform)
         console.log($("#submitform").$valid);
+
         $modalInstance.close($scope.ret);
     };
 

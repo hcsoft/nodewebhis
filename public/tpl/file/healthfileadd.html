@@ -2,12 +2,13 @@
     <h3 class="modal-title">{{curbtn.windowtitle}}</h3>
 </div>
 
-<div class="modal-body" style="max-height: {{curbtn.window.height}}px;overflow-y:auto;border-collapse: collapse;">
+<div class="modal-body">
 <form name="validform" class="validform" novalidate>
+<!--
 {{  ret['builddate']  }}
 {{Date.valueOf('2014-07-13T20:44:59.000Z')}}
     {{  ret['builddate'] | type }}
-    {{  ret['builddate'] | date:'yyyy-MM-dd HH:mm:ss' }}
+    {{  ret['builddate'] | date:'yyyy-MM-dd HH:mm:ss' }}-->
 <table class="examtable">
 <tr>
     <td colspan="1000" class="title center">
@@ -27,7 +28,7 @@
         <span class="pre"> 现 住 址：</span>
     </td>
     <td colspan="700">
-        <input  ng-model="ret['address']" class="textinput"/>
+        <input  ng-model="ret['address']" required="true" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -35,7 +36,7 @@
         <span class="pre">户籍地址：</span>
     </td>
     <td colspan="700">
-        <input  ng-model="ret['residenceaddress']" class="textinput"/>
+        <input  ng-model="ret['residenceaddress']" required="true" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -43,7 +44,7 @@
         <span class="pre">联系电话：</span>
     </td>
     <td colspan="700">
-        <input  ng-model="ret['tel']" class="textinput"/>
+        <input  ng-model="ret['tel']" required="true" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -51,7 +52,7 @@
         <span class="pre">乡镇（街道）名称：</span>
     </td>
     <td colspan="700">
-        <app-orgselect ng-model="ret['townname']" level="4" selectable="isedit"
+        <app-orgselect ng-model="ret['towncode']" level="4" selectable="isedit"
                        disable="curbtn.btntype =='edit'"></app-orgselect>
     </td>
 </tr>
@@ -60,7 +61,7 @@
         <span class="pre">村（居）委会名称：</span>
     </td>
     <td colspan="700">
-        <app-orgselect ng-model="ret['villagename']" level="5" parentid="ret['townname']"
+        <app-orgselect ng-model="ret['villagecode']" level="5" parentid="ret['towncode']"
                        disable="curbtn.btntype =='edit'" loaddefault="ret" defaultname="file_base"
                        cover="true"></app-orgselect>
     </td>
@@ -70,7 +71,7 @@
         <span class="pre">建档单位：</span>
     </td>
     <td colspan="700">
-        <input  ng-model="ret['buildunit']" class="textinput"/>
+        <input  ng-model="ret['buildunit']" required="true" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -78,7 +79,7 @@
         <span class="pre">建 档 人：</span>
     </td>
     <td colspan="700">
-        <input  ng-model="ret['buildperson']" class="textinput"/>
+        <input  ng-model="ret['buildperson']" required="true" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -86,7 +87,7 @@
         <span class="pre">责任医生：</span>
     </td>
     <td colspan="700">
-        <input  ng-model="ret['doctor']" class="textinput"/>
+        <input  ng-model="ret['doctor']"required="true" class="textinput"/>
     </td>
 </tr>
 <tr>
@@ -94,7 +95,7 @@
         <span class="pre">建档日期:</span>
     </td>
     <td colspan="700">
-        <app-date ng-model="ret['builddate']" required="false"></app-date>
+        <app-date ng-model="ret['builddate']" required="true"></app-date>
     </td>
 </tr>
 <tr>
@@ -123,7 +124,7 @@
         <span class="pre">身份证号</span>
     </td>
     <td colspan="300" class="border">
-        <input type="text" ng-pattern="/^((\d{14})|(\d{17}))[\dxX]$/" maxlength="18" minlength="15" ng-model="ret['idnumber']" class="textinput" style="width:95%">
+        <input type="text" ng-pattern="/^((\d{14})|(\d{17}))[\dxX]$/" required="true" maxlength="18" minlength="15" ng-model="ret['idnumber']" class="textinput" style="width:95%">
     </td>
     <td colspan="150" class="head border center">
         <span class="pre">工作单位</span>
@@ -373,6 +374,6 @@
 </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="save()"  tooltip="{{validform.$error|errortip}}">保存</button>
+    <button class="btn btn-primary" ng-click="dosave('file_base',ret)"  ng-disabled="validform.$invalid" tooltip="{{validform.$error|errortip}}">保存</button>
     <button class="btn btn-warning" ng-click="close()">关闭</button>
 </div>

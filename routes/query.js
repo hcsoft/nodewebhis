@@ -45,9 +45,6 @@ router.post('/query', function (req, res) {
             }
         }
     }
-    where = where + " and builddate =  ? ";
-    console.log(moment('2014-01-01T16:00:00.000Z').format("YYYY-MM-DD HH:mm:ss") );
-    paramlist.push(moment('2014-01-01T16:00:00.000Z').format("YYYY-MM-DD HH:mm:ss")  );
     var countsql = " select count(*) num from "+query.querysql.sql+" where "+where;
     var ret = tmpdb.querySync(countsql,paramlist);
     page.rowcount = ret[0].num;

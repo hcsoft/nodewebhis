@@ -41,6 +41,7 @@ angular.module('myApp.services', []).factory('loginService', function () {
     var dialog = {
         btn: null,
         result: null,
+        height:500,
         openwindow: function (btn, isedit) {
             this.btn = btn;
             var modalInstance = $modal.open({

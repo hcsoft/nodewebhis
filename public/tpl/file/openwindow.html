@@ -1,7 +1,7 @@
 <div class="modal-header">
     <h3 class="modal-title">{{curbtn.windowtitle}}</h3>
 </div>
-<div class="modal-body" style="max-height: {{curbtn.window.height}}px;overflow-y:auto;border-collapse: collapse;">
+<div class="modal-body" style="max-height: {{height}}px;overflow-y:auto;border-collapse: collapse;">
     <table class="examtable" >
         <tr ng-repeat="(i,cfg) in curbtn.window.rowcfg">
             <td  ng-repeat="(j,item) in cfg.items" colspan="{{item.colnum}}"  ng-class="{true: 'border', false: ''}[item.hasborder]">

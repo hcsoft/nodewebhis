@@ -1,0 +1,490 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{curbtn.windowtitle}}</h3>
+</div>
+
+<div class="modal-body">
+<form name="validform" class="validform" novalidate>
+<!--
+{{  ret['builddate']  }}
+{{Date.valueOf('2014-07-13T20:44:59.000Z')}}
+    {{  ret['builddate'] | type }}
+    {{  ret['builddate'] | date:'yyyy-MM-dd HH:mm:ss' }}-->
+<table class="examtable">
+<tr>
+    <td colspan="1000" class="title center ">
+        健康体检表
+    </td>
+</tr>
+<tr>
+    <td colspan="100" class="head border center">
+        <span class="pre">体检日期</span>
+    </td>
+    <td colspan="400" class="border">
+        <input required="true" title="体检日期" minlength="2" maxlength="6" ng-model="ret.checkdate" class="textinput"/>
+    </td>
+    <td colspan="100" class="head border center">
+        <span class="pre">责任医生</span>
+    </td>
+    <td colspan="400" class="border">
+        <input ng-model="ret['doctor']" required="true" class="textinput"/>
+    </td>
+</tr>
+
+<tr>
+    <td colspan="100" class="head border center">
+        <span class="pre">内容</span>
+    </td>
+    <td colspan="900" class="head border center">
+        <span class="pre">检查项目</span>
+    </td>
+</tr>
+<tr>
+    <td colspan="100" class="head border center">
+        <span class="pre">症<br>状</span>
+    </td>
+    <td colspan="900" class="border" app-radio ng-model="ret.exam_items['症状']" codetype="149" default="1">
+
+    </td>
+</tr>
+<tr>
+    <td colspan="100" class="head border center" rowspan="9">
+        <span class="pre">一<br>般<br>状<br>况</span>
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">体温</span>
+    </td>
+    <td colspan="300" class="border">
+        <input ng-model="ret.exam_items['体温']" required="true" class="textinput"/>℃
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">脉  搏</span>
+    </td>
+    <td colspan="300" class="border">
+        <input ng-model="ret.exam_items['脉搏']" required="true" class="textinput"/>次/分钟
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center" rowspan="2">
+        <span class="pre">呼吸频率</span>
+    </td>
+    <td colspan="300" rowspan="2" class="border">
+        <input ng-model="ret.exam_items['呼吸频率']" required="true" class="textinput"/>次/分钟
+    </td>
+    <td colspan="150" class="head border center" rowspan="2">
+        <span class="pre">血压</span>
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">左侧</span>
+    </td>
+    <td colspan="150" class="border" class="border center">
+        <input ng-model="ret.exam_items['血压左侧低']" required="true" class="textinput"/>/<input
+            ng-model="ret.exam_items['血压左侧高']" required="true" class="textinput"/>mmHg
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">右侧</span>
+    </td>
+    <td colspan="150" class="border">
+        <input ng-model="ret.exam_items['血压右侧低']" required="true" class="textinput"/>/<input
+            ng-model="ret.exam_items['血压右侧低']" required="true" class="textinput"/>mmHg
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">身高</span>
+    </td>
+    <td colspan="300" class="border">
+        <input ng-model="ret.exam_items['身高']" required="true" class="textinput"/>cm
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">体重</span>
+    </td>
+    <td colspan="300" class="border">
+        <input ng-model="ret.exam_items['体重']" required="true" class="textinput"/>kg
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">腰围</span>
+    </td>
+    <td colspan="300" class="border">
+        <input ng-model="ret.exam_items['腰围']" required="true" class="textinput"/>cm
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">体质指数<br>(BMI)</span>
+    </td>
+    <td colspan="300" class="border">
+        <input ng-model="ret.exam_items['体质指数']" required="true" class="textinput"/>Kg/m2
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">老年人健康状态自我评估*</span>
+    </td>
+    <td colspan="750" class="border" app-radio ng-model="ret.exam_items['老年人健康状态自我评估']" codetype="1274" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">老年人生活自理能力自我评估*</span>
+    </td>
+    <td colspan="750" class="border" app-radio ng-model="ret.exam_items['老年人生活自理能力自我评估']" codetype="1280" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">老年人认知功能*</span>
+    </td>
+    <td colspan="750" class="border" app-radio ng-model="ret.exam_items['老年人认知功能']" codetype="52" default="1">
+        简易智力状态检查，总分<input ng-model="ret.exam_items['简易智力状态检查']" required="true" class="textinput"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">老年人情感状态*</span>
+    </td>
+    <td colspan="750" class="border" app-radio ng-model="ret.exam_items['老年人情感状态']" codetype="51" default="1">
+        老年人抑郁评分检查，总分<input ng-model="ret.exam_items['简易智力状态检查']" required="true" class="textinput"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="100" class="head border center" rowspan="13">
+        <span class="pre">生<br>活<br>方<br>式</span>
+    </td>
+    <td colspan="150" class="head border center" rowspan="3">
+        <span class="pre">体育锻炼</span>
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">锻炼频率</span>
+    </td>
+    <td colspan="600" class="border" app-radio ng-model="ret.exam_items['锻炼频率']" codetype="13" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">每次锻炼时间</span>
+    </td>
+    <td colspan="230" class="border">
+        <input ng-model="ret.exam_items['每次锻炼时间']" required="true" class="textinput"/>分钟
+    </td>
+    <td colspan="130" class="head border center">
+        <span class="pre">坚持锻炼时间</span>
+    </td>
+    <td colspan="240" class="border">
+        <input ng-model="ret.exam_items['坚持锻炼时间']" required="true" class="textinput"/>年
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">锻炼方式</span>
+    </td>
+    <td colspan="600" class="border">
+        <input ng-model="ret.exam_items['锻炼方式']" required="true" class="textinput"/>分钟
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">饮食习惯</span>
+    </td>
+    <td colspan="750" class="border" app-radio ng-model="ret.exam_items['饮食习惯']" codetype="132" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center" rowspan="3">
+        <span class="pre">吸烟情况</span>
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">吸烟状况</span>
+    </td>
+    <td colspan="600" class="border" app-radio ng-model="ret.exam_items['吸烟状况']" codetype="100" default="6">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">日吸烟量</span>
+    </td>
+    <td colspan="600" class="border">
+        平均<input ng-model="ret.exam_items['日吸烟量']" required="true" class="textinput"/>支
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">开始吸烟年龄</span>
+    </td>
+    <td colspan="230" class="border">
+        <input ng-model="ret.exam_items['开始吸烟年龄']" required="true" class="textinput"/>岁
+    </td>
+    <td colspan="130" class="head border center">
+        <span class="pre">戒烟年龄</span>
+    </td>
+    <td colspan="240" class="border">
+        <input ng-model="ret.exam_items['戒烟年龄']" required="true" class="textinput"/>岁
+    </td>
+</tr>
+<tr>
+    <td colspan="150" rowspan="5" class="head border center">
+        <span class="pre">饮酒情况</span>
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">饮酒频率</span>
+    </td>
+    <td colspan="600" class="border" app-radio ng-model="ret.exam_items['饮酒频率']" codetype="129" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">日饮酒量</span>
+    </td>
+    <td colspan="600" class="border">
+        平均<input ng-model="ret.exam_items['日饮酒量']" required="true" class="textinput"/>量
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">是否戒酒</span>
+    </td>
+    <td colspan="600" class="border" app-radio ng-model="ret.exam_items['是否戒酒']" codetype="78" default="1">
+        ,戒酒年龄: <input ng-model="ret.exam_items['戒酒年龄']" required="true" class="textinput"/>岁
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">开始饮酒年龄</span>
+    </td>
+    <td colspan="230" class="border">
+        <input ng-model="ret.exam_items['开始饮酒年龄']" required="true" class="textinput"/>岁
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">近一年内是否曾醉酒</span>
+    </td>
+    <td colspan="220" class="border" app-radio ng-model="ret.exam_items['近一年内是否曾醉酒']" codetype="171" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">饮酒种类</span>
+    </td>
+    <td colspan="600" class="border" app-radio ng-model="ret.exam_items['饮酒种类']" codetype="130" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">职业病危害因素<br>接触史</span>
+    </td>
+    <td colspan="750" class="border">
+        <div app-radio ng-model="ret.exam_items['接触史']" codetype="151" default="1"></div>
+        （工种<input ng-model="ret.exam_items['工种']" required="true" class="textinput"/>从业时间<input
+            ng-model="ret.exam_items['从业时间']" required="true" class="textinput"/>年）
+        <div class="pre">
+            毒物种类 粉尘<input ng-model="ret.exam_items['粉尘']" required="true" class="textinput"/> 防护措施 <span
+                ng-model="ret.exam_items['粉尘防护措施']" app-radio codetype="151" default="1"></span>
+            放射物质<input ng-model="ret.exam_items['放射物质']" required="true" class="textinput"/> 防护措施 <span
+                ng-model="ret.exam_items['反射物质防护措施']" app-radio codetype="151" default="1"></span>
+            物理因素<input ng-model="ret.exam_items['物理因素']" required="true" class="textinput"/> 防护措施 <span
+                ng-model="ret.exam_items['物理因素防护措施']" app-radio codetype="151" default="1"></span>
+            化学物质<input ng-model="ret.exam_items['化学物质']" required="true" class="textinput"/> 防护措施 <span
+                ng-model="ret.exam_items['化学物质防护措施']" app-radio codetype="151" default="1"></span>
+            其他<input ng-model="ret.exam_items['其他']" required="true" class="textinput"/> 防护措施 <span
+                ng-model="ret.exam_items['其他防护措施']" codetype="99" default="6"></span>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td colspan="100" class="head border center" rowspan="4">
+        <span class="pre">脏<br>器<br>功<br>能</span>
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">口腔</span>
+    </td>
+    <td colspan="750" class="border">
+        口唇 <span ng-model="ret.exam_items['口唇']" app-radio codetype="49" default="1"></span><br>
+        齿列 <span ng-model="ret.exam_items['齿列']" app-radio codetype="8" default="1"></span><br>
+        咽部 <span ng-model="ret.exam_items['咽部']" app-radio codetype="117" default="1"></span><br>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">视力</span>
+    </td>
+    <td colspan="750" class="border">
+        左眼<input ng-model="ret.exam_items['左眼视力']" required="true" class="textinput"/>右眼<input
+            ng-model="ret.exam_items['右眼视力']" required="true" class="textinput"/>
+        (矫正视力:左眼<input ng-model="ret.exam_items['左眼矫正视力']" required="true" class="textinput"/>右眼<input
+            ng-model="ret.exam_items['右眼矫正视力']" required="true" class="textinput"/>)
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">听力</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['听力']" app-radio codetype="90" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">运动功能</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['运动功能']" app-radio codetype="135" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="100" class="head border center" rowspan="19">
+        <span class="pre">查<br>体</span>
+    </td>
+    <td colspan="150" class="head border center">
+        <span class="pre">眼底</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['眼底']" app-radio codetype="120" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">皮肤</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['皮肤']" app-radio codetype="150" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">巩膜</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['巩膜']" app-radio codetype="30" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">淋巴结</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['淋巴结']" app-radio codetype="53" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center" rowspan="3">
+        <span class="pre">肺</span>
+    </td>
+    <td colspan="750" class="border">
+        桶状胸：<span ng-model="ret.exam_items['桶状胸']" app-radio codetype="93" default="1"></span>
+    </td>
+</tr>
+<tr>
+    <td colspan="750" >
+        呼吸音：<span ng-model="ret.exam_items['呼吸音']" app-radio codetype="35" default="1"></span>
+    </td>
+</tr>
+<tr>
+    <td colspan="750" class="border">
+        罗音：<span ng-model="ret.exam_items['罗音']" app-radio codetype="54" default="1"></span>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">心脏</span>
+    </td>
+    <td colspan="750"  class="border">
+        心率<input ng-model="ret.exam_items['心率']" style="width:80px;" required="true" class="textinput"/>次/分钟
+        心律： <span ng-model="ret.exam_items['心律']" app-radio codetype="105" default="1"></span>
+        杂音： <span ng-model="ret.exam_items['杂音']" app-radio codetype="151" default="1"></span>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">腹部</span>
+    </td>
+    <td colspan="750" class="border">
+        压痛： <span ng-model="ret.exam_items['压痛']" app-radio codetype="151" default="1"></span>
+        包块： <span ng-model="ret.exam_items['包块']" app-radio codetype="151" default="1"></span>
+        肝大： <span ng-model="ret.exam_items['肝大']" app-radio codetype="151" default="1"></span>
+        脾大： <span ng-model="ret.exam_items['脾大']" app-radio codetype="151" default="1"></span>
+        移动性浊音： <span ng-model="ret.exam_items['移动性浊音']" app-radio codetype="151" default="1"></span>
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">下肢水肿</span>
+    </td>
+    <td colspan="750"  class="border" ng-model="ret.exam_items['下肢水肿']" app-radio codetype="101" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">足背动脉搏动</span>
+    </td>
+    <td colspan="750"  class="border" ng-model="ret.exam_items['足背动脉搏动']" app-radio codetype="145" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">肛门指诊*</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['肛门指诊']" app-radio codetype="26" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">乳   腺*</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['乳腺']" app-radio codetype="70" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="75" class="head border center" rowspan="5">
+        <span class="pre">妇科</span>
+    </td>
+    <td colspan="75" class="head border center">
+        <span class="pre">外阴</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['外阴']" app-radio codetype="96" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="75" class="head border center">
+        <span class="pre">阴道</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['阴道']" app-radio codetype="96" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="75" class="head border center">
+        <span class="pre">宫颈</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['宫颈']" app-radio codetype="96" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="75" class="head border center">
+        <span class="pre">附件</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['宫体']" app-radio codetype="96" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="75" class="head border center">
+        <span class="pre">附件</span>
+    </td>
+    <td colspan="750" class="border" ng-model="ret.exam_items['附件']" app-radio codetype="96" default="1">
+    </td>
+</tr>
+<tr>
+    <td colspan="150" class="head border center">
+        <span class="pre">其他</span>
+    </td>
+    <td colspan="750" class="border">
+        <input ng-model="ret.exam_items['妇科其他']" style="width:80px;" required="true" class="textinput"/>
+    </td>
+</tr>
+
+
+
+
+
+
+</table>
+</form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="dosave('file_base',ret)" ng-disabled="validform.$invalid"
+            tooltip="{{validform.$error|errortip}}">保存
+    </button>
+    <button class="btn btn-warning" ng-click="close()">关闭</button>
+</div>
